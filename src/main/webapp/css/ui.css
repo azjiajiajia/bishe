@@ -1,0 +1,233 @@
+@charset "utf-8";
+/*
+最上面的tab
+*/
+body{font-size:14px;background-color: aliceblue}
+.page_tab{background-color:#1a1210;margin-top: 0px;width: 100%;height: 40px;position: relative}
+.page_tab label{position: absolute;
+    right: 60px;
+    bottom: 0;
+    top:0;
+    margin: auto;
+    display: none;text-align: left;font-size: 12px;font-weight: bold;color: black}
+.page_tab .user_name{position: absolute;
+    right: 15px;
+    bottom: 0;
+    top:0;
+    margin: auto;
+    display: none;text-align: left;font-size: 8px;color: gray;font-style: italic}
+.page_tab .author_name{position: absolute;
+    right: 15px;
+    bottom: 0;
+    top:0;
+    margin: auto;
+    display: none;text-align: left;color: gray;font-style: italic;font-size: 8px;}
+.page_tab .author{position: absolute;
+    left: 15px;
+    bottom: 0;
+    top:0;
+    margin: auto;
+    width: 60px;
+    height: 20px;
+    text-align: center;color: tomato;font-weight: bold;font-size: 9px}
+.page_tab .tab_title{position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top:0;
+    margin: auto;
+    text-align: center;color: royalblue;font-weight: bold;font-size: 20px;font-family: Ebrima}
+.page_tab .login{position: absolute;
+    right: 100px;
+    bottom: 0;
+    top:0;
+    margin: auto;
+    width: 40px;
+    height: 20px;
+    text-align: center;color: tomato;font-weight: bold;font-size: 9px}
+.page_tab .register{position: absolute;
+    right: 15px;
+    bottom: 0;
+    top:0;
+    margin: auto;
+    width: 40px;
+    height: 20px;
+    text-align: center;color: tomato;font-weight: bold;font-size: 9px}
+/*
+登录窗口和注册窗口
+*/
+.login_window{
+    position: absolute;
+    width: 512px;
+    height: 284px;
+    z-index: 9999;
+    display: none;
+    background-color: white;
+    left: 20%;
+    top: 30%;
+    border: 1px solid greenyellow;
+}
+.login_title{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: move;
+}
+.login_title span a{
+    text-decoration: none;
+    border: 1px solid gray;
+    font-size: 12px;
+    color: #3f4447;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: blueviolet;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+}
+.login_input{
+    margin: 20px 0px 30px 0px;
+}
+.login_input label{
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    width: 90px;
+    padding-left: 10px;
+    text-align: right;
+    font-size: 14px;
+}
+.login_input input.list_input{
+    height: 35px;
+    line-height: 35px;
+    width: 350px;
+    text-indent: 5px;
+}
+.login_submit{
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid gray;
+    background-color: white;
+    margin-left: 60px;
+    margin-bottom: 50px;
+}
+.login_register{
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid gray;
+    background-color: white;
+    margin-left: 60px;
+    margin-bottom: 50px;
+}
+.bg{
+    background-color: lightgrey;
+    width: 100%;
+    height: 100%;
+    top:0px;
+    position: fixed;
+    opacity: 0.7;
+    display: none;
+}
+
+/*
+logo栏
+*/
+.guide{background-color: white;margin-top: 0px;width: 100%;height: 60px;position: relative}
+.guide .logo{position: absolute;
+    left: 0;
+    bottom: 0;
+    top:0;
+    margin: auto;height: 60px;width: 100px;}
+.search{position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top:0;
+    margin: auto;height: 80px;width: 800px;}
+.search input{position: absolute;
+    left:0 ;
+    bottom: 0;
+    top:0;
+    margin: auto;height: 31px;width: 700px;}
+.search image{position: absolute;
+    left: 700px;
+    bottom: 0;
+    top:0;
+    margin: auto;height: 30px;width: 30px;border: 1px solid black;}
+.guide .logo_left{position: absolute;
+    right: 160px;
+    bottom: 0;
+    top:0;
+    margin: auto;height: 60px;width: 100px;}
+.guide .lib{position: absolute;
+    right: 40px;
+    bottom: 0;
+    top:0;
+    margin: auto;height: 30px;color: #a460ff;font-weight: bold;font-size: 10px}
+
+/*
+作品分类
+*/
+.icon_menu{
+    display: inline-block;
+    width: 30px;
+    height: 5px;
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+    background-color: black;
+    padding: 5px 0;
+    background-clip:content-box;
+}
+.sort{background-color: #ede1ec;margin-top: 10px;margin-left:0;position: relative;width: 20%;height: 500px;border: 2px solid black}
+.sort .top{background-color: white;height: 50px;padding-top: 10px;padding-left: 70px}
+.sort ul{list-style:none;margin:0px;font-size: 20px}
+.sort ul li{float: left}
+.jishu{height: 40px;padding-top: 10px;}
+.oushu{height: 40px;padding-top: 10px;background-color:#ede3cf}
+.left{margin-left: 10px;width: 100px}
+.right{margin-left: 30px;width: 100px}
+
+/*
+页面右侧显示书本
+*/
+.books_sort{background-color:white;right: 0;top:110px;position: absolute;width: 79%;height: 500px;border: 2px solid black}
+
+
+
+/*
+用户兴趣
+*/
+.person_intst{margin-top: 10px;margin-left:0;position: relative;width: 100%;height: 400px;padding:10px}
+
+/*
+最近更新
+*/
+.recent_repost{margin-top: 10px;margin-left:0;position: relative;width: 100%;height: 400px;padding:50px}
+.recent_repost .left{width: 100px;height: 300px;position: absolute;
+    left: 0px;
+    bottom: 0;
+    top:0;
+    margin: auto;padding: 10px}
+.recent_repost .center{width: 100px;height: 300px;position: absolute;
+    left: 300px;
+    bottom: 0;
+    top:0;
+    margin: auto;padding: 10px}
+.recent_repost .right{width: 100px;height: 300px;position: absolute;
+    left: 600px;
+    bottom: 0;
+    top:0;
+    margin: auto;padding: 10px}
+.recent_bname{
+    width: 15px;
+    font-size: 10px;
+    font-weight: bold;
+    word-wrap: break-word;
+    margin-right: 20px;
+    margin-top: 0px;
+}
