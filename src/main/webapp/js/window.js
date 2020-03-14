@@ -29,15 +29,17 @@ $(function(){
     });
 
     $("#login_submit").click(function () {
+
         $.ajax({
             url:'/system/login',
             type: 'post',
-            data:JSON.stringify({login_user_id:$("#login_user_id").val(),login_pwd:$("#login_pwd").val()}),
+            data:{"login_user_id": $("#login_user_id").val(),"login_pwd": $("#login_pwd").val()},
             dataType:'json',
             async:'false',
             success: function(data){
-                alert("1");
                 if(data.type == "success"){
+                    var rname=
+                    alert("登录成功！书友：");
                     $("#bg").css({display:"none"});
                     $("#login_window").css({display:"none"});
                     $("#page_tab_reader_login").css({display:"none"});

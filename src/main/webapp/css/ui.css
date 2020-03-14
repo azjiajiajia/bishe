@@ -9,13 +9,13 @@ body{font-size:14px;background-color: aliceblue}
     bottom: 0;
     top:0;
     margin: auto;
-    display: none;text-align: left;font-size: 12px;font-weight: bold;color: black}
+    display: none;text-align: left;font-size: 12px;font-weight: bold;color: white}
 .page_tab .user_name{position: absolute;
     right: 15px;
     bottom: 0;
     top:0;
     margin: auto;
-    display: none;text-align: left;font-size: 8px;color: gray;font-style: italic}
+    display: none;text-align: left;font-size: 8px;color: palevioletred;font-style: italic}
 .page_tab .author_name{position: absolute;
     right: 15px;
     bottom: 0;
