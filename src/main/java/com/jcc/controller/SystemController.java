@@ -26,8 +26,7 @@ public class SystemController {
     @ResponseBody
     public Map<String, String> login(
             @RequestParam(value = "login_user_id",required = true) String rid,
-            @RequestParam(value = "login_pwd",required = true) String rpwd,
-            HttpServletRequest request
+            @RequestParam(value = "login_pwd",required = true) String rpwd
     ){
         Map<String,String> ret=new HashMap<String, String>();
         if(rid.isEmpty()){
@@ -52,7 +51,7 @@ public class SystemController {
         else {
             ret.put("type","success");
             ret.put("msg","登录成功！");
-            request.getSession().setAttribute("reader", reader);
+            ret.put("reader_name",reader.getRname());
         }
         System.out.println(reader.getRid()+"  "+reader.getRpwd());
         return ret;

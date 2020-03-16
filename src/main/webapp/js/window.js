@@ -38,14 +38,15 @@ $(function(){
             async:'false',
             success: function(data){
                 if(data.type == "success"){
-                    var rname=
-                    alert("登录成功！书友：");
+                    var rname=data["reader_name"];
+                    alert("登录成功！书友："+rname);
                     $("#bg").css({display:"none"});
                     $("#login_window").css({display:"none"});
                     $("#page_tab_reader_login").css({display:"none"});
                     $("#page_tab_reader_register").css({display:"none"});
                     $("#page_tab_lable").css({display:"block"});
                     $("#user_name").css({display:"block"});
+                    $("#user_name").append(rname);
                 }
             },
             error:function (data) {
@@ -53,7 +54,6 @@ $(function(){
             }
         });
     });
-
     $().moveDivByID("login");
     $().moveDivByID("register");
 });

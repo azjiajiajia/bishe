@@ -11,17 +11,17 @@ body{font-size:14px;background-color: aliceblue}
     margin: auto;
     display: none;text-align: left;font-size: 12px;font-weight: bold;color: white}
 .page_tab .user_name{position: absolute;
-    right: 15px;
+    right: 5px;
     bottom: 0;
     top:0;
     margin: auto;
-    display: none;text-align: left;font-size: 8px;color: palevioletred;font-style: italic}
+    display: none;text-align: right;font-size: 8px;color: palevioletred;font-style: italic}
 .page_tab .author_name{position: absolute;
-    right: 15px;
+    right: 5px;
     bottom: 0;
     top:0;
     margin: auto;
-    display: none;text-align: left;color: gray;font-style: italic;font-size: 8px;}
+    display: none;text-align: right;color:  palevioletred;font-style: italic;font-size: 8px;}
 .page_tab .author{position: absolute;
     left: 15px;
     bottom: 0;
