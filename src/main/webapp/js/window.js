@@ -39,7 +39,7 @@ $(function(){
             success: function(data){
                 if(data.type == "success"){
                     var rname=data["reader_name"];
-                    alert("登录成功！书友："+rname);
+                    alert("登录成功！ 书友："+rname);
                     $("#bg").css({display:"none"});
                     $("#login_window").css({display:"none"});
                     $("#page_tab_reader_login").css({display:"none"});
@@ -47,12 +47,41 @@ $(function(){
                     $("#page_tab_lable").css({display:"block"});
                     $("#user_name").css({display:"block"});
                     $("#user_name").append(rname);
+                    $("#hid").append(data["reader_id"]);
+                }
+                else if(data.type == "error"){
+                    alert(data["msg"]);
                 }
             },
             error:function (data) {
-                alert("x");
+                alert("出错");
             }
         });
+    });
+
+    $("#lib").click(function () {
+        if($("#hid").html()==""){
+            //还未登录，弹出提示登录，同时弹出登录界面
+            alert("还没登录！请先登录");
+            $("#bg").css({display:"block"});
+            $("#login_window").css({display:"block"});
+        }
+        else {
+            $.ajax({
+                url:"/reader/novel_lib",
+                type:"post",
+                data:{"reader_id":$("#hid").html()},
+                dataType:'json',
+                async:'false',
+                success: function(data){
+                    window.parent.location.href = "novel_lib.jsp";
+                },
+                error:function (data) {
+                    alert("出错");
+                }
+            })
+        }
+
     });
     $().moveDivByID("login");
     $().moveDivByID("register");

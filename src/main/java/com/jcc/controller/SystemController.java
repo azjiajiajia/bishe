@@ -47,11 +47,13 @@ public class SystemController {
         if(reader==null){
             ret.put("type","error");
             ret.put("msg","用户名或密码错误！");
+            return ret;
         }
         else {
             ret.put("type","success");
             ret.put("msg","登录成功！");
             ret.put("reader_name",reader.getRname());
+            ret.put("reader_id",reader.getRid());
         }
         System.out.println(reader.getRid()+"  "+reader.getRpwd());
         return ret;

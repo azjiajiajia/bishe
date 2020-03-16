@@ -16,7 +16,7 @@
     <title>jcc小说网</title>
 </head>
 <body>
-
+<div id="hid" style="display: none;height: 0;width: 0;"></div>
 <div id="page_tab" class="page_tab">
     <input type="button" id="page_tab_author" class="author" value="作者专区"/>
     <div id="page_tab_title" class="tab_title">jcc小说网</div>
@@ -32,7 +32,7 @@
         <img src="/images/search.jpg" alt="search" id="search_button" onclick="" style="cursor: pointer"/>
     </div>
     <img src="/images/logo_left.JPG" alt="logo_left" class="logo_left"/>
-    <input type="button" id="lib" class="lib" onclick="" value="&nbsp;书&nbsp;&nbsp;架&nbsp;"/>
+    <input type="button" id="lib" class="lib" value="&nbsp;书&nbsp;&nbsp;架&nbsp;"/>
 </div>
 <div id="sort" class="sort">
     <ul class="top">
