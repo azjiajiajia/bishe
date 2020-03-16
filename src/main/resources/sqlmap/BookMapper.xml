@@ -4,9 +4,9 @@
     <resultMap id="BaseResultMap" type="com.jcc.entity.Book">
         <id column="bname" jdbcType="VARCHAR" property="bname" />
         <id column="bcover" jdbcType="VARCHAR" property="bcover" />
-        <result column="bchapters" jdbcType="INT" property="bchapters" />
+        <result column="bchapters" jdbcType="INTEGER" property="bchapters" />
     </resultMap>
-    <sql id="Base_Column_List">
+    <sql id="book_Column_List">
     bname,bcover,bchapters
   </sql>
     <select id="selectBookFrom_reader_book_record" parameterType="Map" resultType="Book">

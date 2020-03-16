@@ -74,7 +74,7 @@ $(function(){
                 dataType:'json',
                 async:'false',
                 success: function(data){
-
+                    window.parent.location.href = "novel_lib.jsp";
                 },
                 error:function (data) {
                     alert("出错");
