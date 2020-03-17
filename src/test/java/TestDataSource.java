@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 import com.jcc.entity.Reader;
-=======
+
 import com.jcc.entity.Book;
 import com.jcc.entity.Reader;
 import com.jcc.service.BookService;
->>>>>>> 4db87ee8bfdd612f0c37b5433343b50e62fc9a48
+
 import com.jcc.service.ReaderService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -31,18 +30,21 @@ public class TestDataSource {
         qmap.put("rpwd","1000");
         reader=readerService.selectReader(qmap);
         System.out.println(reader.getRname());
-    }
-
-
 
         BookService bookService =(BookService)ac.getBean("bookServiceImpl");
-        Map<String,Object> qmap=new HashMap<String, Object>();
+        Map<String,Object> qmap1=new HashMap<String, Object>();
         qmap.put("rid","1000");
-        List<Book> books=bookService.selectBookFrom_reader_book_record(qmap);
+        List<Book> books=bookService.selectBookFrom_reader_book_record(qmap1);
         for(Book book:books){
             System.out.println(book.getBname());
         }
 
+
+
+
     }
+
+
+
 
 }

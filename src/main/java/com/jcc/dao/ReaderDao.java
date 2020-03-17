@@ -10,6 +10,5 @@ public interface ReaderDao {
 
     Reader selectReader(Map<String,Object> qmap);
 
-    Reader selectReader(Map<String,Object> qmap);
 
 }
