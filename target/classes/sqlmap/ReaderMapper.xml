@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jcc.dao.ReaderDao">
+    <resultMap id="BaseResultMap" type="com.jcc.entity.Reader">
+        <id column="rid" jdbcType="VARCHAR" property="rid" />
+        <id column="rname" jdbcType="VARCHAR" property="rname" />
+        <result column="rpwd" jdbcType="VARCHAR" property="rpwd" />
+    </resultMap>
+    <sql id="Base_Column_List">
+    rid,rpwd,rname
+  </sql>
+    <select id="selectReader" parameterType="Map" resultType="Reader">
+        select *
+        from reader
+        where rid = #{rid,jdbcType=VARCHAR}
+        and rpwd = #{rpwd,jdbcType=VARCHAR}
+    </select>
+</mapper>

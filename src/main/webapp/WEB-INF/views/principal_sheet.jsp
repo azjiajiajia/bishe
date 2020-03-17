@@ -45,7 +45,8 @@
     </ul>
     <ul class="jishu">
         <li class="left">
-            <a href="/book/test">
+            <a href="">
+
                 <cite>
                     <span>言情</span>
                 </cite>
@@ -78,6 +79,7 @@
 
 </div>
 <div id="books_sort" class="books_sort">
+
     <h1><a href="/book/test">测试</a></h1>
 </div>
 <div id="person_intst" class="person_intst">

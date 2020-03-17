@@ -8,6 +8,7 @@ import java.util.Map;
 
 @Repository
 public interface BookDao {
+<<<<<<< HEAD
     List<Book> selectBookFrom_reader_book_record(Map<String,Object> qmap);
 
 
@@ -18,4 +19,6 @@ public interface BookDao {
     Book selectOne(String bname);
 
     List<Book> selectAll();
+
+
 }

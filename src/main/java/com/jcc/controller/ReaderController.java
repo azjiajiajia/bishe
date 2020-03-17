@@ -23,6 +23,10 @@ import java.util.Set;
 public class ReaderController {
     @Autowired
     public BookService bookService;
+
+    @Autowired
+    public ReaderService readerService;
+
     @RequestMapping(value = "/novel_lib",method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> book_lib(

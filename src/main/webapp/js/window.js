@@ -29,6 +29,7 @@ $(function(){
     });
 
     $("#login_submit").click(function () {
+
         var id = $("#login_user_id").val();
         var pwd = $("#login_pwd").val();
         if (id.length == 0 ){
@@ -37,10 +38,11 @@ $(function(){
         if (pwd.length = 0 ){
             alert("请输入密码");
         }
+       
         $.ajax({
             url:'/system/login',
             type: 'post',
-            data:{"login_user_id":id, "login_pwd":pwd},
+            data:{"login_user_id": $("#login_user_id").val(),"login_pwd": $("#login_pwd").val()},
             dataType:'json',
             async:'false',
             success: function(data){

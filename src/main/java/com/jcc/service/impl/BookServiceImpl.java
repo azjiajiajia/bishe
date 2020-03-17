@@ -19,6 +19,7 @@ public class BookServiceImpl implements BookService {
         return bookDao.selectBookFrom_reader_book_record(qmap);
     }
 
+
     @Override
     public List<Book> selectAll() {
         return bookDao.selectAll();

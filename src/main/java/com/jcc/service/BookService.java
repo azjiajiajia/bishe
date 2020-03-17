@@ -9,6 +9,7 @@ import java.util.Map;
 @Service
 public interface BookService {
     List<Book> selectBookFrom_reader_book_record(Map<String,Object> qmap);
+
     //查询所有
     List<Book> selectAll();
     //条件查询

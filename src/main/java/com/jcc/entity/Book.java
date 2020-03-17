@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 public class Book {
     private String bname;
     private String bcover;
+
     private Integer bchapters;
 
     private String tag;
@@ -46,4 +47,13 @@ public class Book {
                 ", rname='" + rname + '\'' +
                 '}';
     }
+
+    private int bchapters;
+    public String getBname(){return this.bname;}
+    public String getBcover(){return this.bcover;}
+    public int getBchapters(){return this.bchapters;}
+    public void setBname(String bname){this.bname=bname;}
+    public void setBcover(String bcover){this.bcover=bcover;}
+    public void setBchapters(int bchapters){this.bchapters=bchapters;}
+
 }
