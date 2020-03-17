@@ -26,6 +26,7 @@ public class ReaderController {
 
     @Autowired
     public ReaderService readerService;
+
     @RequestMapping(value = "/novel_lib",method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> book_lib(

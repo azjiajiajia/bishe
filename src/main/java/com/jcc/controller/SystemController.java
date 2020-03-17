@@ -22,6 +22,10 @@ import java.util.Set;
 public class SystemController {
     @Autowired
     public ReaderService readerService;
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4db87ee8bfdd612f0c37b5433343b50e62fc9a48
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
     public Map<String, String> login(
@@ -29,19 +33,10 @@ public class SystemController {
             @RequestParam(value = "login_pwd",required = true) String rpwd
     ){
         Map<String,String> ret=new HashMap<String, String>();
-        if(rid.isEmpty()){
-            ret.put("type","error");
-            ret.put("msg","用户名不为空!");
-            return ret;
-        }
-        if (rpwd.isEmpty()){
-            ret.put("type","error");
-            ret.put("msg","密码不为空！");
-            return ret;
-        }
         Map<String, Object> queryMap = new HashMap<String, Object>();
         queryMap.put("rid",rid);
         queryMap.put("rpwd",rpwd);
+
         Reader reader;
         reader=readerService.selectReader(queryMap);
         if(reader==null){

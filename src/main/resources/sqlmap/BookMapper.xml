@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jcc.dao.BookDao">
+
+<!--
     <resultMap id="BaseResultMap" type="com.jcc.entity.Book">
         <id column="bname" jdbcType="VARCHAR" property="bname" />
         <id column="bcover" jdbcType="VARCHAR" property="bcover" />
@@ -9,10 +11,33 @@
     <sql id="book_Column_List">
     bname,bcover,bchapters
   </sql>
+-->
+
     <select id="selectBookFrom_reader_book_record" parameterType="Map" resultType="Book">
         select book.bname,book.bcover,book.bchapters
         from book,reader_book_record
         where reader_book_record.rid = #{rid,jdbcType=VARCHAR}
         and book.bname = reader_book_record.bname
     </select>
+
+
+<!--    条件查找-->
+    <select id="selectBooks" parameterType="Book" resultType="Book">
+        select b.bname, b.bcover, b.bchapters, t.tag
+        from book b left join book_tag t  on b.bname = t.bname
+        <if test="tag != null">AND t.tag = #{tag}</if>
+        <if test="bcover != null">AND b.bcover between #{bcover} and 2*#{bcover}</if>
+        <if test="bname != null">AND b.bname like #{bname}</if>
+        order by length(b.bchapters) ASC
+    </select>
+<!--    查找一本-->
+    <select id="selectOne" parameterType="String" resultType="Book">
+        select * from book where bname = #{bname}
+    </select>
+<!--    查询所有-->
+    <select id="selectAll" resultType="Book">
+        select * from book b left join book_tag t on b.bname = t.bname
+    </select>
+
+
 </mapper>

@@ -18,4 +18,25 @@ public class BookServiceImpl implements BookService {
     public List<Book> selectBookFrom_reader_book_record(Map<String,Object> qmap){
         return bookDao.selectBookFrom_reader_book_record(qmap);
     }
+
+
+    @Override
+    public List<Book> selectAll() {
+        return bookDao.selectAll();
+    }
+
+    @Override
+    public List<Book> selectBooks(Book book) {
+        //若传入bname,则模糊bname查询
+        String bname = book.getBname();
+        if (bname != null) book.setBname("$"+bname+"$");
+        return bookDao.selectBooks(book);
+    }
+
+    @Override
+    public Book selectOne(String bname) {
+        return bookDao.selectOne(bname);
+    }
+
+
 }

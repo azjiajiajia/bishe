@@ -30,6 +30,15 @@ $(function(){
 
     $("#login_submit").click(function () {
 
+        var id = $("#login_user_id").val();
+        var pwd = $("#login_pwd").val();
+        if (id.length == 0 ){
+            alert("请输入账号");
+        }
+        if (pwd.length = 0 ){
+            alert("请输入密码");
+        }
+       
         $.ajax({
             url:'/system/login',
             type: 'post',

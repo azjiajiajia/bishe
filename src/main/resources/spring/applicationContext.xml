@@ -65,7 +65,6 @@
                 <value>classpath:jdbc.properties</value>
             </list>
         </property>
-
     </bean>
 
     <!-- 数据库连接池 -->
@@ -100,6 +99,21 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:sqlmap/*Mapper.xml"/>
         <property name="typeAliasesPackage" value="com.jcc.entity" />
+
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <!--使用下面的方式配置参数，一行配置一个 -->
+                        <value>
+                            helperDialect=mysql
+                            reasonable=true
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+
 
     </bean>
 
