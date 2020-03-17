@@ -22,10 +22,7 @@ import java.util.Set;
 public class SystemController {
     @Autowired
     public ReaderService readerService;
-<<<<<<< HEAD
 
-=======
->>>>>>> 4db87ee8bfdd612f0c37b5433343b50e62fc9a48
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
     public Map<String, String> login(

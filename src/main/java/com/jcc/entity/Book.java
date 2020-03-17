@@ -6,13 +6,33 @@ import org.springframework.stereotype.Component;
 public class Book {
     private String bname;
     private String bcover;
-
     private Integer bchapters;
-
     private String tag;
+    private String aname;
 
-    private String rname;
+    public String getBname() {
+        return bname;
+    }
 
+    public void setBname(String bname) {
+        this.bname = bname;
+    }
+
+    public String getBcover() {
+        return bcover;
+    }
+
+    public void setBcover(String bcover) {
+        this.bcover = bcover;
+    }
+
+    public Integer getBchapters() {
+        return bchapters;
+    }
+
+    public void setBchapters(Integer bchapters) {
+        this.bchapters = bchapters;
+    }
 
     public String getTag() {
         return tag;
@@ -22,20 +42,13 @@ public class Book {
         this.tag = tag;
     }
 
-    public String getRname() {
-        return rname;
+    public String getAname() {
+        return aname;
     }
 
-    public void setRname(String rname) {
-        this.rname = rname;
+    public void setAname(String aname) {
+        this.aname = aname;
     }
-
-    public String getBname(){return this.bname;}
-    public String getBcover(){return this.bcover;}
-    public Integer getBchapters(){return this.bchapters;}
-    public void setBname(String bname){this.bname=bname;}
-    public void setBcover(String bcover){this.bcover=bcover;}
-    public void setBchapters(Integer bchapters){this.bchapters=bchapters;}
 
     @Override
     public String toString() {
@@ -44,16 +57,7 @@ public class Book {
                 ", bcover='" + bcover + '\'' +
                 ", bchapters=" + bchapters +
                 ", tag='" + tag + '\'' +
-                ", rname='" + rname + '\'' +
+                ", aname='" + aname + '\'' +
                 '}';
     }
-
-    private int bchapters;
-    public String getBname(){return this.bname;}
-    public String getBcover(){return this.bcover;}
-    public int getBchapters(){return this.bchapters;}
-    public void setBname(String bname){this.bname=bname;}
-    public void setBcover(String bcover){this.bcover=bcover;}
-    public void setBchapters(int bchapters){this.bchapters=bchapters;}
-
 }

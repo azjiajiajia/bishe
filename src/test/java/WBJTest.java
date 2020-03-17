@@ -26,8 +26,8 @@ public class WBJTest {
         book.setBname("%1%");
         //开启分页查询
         PageHelper.startPage(1, 5);
-                List<Book> books = bookService.selectAll();
-//        List<Book> books = bookService.selectBooks(book);
+//                List<Book> books = bookService.selectAll();
+        List<Book> books = bookService.selectBooks(book);
         // 将分页信息放入PageInfo对象里
         PageInfo<Book> page = new PageInfo<Book>(books, 5);
 

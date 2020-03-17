@@ -99,7 +99,6 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:sqlmap/*Mapper.xml"/>
         <property name="typeAliasesPackage" value="com.jcc.entity" />
-
         <property name="plugins">
             <array>
                 <bean class="com.github.pagehelper.PageInterceptor">
@@ -123,6 +122,7 @@
         <property name="basePackage" value="com.jcc.dao"/>
         <!-- 配置sqlSessionFactoryBeanName -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+
     </bean>
 
 </beans>
