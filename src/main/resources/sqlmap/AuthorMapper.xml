@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jcc.dao.AuthorDao">
+
+    <insert id="insert" parameterType="Author">
+        insert into author (aid, apwd, aname) value (#{aid}, #{apwd}, #{anmae})
+    </insert>
+
+    <delete id="delete" parameterType="String">
+        delete from author where aid = #{aid}
+    </delete>
+
+    <update id="update" parameterType="Author">
+        update from author
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="apwd != null"> apwd = #{apwd}, </if>
+            <if test="aname != null"> aname = #{aname}, </if>
+        </trim>
+    </update>
+
+   <select id="selectOne" parameterType="Author" resultType="Author">
+       select * from author where aid = #{aid} and apwd = #{apwd}
+   </select>
+
+
+</mapper>
