@@ -32,12 +32,18 @@ public class TestDataSource {
         System.out.println(reader.getRname());
 
         BookService bookService =(BookService)ac.getBean("bookServiceImpl");
-        Map<String,Object> qmap1=new HashMap<String, Object>();
+        Book book =new Book();
+        book.setTag("历史");
+        List<Book> books=bookService.selectBooks(book);
+        for(Book bok:books){
+            System.out.println(bok.getBname());
+        }
+        /*Map<String,Object> qmap1=new HashMap<String, Object>();
         qmap.put("rid","1000");
         List<Book> books=bookService.selectBookFrom_reader_book_record(qmap1);
         for(Book book:books){
             System.out.println(book.getBname());
-        }
+        }*/
 
 
 

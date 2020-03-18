@@ -30,6 +30,15 @@ $(function(){
 
     $("#login_submit").click(function () {
 
+        var id = $("#login_user_id").val();
+        var pwd = $("#login_pwd").val();
+        if (id.length == 0 ){
+            alert("请输入账号");
+        }
+        if (pwd.length = 0 ){
+            alert("请输入密码");
+        }
+       
         $.ajax({
             url:'/system/login',
             type: 'post',
@@ -82,6 +91,26 @@ $(function(){
             })
         }
 
+    });
+    $("#ds").click(function () {
+        var book={};
+        book.bname=null;
+        book.bchapters=null;
+        book.bcover=null;
+        book.tag="历史";
+        $("#books_sort").html("");
+        $.ajax({
+            url:"/book/books",
+            type:"post",
+            data:{"book":book},
+            dataType:'json',
+            async:'false',
+            success: function(data){
+            },
+            error:function (data) {
+                alert("出错");
+            }
+        })
     });
     $().moveDivByID("login");
     $().moveDivByID("register");

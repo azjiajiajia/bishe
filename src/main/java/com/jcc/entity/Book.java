@@ -9,7 +9,6 @@ public class Book {
 
     private String tag;
 
-    private String rname;
 
 
     public String getTag() {
@@ -20,13 +19,8 @@ public class Book {
         this.tag = tag;
     }
 
-    public String getRname() {
-        return rname;
-    }
 
-    public void setRname(String rname) {
-        this.rname = rname;
-    }
+
 
     public void setBchapters(Integer bchapters){this.bchapters=bchapters;}
 
@@ -37,7 +31,6 @@ public class Book {
                 ", bcover='" + bcover + '\'' +
                 ", bchapters=" + bchapters +
                 ", tag='" + tag + '\'' +
-                ", rname='" + rname + '\'' +
                 '}';
     }
 

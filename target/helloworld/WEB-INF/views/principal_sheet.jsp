@@ -45,32 +45,96 @@
     </ul>
     <ul class="jishu">
         <li class="left">
-            <a href="">
+            <a href="javascript:void(0);">
                 <cite>
-                    <span>言情</span>
+                    <span id="ds">都市</span>
                 </cite>
             </a>
         </li>
         <li class="right">
-            <a href="">
+            <a href="javascript:void(0);">
                 <cite>
-                    <span>科幻</span>
+                    <span id="ls">历史</span>
                 </cite>
             </a>
         </li>
     </ul>
     <ul class="oushu">
         <li class="left">
-            <a href="">
+            <a href="javascript:void(0);">
                 <cite>
-                    <span>玄幻</span>
+                    <span id="xx">仙侠</span>
                 </cite>
             </a>
         </li>
         <li class="right">
-            <a href="">
+            <a href="javascript:void(0);">
                 <cite>
-                    <span>都市</span>
+                    <span id="qxs">轻小说</span>
+                </cite>
+            </a>
+        </li>
+    </ul>
+    <ul class="oushu">
+        <li class="left">
+            <a href="javascript:void(0);">
+                <cite>
+                    <span id="xh">玄幻</span>
+                </cite>
+            </a>
+        </li>
+        <li class="right">
+            <a href="javascript:void(0);">
+                <cite>
+                    <span id="kh">科幻</span>
+                </cite>
+            </a>
+        </li>
+    </ul>
+    <ul class="oushu">
+        <li class="left">
+            <a href="javascript:void(0);">
+                <cite>
+                    <span id="js">军事</span>
+                </cite>
+            </a>
+        </li>
+        <li class="right">
+            <a href="javascript:void(0);">
+                <cite>
+                    <span id="ty">体育</span>
+                </cite>
+            </a>
+        </li>
+    </ul>
+    <ul class="oushu">
+        <li class="left">
+            <a href="javascript:void(0);">
+                <cite>
+                    <span id="wx">武侠</span>
+                </cite>
+            </a>
+        </li>
+        <li class="right">
+            <a href="javascript:void(0);">
+                <cite>
+                    <span id="qh">奇幻</span>
+                </cite>
+            </a>
+        </li>
+    </ul>
+    <ul class="oushu">
+        <li class="left">
+            <a href="javascript:void(0);">
+                <cite>
+                    <span id="xy">悬疑</span>
+                </cite>
+            </a>
+        </li>
+        <li class="right">
+            <a href="javascript:void(0);">
+                <cite>
+                    <span id="yx">游戏</span>
                 </cite>
             </a>
         </li>
@@ -78,7 +142,7 @@
 
 </div>
 <div id="books_sort" class="books_sort">
-
+sss
 </div>
 <div id="person_intst" class="person_intst">
     <label style="font-size: 16px;font-weight: bold">猜您喜欢</label>

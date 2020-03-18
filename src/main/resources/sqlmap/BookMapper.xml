@@ -25,6 +25,7 @@
     <select id="selectBooks" parameterType="Book" resultType="Book">
         select b.bname, b.bcover, b.bchapters, t.tag
         from book b left join book_tag t  on b.bname = t.bname
+        where 1=1
         <if test="tag != null">AND t.tag = #{tag}</if>
         <if test="bcover != null">AND b.bcover between #{bcover} and 2*#{bcover}</if>
         <if test="bname != null">AND b.bname like #{bname}</if>
