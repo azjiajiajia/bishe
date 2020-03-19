@@ -8,7 +8,7 @@ import java.util.Map;
 @Repository
 public interface ReaderDao {
 
-    Reader selectReader(Map<String,Object> qmap);
 
+    Reader selectReader(Map<String,Object> qmap);
 
 }

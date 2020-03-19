@@ -92,26 +92,6 @@ $(function(){
         }
 
     });
-    $("#ds").click(function () {
-        var book={};
-        book.bname=null;
-        book.bchapters=null;
-        book.bcover=null;
-        book.tag="历史";
-        $("#books_sort").html("");
-        $.ajax({
-            url:"/book/books",
-            type:"post",
-            data:{"book":book},
-            dataType:'json',
-            async:'false',
-            success: function(data){
-            },
-            error:function (data) {
-                alert("出错");
-            }
-        })
-    });
     $().moveDivByID("login");
     $().moveDivByID("register");
 });

@@ -8,8 +8,8 @@ import java.util.Map;
 
 @Repository
 public interface BookDao {
-    List<Book> selectBookFrom_reader_book_record(Map<String,Object> qmap);
 
+    List<Book> selectBookFrom_reader_book_record(Map<String,Object> qmap);
 
     //书,条件查询
     List<Book> selectBooks(Book book);

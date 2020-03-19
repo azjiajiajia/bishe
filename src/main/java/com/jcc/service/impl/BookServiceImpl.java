@@ -27,9 +27,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> selectBooks(Book book) {
-        //若传入bname,则模糊bname查询
-        String bname = book.getBname();
-        if (bname != null) book.setBname("$"+bname+"$");
+
         return bookDao.selectBooks(book);
     }
 
