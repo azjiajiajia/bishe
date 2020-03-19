@@ -92,6 +92,25 @@ $(function(){
         }
 
     });
+    $("#ds").click(function () {
+        $("#books_sort").html("");
+        var book={};
+        book.bname=null;
+        book.bcover=null;
+        book.bchapters=0;
+        book.tag="都市";
+        book.aname=null;
+        $.ajax({
+            url:'/book/books',
+            type: 'post',
+            data:{"book":"Book{bname=null,bcover=null,bchapters=null,tag=\'历史\',aname=null}","pageNum":3,"x":"\'xxx..\'"},
+            dataType:'json',
+            success: function(data){},
+            error:function (data) {
+                alert("出错");
+            }
+        });
+    })
     $().moveDivByID("login");
     $().moveDivByID("register");
 });

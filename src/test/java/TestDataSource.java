@@ -26,6 +26,14 @@ public class TestDataSource {
         qmap.put("rpwd","1000");
         reader=readerService.selectReader(qmap);
         System.out.println(reader.getRname());
+
+        Book book=new Book();
+        book.setTag("历史");
+        BookService bookService=(BookService)ac.getBean("bookServiceImpl");
+        List<Book> books=bookService.selectBooks(book);
+        for (Book bk:books){
+            System.out.println(bk.getBname());
+        }
     }
 
 
