@@ -12,7 +12,23 @@
 <head>
     <title>test</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
 
+    <script>
+        $(function () {
+            $("#submit").click(function () {
+                $.ajax({
+                    url:"/book/books_ajax",
+                    data:$("#data").serialize(),
+                    datatype:"json",
+                    success(data){
+                        alert("接受数据");
+                        alert(data);
+                    }
+                })
+            })
+        })
+    </script>
 
 </head>
 <body>
@@ -23,8 +39,9 @@
     书名:<input type="test" name="bname"/>
     章节数:<input type="test" name="bchapters"/>
     标签:<input type="test" name="tag"/>
-    <button type="submit" id="submit">带参数查询</button>
+    <button type="submit" >带参数查询</button>
 </form>
+<button type="button" id="submit">ajax带参数查询</button>
 
 
 </body>

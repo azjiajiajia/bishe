@@ -80,7 +80,7 @@
 </div>
 <div id="books_sort" class="books_sort">
 
-    <h1><a href="/book/test">测试</a></h1>
+    <h1><a href="/book/books">测试</a></h1>
 </div>
 <div id="person_intst" class="person_intst">
     <label style="font-size: 16px;font-weight: bold">猜您喜欢</label>
