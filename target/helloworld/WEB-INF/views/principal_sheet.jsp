@@ -8,11 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="/css/ui.css"/>
     <link rel="stylesheet" type="text/css" href="/css/slide.css"/>
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/window.js"></script>
     <script src="/js/slide.js"></script>
+
     <title>jcc小说网</title>
 </head>
 <body>
@@ -36,9 +38,6 @@
 </div>
 <div id="sort" class="sort">
     <ul class="top">
-        <li>
-            <span class="icon_menu"></span>
-        </li>
         <li style="font-size: 25px;font-weight:bolder">
             作品分类
         </li>
@@ -145,8 +144,24 @@
 
 </div>
 <div id="books_sort" class="books_sort">
+    <input type="text" name="pageNum" id="pageNum" value="1" disabled hidden/>
+    <div id="books_sort_p"></div>
+    <nav aria-label="Page navigation" id="navigatePages">
+        <ul class="pagination" >
+            <li >
+                <a href="javaScript:formFeed(-1)" aria-label="Previous" >
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
 
-    <h1><a href="/book/books">测试</a></h1>
+
+            <li id="last">
+                <a href="javaScript:formFeed(1)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>
 <div id="person_intst" class="person_intst">
     <label style="font-size: 16px;font-weight: bold">猜您喜欢</label>

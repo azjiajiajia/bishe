@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>success</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
-    <script>
+    <script type="text/javascript">
         $(function () {
             select(1);
             $("#submit").click(function () {

@@ -196,7 +196,10 @@ logo栏
 页面右侧显示书本
 */
 .books_sort{background-color:white;right: 0;top:110px;position: absolute;width: 79%;height: 500px;border: 2px solid black}
-
+.books_sort nav{position: absolute;
+    right: 100px;
+    bottom: 0;
+    margin: auto;}
 
 
 /*

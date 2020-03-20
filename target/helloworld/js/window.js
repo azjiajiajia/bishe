@@ -93,7 +93,6 @@ $(function(){
 
     });
     $("#ds").click(function () {
-        $("#books_sort").html("");
         var book={};
         book.bname=null;
         book.bcover=null;
@@ -101,11 +100,35 @@ $(function(){
         book.tag="都市";
         book.aname=null;
         $.ajax({
-            url:'/book/books',
+            url:'/book/books_ajax',
             type: 'post',
-            data:{"book":"Book{bname=null,bcover=null,bchapters=null,tag=\'历史\',aname=null}","pageNum":3,"x":"\'xxx..\'"},
+            data:{"bname":null,"bcover":null,"bchpters":null,"tag":"都市","aname":null},
             dataType:'json',
-            success: function(data){},
+            success: function(data){
+                $("#books_sort_p").empty();
+                $(".italic").remove();
+                var string ="";
+                for (i = 0; i < data.list.length; i++) {
+                    string += "bname: "+data.list[i].bname
+                        +"bchapters: "+data.list[i].bchapters
+                        +"bcover: "+data.list[i].bcover
+                        +"<br>";
+                }
+                $("#books_sort_p").html(string);
+                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                    .append("  总记录:"+data.total)
+                    .append("  每页条数:"+data.pageSize)
+                    .append("  总页数"+data.pages)
+                    .append("  可显示页数:"+data.navigatePages)
+                    .append("  起始页码:"+data.navigateFirstPage)
+                    .append("  结束页码:"+data.navigateLastPage);
+                for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
+                    var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
+                    $page.addClass("italic");
+                    $("#last").before($page);
+                }
+                $("#pageNum").val(data.pageNum);
+            },
             error:function (data) {
                 alert("出错");
             }
@@ -114,6 +137,43 @@ $(function(){
     $().moveDivByID("login");
     $().moveDivByID("register");
 });
+
+function select(i) {
+    $.ajax({
+        url:"/book/books_ajax",
+        data:{"pageNum":i,"bname":null,"bcover":null,"bchpters":null,"tag":"都市","aname":null},
+        success(data){
+            $("#books_sort_p").empty();
+            $(".italic").remove();
+            var string ="";
+            for (i = 0; i < data.list.length; i++) {
+                string += "bname: "+data.list[i].bname
+                    +"bchapters: "+data.list[i].bchapters
+                    +"bcover: "+data.list[i].bcover
+                    +"<br>";
+            }
+            $("#books_sort_p").html(string);
+            $("#books_sort_p").append("  当前页:"+data.pageNum)
+                .append("  总记录:"+data.total)
+                .append("  每页条数:"+data.pageSize)
+                .append("  总页数"+data.pages)
+                .append("  可显示页数:"+data.navigatePages)
+                .append("  起始页码:"+data.navigateFirstPage)
+                .append("  结束页码:"+data.navigateLastPage);
+
+            for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
+                var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
+                $page.addClass("italic");
+                $("#last").before($page);
+            }
+            $("#pageNum").val(data.pageNum);
+        }
+    })
+}
+
+function formFeed(i) {
+    select(Number($("#pageNum").val())+i);
+}
 
 jQuery.fn.moveDivByID= function (id){
     $("#"+id+"_title").mousedown(function(e){
