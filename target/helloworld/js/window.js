@@ -140,9 +140,9 @@ $(function(){
 
 function select(i) {
     $.ajax({
-        url:"/book/books_ajax",
-        data:{"pageNum":i,"bname":null,"bcover":null,"bchpters":null,"tag":"都市","aname":null},
-        success(data){
+        url:'/book/books_ajax',
+        data:{"bname":null,"bcover":null,"bchpters":null,"tag":"都市","aname":null,"pageNum":i},
+        success:function (data) {
             $("#books_sort_p").empty();
             $(".italic").remove();
             var string ="";
@@ -167,8 +167,11 @@ function select(i) {
                 $("#last").before($page);
             }
             $("#pageNum").val(data.pageNum);
+        },
+        error:function () {
+            alert("x");
         }
-    })
+    });
 }
 
 function formFeed(i) {
