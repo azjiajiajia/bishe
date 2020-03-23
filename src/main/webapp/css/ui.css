@@ -200,6 +200,14 @@ logo栏
     right: 100px;
     bottom: 0;
     margin: auto;}
+#books_sort_p ul{list-style: none outside none; margin: 0;padding: 0;}
+#books_sort_p ul li{float: left;width: 300px;height:200px;margin-left: 0;padding: 21px 0;}
+.book_img{width: 80px;height: 100px;margin-left: 10px;padding: 0;}
+.book_info{float: right;width: 130px;margin-right: 60px}
+.book_info h4{font: 16px/21px PingFangSC-Regular,HelveticaNeue-Light,'Helvetica Neue Light','Microsoft YaHei',sans-serif;
+height: 21px;margin-top: -3px;margin-bottom: 8px;font-size: 16px}
+.book_info p{font: 12px/20px PingFangSC-Regular,'-apple-system',Simsun;overflow: hidden;height: 40px;margin-bottom: 10px;color: #666}
+.book_info i{font-family: PingFangSC-Regular,"-apple-system",Simsun;font-size: 12px;line-height: 18px}
 
 
 /*

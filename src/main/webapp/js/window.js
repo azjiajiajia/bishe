@@ -93,12 +93,6 @@ $(function(){
 
     });
     $("#ds").click(function () {
-        var book={};
-        book.bname=null;
-        book.bcover=null;
-        book.bchapters=0;
-        book.tag="都市";
-        book.aname=null;
         $.ajax({
             url:'/book/books_ajax',
             type: 'post',
@@ -109,9 +103,8 @@ $(function(){
                 $(".italic").remove();
                 var string ="";
                 for (i = 0; i < data.list.length; i++) {
-                    string += "bname: "+data.list[i].bname
-                        +"bchapters: "+data.list[i].bchapters
-                        +"bcover: "+data.list[i].bcover
+                    string += "<a> "+data.list[i].bname
+                        +"<img src='"+data.list[i].bcover+"'></a>"
                         +"<br>";
                 }
                 $("#books_sort_p").html(string);
@@ -128,12 +121,409 @@ $(function(){
                     $("#last").before($page);
                 }
                 $("#pageNum").val(data.pageNum);
+                $("#dir").val("都市");
             },
             error:function (data) {
                 alert("出错");
             }
         });
-    })
+    });
+    $("#ls").click(function () {
+        $.ajax({
+            url:'/book/books_ajax',
+            type: 'post',
+            data:{"bname":null,"bcover":null,"bchpters":null,"tag":"历史","aname":null},
+            dataType:'json',
+            success: function(data){
+                $("#books_sort_p").empty();
+                $(".italic").remove();
+                var string ="";
+                for (i = 0; i < data.list.length; i++) {
+                    string += "<a> "+data.list[i].bname
+                        +"<img src='"+data.list[i].bcover+"'></a>"
+                        +"<br>";
+                }
+                $("#books_sort_p").html(string);
+                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                    .append("  总记录:"+data.total)
+                    .append("  每页条数:"+data.pageSize)
+                    .append("  总页数"+data.pages)
+                    .append("  可显示页数:"+data.navigatePages)
+                    .append("  起始页码:"+data.navigateFirstPage)
+                    .append("  结束页码:"+data.navigateLastPage);
+                for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
+                    var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
+                    $page.addClass("italic");
+                    $("#last").before($page);
+                }
+                $("#pageNum").val(data.pageNum);
+                $("#dir").val("历史");
+            },
+            error:function (data) {
+                alert("出错");
+            }
+        });
+    });
+    $("#xx").click(function () {
+        $.ajax({
+            url:'/book/books_ajax',
+            type: 'post',
+            data:{"bname":null,"bcover":null,"bchpters":null,"tag":"仙侠","aname":null},
+            dataType:'json',
+            success: function(data){
+                $("#books_sort_p").empty();
+                $(".italic").remove();
+                var string ="";
+                for (i = 0; i < data.list.length; i++) {
+                    string += "<a> "+data.list[i].bname
+                        +"<img src='"+data.list[i].bcover+"'></a>"
+                        +"<br>";
+                }
+                $("#books_sort_p").html(string);
+                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                    .append("  总记录:"+data.total)
+                    .append("  每页条数:"+data.pageSize)
+                    .append("  总页数"+data.pages)
+                    .append("  可显示页数:"+data.navigatePages)
+                    .append("  起始页码:"+data.navigateFirstPage)
+                    .append("  结束页码:"+data.navigateLastPage);
+                for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
+                    var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
+                    $page.addClass("italic");
+                    $("#last").before($page);
+                }
+                $("#pageNum").val(data.pageNum);
+                $("#dir").val("仙侠");
+            },
+            error:function (data) {
+                alert("出错");
+            }
+        });
+    });
+    $("#qxs").click(function () {
+        $.ajax({
+            url:'/book/books_ajax',
+            type: 'post',
+            data:{"bname":null,"bcover":null,"bchpters":null,"tag":"轻小说","aname":null},
+            dataType:'json',
+            success: function(data){
+                $("#books_sort_p").empty();
+                $(".italic").remove();
+                var string ="";
+                for (i = 0; i < data.list.length; i++) {
+                    string += "<a> "+data.list[i].bname
+                        +"<img src='"+data.list[i].bcover+"'></a>"
+                        +"<br>";
+                }
+                $("#books_sort_p").html(string);
+                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                    .append("  总记录:"+data.total)
+                    .append("  每页条数:"+data.pageSize)
+                    .append("  总页数"+data.pages)
+                    .append("  可显示页数:"+data.navigatePages)
+                    .append("  起始页码:"+data.navigateFirstPage)
+                    .append("  结束页码:"+data.navigateLastPage);
+                for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
+                    var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
+                    $page.addClass("italic");
+                    $("#last").before($page);
+                }
+                $("#pageNum").val(data.pageNum);
+                $("#dir").val("轻小说");
+            },
+            error:function (data) {
+                alert("出错");
+            }
+        });
+    });
+    $("#xh").click(function () {
+        $.ajax({
+            url:'/book/books_ajax',
+            type: 'post',
+            data:{"bname":null,"bcover":null,"bchpters":null,"tag":"玄幻","aname":null},
+            dataType:'json',
+            success: function(data){
+                $("#books_sort_p").empty();
+                $(".italic").remove();
+                var string ="";
+                for (i = 0; i < data.list.length; i++) {
+                    string += "<a> "+data.list[i].bname
+                        +"<img src='"+data.list[i].bcover+"'></a>"
+                        +"<br>";
+                }
+                $("#books_sort_p").html(string);
+                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                    .append("  总记录:"+data.total)
+                    .append("  每页条数:"+data.pageSize)
+                    .append("  总页数"+data.pages)
+                    .append("  可显示页数:"+data.navigatePages)
+                    .append("  起始页码:"+data.navigateFirstPage)
+                    .append("  结束页码:"+data.navigateLastPage);
+                for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
+                    var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
+                    $page.addClass("italic");
+                    $("#last").before($page);
+                }
+                $("#pageNum").val(data.pageNum);
+                $("#dir").val("玄幻");
+            },
+            error:function (data) {
+                alert("出错");
+            }
+        });
+    });
+    $("#kh").click(function () {
+        $.ajax({
+            url:'/book/books_ajax',
+            type: 'post',
+            data:{"bname":null,"bcover":null,"bchpters":null,"tag":"科幻","aname":null},
+            dataType:'json',
+            success: function(data){
+                $("#books_sort_p").empty();
+                $(".italic").remove();
+                var string ="";
+                for (i = 0; i < data.list.length; i++) {
+                    string += "<a> "+data.list[i].bname
+                        +"<img src='"+data.list[i].bcover+"'></a>"
+                        +"<br>";
+                }
+                $("#books_sort_p").html(string);
+                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                    .append("  总记录:"+data.total)
+                    .append("  每页条数:"+data.pageSize)
+                    .append("  总页数"+data.pages)
+                    .append("  可显示页数:"+data.navigatePages)
+                    .append("  起始页码:"+data.navigateFirstPage)
+                    .append("  结束页码:"+data.navigateLastPage);
+                for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
+                    var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
+                    $page.addClass("italic");
+                    $("#last").before($page);
+                }
+                $("#pageNum").val(data.pageNum);
+                $("#dir").val("科幻");
+            },
+            error:function (data) {
+                alert("出错");
+            }
+        });
+    });
+    $("#js").click(function () {
+        $.ajax({
+            url:'/book/books_ajax',
+            type: 'post',
+            data:{"bname":null,"bcover":null,"bchpters":null,"tag":"军事","aname":null},
+            dataType:'json',
+            success: function(data){
+                $("#books_sort_p").empty();
+                $(".italic").remove();
+                var string ="";
+                for (i = 0; i < data.list.length; i++) {
+                    string += "<a> "+data.list[i].bname
+                        +"<img src='"+data.list[i].bcover+"'></a>"
+                        +"<br>";
+                }
+                $("#books_sort_p").html(string);
+                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                    .append("  总记录:"+data.total)
+                    .append("  每页条数:"+data.pageSize)
+                    .append("  总页数"+data.pages)
+                    .append("  可显示页数:"+data.navigatePages)
+                    .append("  起始页码:"+data.navigateFirstPage)
+                    .append("  结束页码:"+data.navigateLastPage);
+                for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
+                    var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
+                    $page.addClass("italic");
+                    $("#last").before($page);
+                }
+                $("#pageNum").val(data.pageNum);
+                $("#dir").val("军事");
+            },
+            error:function (data) {
+                alert("出错");
+            }
+        });
+    });
+    $("#ty").click(function () {
+        $.ajax({
+            url:'/book/books_ajax',
+            type: 'post',
+            data:{"bname":null,"bcover":null,"bchpters":null,"tag":"体育","aname":null},
+            dataType:'json',
+            success: function(data){
+                $("#books_sort_p").empty();
+                $(".italic").remove();
+                var string ="";
+                for (i = 0; i < data.list.length; i++) {
+                    string += "<a> "+data.list[i].bname
+                        +"<img src='"+data.list[i].bcover+"'></a>"
+                        +"<br>";
+                }
+                $("#books_sort_p").html(string);
+                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                    .append("  总记录:"+data.total)
+                    .append("  每页条数:"+data.pageSize)
+                    .append("  总页数"+data.pages)
+                    .append("  可显示页数:"+data.navigatePages)
+                    .append("  起始页码:"+data.navigateFirstPage)
+                    .append("  结束页码:"+data.navigateLastPage);
+                for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
+                    var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
+                    $page.addClass("italic");
+                    $("#last").before($page);
+                }
+                $("#pageNum").val(data.pageNum);
+                $("#dir").val("体育");
+            },
+            error:function (data) {
+                alert("出错");
+            }
+        });
+    });
+    $("#wx").click(function () {
+        $.ajax({
+            url:'/book/books_ajax',
+            type: 'post',
+            data:{"bname":null,"bcover":null,"bchpters":null,"tag":"武侠","aname":null},
+            dataType:'json',
+            success: function(data){
+                $("#books_sort_p").empty();
+                $(".italic").remove();
+                var string ="";
+                for (i = 0; i < data.list.length; i++) {
+                    string += "<a> "+data.list[i].bname
+                        +"<img src='"+data.list[i].bcover+"'></a>"
+                        +"<br>";
+                }
+                $("#books_sort_p").html(string);
+                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                    .append("  总记录:"+data.total)
+                    .append("  每页条数:"+data.pageSize)
+                    .append("  总页数"+data.pages)
+                    .append("  可显示页数:"+data.navigatePages)
+                    .append("  起始页码:"+data.navigateFirstPage)
+                    .append("  结束页码:"+data.navigateLastPage);
+                for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
+                    var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
+                    $page.addClass("italic");
+                    $("#last").before($page);
+                }
+                $("#pageNum").val(data.pageNum);
+                $("#dir").val("武侠");
+            },
+            error:function (data) {
+                alert("出错");
+            }
+        });
+    });
+    $("#qh").click(function () {
+        $.ajax({
+            url:'/book/books_ajax',
+            type: 'post',
+            data:{"bname":null,"bcover":null,"bchpters":null,"tag":"奇幻","aname":null},
+            dataType:'json',
+            success: function(data){
+                $("#books_sort_p").empty();
+                $(".italic").remove();
+                var string ="";
+                for (i = 0; i < data.list.length; i++) {
+                    string += "<a> "+data.list[i].bname
+                        +"<img src='"+data.list[i].bcover+"'></a>"
+                        +"<br>";
+                }
+                $("#books_sort_p").html(string);
+                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                    .append("  总记录:"+data.total)
+                    .append("  每页条数:"+data.pageSize)
+                    .append("  总页数"+data.pages)
+                    .append("  可显示页数:"+data.navigatePages)
+                    .append("  起始页码:"+data.navigateFirstPage)
+                    .append("  结束页码:"+data.navigateLastPage);
+                for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
+                    var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
+                    $page.addClass("italic");
+                    $("#last").before($page);
+                }
+                $("#pageNum").val(data.pageNum);
+                $("#dir").val("奇幻");
+            },
+            error:function (data) {
+                alert("出错");
+            }
+        });
+    });
+    $("#xy").click(function () {
+        $.ajax({
+            url:'/book/books_ajax',
+            type: 'post',
+            data:{"bname":null,"bcover":null,"bchpters":null,"tag":"悬疑","aname":null},
+            dataType:'json',
+            success: function(data){
+                $("#books_sort_p").empty();
+                $(".italic").remove();
+                var string ="";
+                for (i = 0; i < data.list.length; i++) {
+                    string += "<a> "+data.list[i].bname
+                        +"<img src='"+data.list[i].bcover+"'></a>"
+                        +"<br>";
+                }
+                $("#books_sort_p").html(string);
+                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                    .append("  总记录:"+data.total)
+                    .append("  每页条数:"+data.pageSize)
+                    .append("  总页数"+data.pages)
+                    .append("  可显示页数:"+data.navigatePages)
+                    .append("  起始页码:"+data.navigateFirstPage)
+                    .append("  结束页码:"+data.navigateLastPage);
+                for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
+                    var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
+                    $page.addClass("italic");
+                    $("#last").before($page);
+                }
+                $("#pageNum").val(data.pageNum);
+                $("#dir").val("悬疑");
+            },
+            error:function (data) {
+                alert("出错");
+            }
+        });
+    });
+    $("#yx").click(function () {
+        $.ajax({
+            url:'/book/books_ajax',
+            type: 'post',
+            data:{"bname":null,"bcover":null,"bchpters":null,"tag":"游戏","aname":null},
+            dataType:'json',
+            success: function(data){
+                $("#books_sort_p").empty();
+                $(".italic").remove();
+                var string ="";
+                for (i = 0; i < data.list.length; i++) {
+                    string += "<a> "+data.list[i].bname
+                        +"<img src='"+data.list[i].bcover+"'></a>"
+                        +"<br>";
+                }
+                $("#books_sort_p").html(string);
+                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                    .append("  总记录:"+data.total)
+                    .append("  每页条数:"+data.pageSize)
+                    .append("  总页数"+data.pages)
+                    .append("  可显示页数:"+data.navigatePages)
+                    .append("  起始页码:"+data.navigateFirstPage)
+                    .append("  结束页码:"+data.navigateLastPage);
+                for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
+                    var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
+                    $page.addClass("italic");
+                    $("#last").before($page);
+                }
+                $("#pageNum").val(data.pageNum);
+                $("#dir").val("游戏");
+            },
+            error:function (data) {
+                alert("出错");
+            }
+        });
+    });
     $().moveDivByID("login");
     $().moveDivByID("register");
 });
@@ -141,15 +531,14 @@ $(function(){
 function select(i) {
     $.ajax({
         url:'/book/books_ajax',
-        data:{"bname":null,"bcover":null,"bchpters":null,"tag":"都市","aname":null,"pageNum":i},
+        data:{"bname":null,"bcover":null,"bchpters":null,"tag":$("#dir").val(),"aname":null,"pageNum":i},
         success:function (data) {
             $("#books_sort_p").empty();
             $(".italic").remove();
             var string ="";
             for (i = 0; i < data.list.length; i++) {
-                string += "bname: "+data.list[i].bname
-                    +"bchapters: "+data.list[i].bchapters
-                    +"bcover: "+data.list[i].bcover
+                string += "<a> "+data.list[i].bname
+                    +"<img src='"+data.list[i].bcover+"'></a>"
                     +"<br>";
             }
             $("#books_sort_p").html(string);
@@ -167,7 +556,7 @@ function select(i) {
                 $("#last").before($page);
             }
             $("#pageNum").val(data.pageNum);
-        },
+        }
     });
 }
 

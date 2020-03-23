@@ -145,7 +145,79 @@
 </div>
 <div id="books_sort" class="books_sort">
     <input type="text" name="pageNum" id="pageNum" value="1" disabled hidden/>
-    <div id="books_sort_p"></div>
+    <input type="text" name="dir" id="dir" value="" disabled hidden/>
+    <div id="books_sort_p">
+        <ul>
+            <li>
+                <img class="book_img" src="/images/1.jpg" onclick="javascript:void(0)">
+                </img>
+                <div class="book_info">
+                    <h4>
+                        <a href="javascript:void(0)">xxxxxx1</a>
+                    </h4>
+                    <p>zuozhe1</p>
+                    <i>fenlei1</i>
+                </div>
+            </li>
+            <li>
+                <img class="book_img" src="/images/2.jpg">
+                </img>
+                <div class="book_info">
+                    <h4>
+                        <a href="javascript:void(0)">xxxxxx2</a>
+                    </h4>
+                    <p>zuozhe2</p>
+                    <i>fenlei2</i>
+                </div>
+            </li>
+            <li>
+                <img class="book_img" src="/images/3.jpg">
+                </img>
+                <div class="book_info">
+                    <h4>
+                        <a href="javascript:void(0)">xxxxxx3</a>
+                    </h4>
+                    <p>zuozhe3</p>
+                    <i>fenlei3</i>
+                </div>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <img class="book_img" src="/images/1.jpg">
+                </img>
+                <div class="book_info">
+                    <h4>
+                        <a href="javascript:void(0)">xxxxxx</a>
+                    </h4>
+                    <p>zuozhe</p>
+                    <i>fenlei</i>
+                </div>
+            </li>
+            <li>
+                <img class="book_img" src="/images/1.jpg">
+                </img>
+                <div class="book_info">
+                    <h4>
+                        <a href="javascript:void(0)">xxxxxx</a>
+                    </h4>
+                    <p>zuozhe</p>
+                    <i>fenlei</i>
+                </div>
+            </li>
+            <li>
+                <img class="book_img" src="/images/1.jpg">
+                </img>
+                <div class="book_info">
+                    <h4>
+                        <a href="javascript:void(0)">xxxxxx</a>
+                    </h4>
+                    <p>zuozhe</p>
+                    <i>fenlei</i>
+                </div>
+            </li>
+        </ul>
+    </div>
     <nav aria-label="Page navigation" id="navigatePages">
         <ul class="pagination" >
             <li >

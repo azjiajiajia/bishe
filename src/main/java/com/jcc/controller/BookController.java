@@ -58,10 +58,10 @@ public class BookController {
         else  if (bname != null) book.setBname("%"+bname+"%");
 
         // 开启分页,第N页 每页查询10条数据,
-        PageHelper.startPage(pageNum, 6);
+        PageHelper.startPage(pageNum, 4);
         List<Book> books = bookService.selectBooks(book);
         // 将用户信息放入PageInfo对象里,并设置导航页码数量(拿来设置导航的页码数量)
-        PageInfo<Book> page = new PageInfo<Book>(books, 5);
+        PageInfo<Book> page = new PageInfo<Book>(books, 10);
         return page;
     }
     @RequestMapping("/test")
