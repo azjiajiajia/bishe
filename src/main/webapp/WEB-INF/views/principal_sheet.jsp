@@ -149,74 +149,69 @@
     <div id="books_sort_p">
         <ul>
             <li>
-                <img class="book_img" src="/images/1.jpg" onclick="javascript:void(0)">
+                <img id="bimg1" class="book_img" src="/images/1.jpg" onclick="javascript:void(0)">
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a href="javascript:void(0)">xxxxxx1</a>
+                        <a id="bn1" href="javascript:void(0)">xxxxxx1</a>
                     </h4>
-                    <p>zuozhe1</p>
-                    <i>fenlei1</i>
+                    <p id="ban1">zuozhe1</p>
                 </div>
             </li>
             <li>
-                <img class="book_img" src="/images/2.jpg">
+                <img id="bimg2" class="book_img" src="/images/2.jpg">
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a href="javascript:void(0)">xxxxxx2</a>
+                        <a id="bn2" href="javascript:void(0)">xxxxxx2</a>
                     </h4>
-                    <p>zuozhe2</p>
-                    <i>fenlei2</i>
+                    <p id="ban2">zuozhe2</p>
                 </div>
             </li>
             <li>
-                <img class="book_img" src="/images/3.jpg">
+                <img id="bimg3" class="book_img" src="/images/3.jpg">
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a href="javascript:void(0)">xxxxxx3</a>
+                        <a id="bn3" href="javascript:void(0)">xxxxxx3</a>
                     </h4>
-                    <p>zuozhe3</p>
-                    <i>fenlei3</i>
+                    <p id="ban3">zuozhe3</p>
                 </div>
             </li>
         </ul>
         <ul>
             <li>
-                <img class="book_img" src="/images/1.jpg">
+                <img id="bimg4" class="book_img" src="/images/1.jpg">
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a href="javascript:void(0)">xxxxxx</a>
+                        <a id="bn4" href="javascript:void(0)">xxxxxx</a>
                     </h4>
-                    <p>zuozhe</p>
-                    <i>fenlei</i>
+                    <p id="ban4">zuozhe</p>
                 </div>
             </li>
             <li>
-                <img class="book_img" src="/images/1.jpg">
+                <img id="bimg5" class="book_img" src="/images/1.jpg">
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a href="javascript:void(0)">xxxxxx</a>
+                        <a id="bn5" href="javascript:void(0)">xxxxxx</a>
                     </h4>
-                    <p>zuozhe</p>
-                    <i>fenlei</i>
+                    <p id="ban5">zuozhe</p>
                 </div>
             </li>
             <li>
-                <img class="book_img" src="/images/1.jpg">
+                <img id="bimg6" class="book_img" src="/images/1.jpg">
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a href="javascript:void(0)">xxxxxx</a>
+                        <a id="bn6" href="javascript:void(0)">xxxxxx</a>
                     </h4>
-                    <p>zuozhe</p>
-                    <i>fenlei</i>
+                    <p id="ban6">zuozhe</p>
                 </div>
             </li>
         </ul>
+        <div id="page_sort_guide"></div>
     </div>
     <nav aria-label="Page navigation" id="navigatePages">
         <ul class="pagination" >
@@ -343,24 +338,32 @@
     <input type="submit" id="login_submit" value="登录" class="login_submit"/>
     <input type="submit" id="login_window_register" value="注册" class="login_register"/>
 </div>
-<div id="register_window" class="login_window">
-    <div id="register_title" class="login_title">
+<div id="register_window" class="register_window">
+    <div id="register_title" class="register_title">
         注册
         <span><a id="register_close_btn" href="javascript:void(0)">关闭</a></span>
     </div>
-    <div class="login_input">
+    <div class="register_input">
         <label>用户名：</label>
-        <input type="text" placeholder="请输入用户名" class="list_input"/>
+        <input id="register_user_id" type="text" placeholder="请输入用户名" class="list_input"/>
+        <label id="userid_check">用户名已存在</label>
     </div>
-    <div class="login_input">
+    <div class="register_input">
         <label>密码:</label>
-        <input type="password" placeholder="请输入密码" class="list_input"/>
+        <input id="register_user_pwd" type="password" placeholder="请输入密码" class="list_input"/>
+        <label id="pwd_check">两次输入密码不一致</label>
     </div>
-    <div class="login_input">
+    <div class="register_input">
+        <label>确认密码:</label>
+        <input id="register_user_sec_pwd" type="password" placeholder="请再次输入密码" class="list_input"/>
+        <label id="pwd_sec_check">请再次输入密码</label>
+    </div>
+    <div class="register_input">
         <label>昵称：</label>
-        <input type="password" placeholder="请输入昵称" class="list_input"/>
+        <input id="register_user_name" type="text" placeholder="请输入昵称" class="list_input"/>
+        <label id="uername_check">昵称已存在</label>
     </div>
-    <input type="submit" id="register_window_register" value="注册" class="login_register"/>
+    <input type="submit" id="register_window_register" value="注册" class="commit_register"/>
 </div>
 <div id="bg" class="bg"></div>
 </body>

@@ -9,10 +9,16 @@
     <sql id="Base_Column_List">
     rid,rpwd,rname
   </sql>
-    <select id="selectReader" parameterType="Map" resultType="Reader">
+    <select id="selectReader" parameterType="Reader" resultType="Reader">
         select *
         from reader
-        where rid = #{rid,jdbcType=VARCHAR}
-        and rpwd = #{rpwd,jdbcType=VARCHAR}
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="rid != null">AND rid = #{rid}</if>
+            <if test="rpwd != null">AND rpwd = #{rpwd}</if>
+            <if test="rname != null">AND rname = #{rname}</if>
+        </trim>
     </select>
+    <insert id="insert" parameterType="Reader">
+        insert into reader (rid, rpwd, rname) value (#{rid}, #{rpwd}, #{rname})
+    </insert>
 </mapper>

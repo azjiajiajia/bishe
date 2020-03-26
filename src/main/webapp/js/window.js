@@ -28,6 +28,7 @@ $(function(){
         return false;
     });
 
+    //登录按钮
     $("#login_submit").click(function () {
 
         var id = $("#login_user_id").val();
@@ -42,7 +43,7 @@ $(function(){
         $.ajax({
             url:'/system/login',
             type: 'post',
-            data:{"login_user_id": $("#login_user_id").val(),"login_pwd": $("#login_pwd").val()},
+            data:{"rid": $("#login_user_id").val(),"rpwd": $("#login_pwd").val(),"rname":null},
             dataType:'json',
             async:'false',
             success: function(data){
@@ -67,6 +68,62 @@ $(function(){
             }
         });
     });
+
+    //注册按钮
+    $("#register_window_register").click(function () {
+        $("#pwd_check").css({display:"none"});
+        $("#uername_check").css({display:"none"});
+        $("#userid_check").css({display:"none"});
+        $("#pwd_sec_check").css({display:"none"});
+        var id = $("#register_user_id").val();
+        var pwd = $("#register_user_pwd").val();
+        var sec_pwd=$("#register_user_sec_pwd").val();
+        var uname=$("#register_user_name").val();
+        if (id.length == 0 ){
+            alert("请输入账号");
+            return;
+        }
+        if (pwd.length == 0 ){
+            alert("请输入密码");
+            return;;
+        }
+        if(sec_pwd.length==0){
+            $("#pwd_sec_check").css({display:"block"});
+        }
+        else if(sec_pwd!=pwd){
+            $("#pwd_check").css({display:"block"});
+            return;
+        }
+        if(uname.length==0){
+            alert("请输入昵称！");
+            return;
+        }
+        $.ajax({
+            url:'/system/register',
+            type:'post',
+            data:{"rid": id,"rpwd":pwd,"rname":uname},
+            dataType:'json',
+            async:'true',
+            success: function(data){
+                if(data.type == "success"){
+                    alert(data["msg"]);
+                    $("#bg").css({display:"none"});
+                    $("#register_window").css({display:"none"});
+                }
+                else if(data.type == "rid_error"){
+                    $("#userid_check").css({display:"block"});
+                }
+                else if(data.type == "rname_error"){
+                    $("#uername_check").css({display:"block"});
+                }
+            },
+            error:function (data) {
+                alert("出错");
+            }
+        });
+
+    });
+
 
     $("#lib").click(function () {
         if($("#hid").html()==""){
@@ -99,16 +156,19 @@ $(function(){
             data:{"bname":null,"bcover":null,"bchpters":null,"tag":"都市","aname":null},
             dataType:'json',
             success: function(data){
-                $("#books_sort_p").empty();
-                $(".italic").remove();
-                var string ="";
-                for (i = 0; i < data.list.length; i++) {
-                    string += "<a> "+data.list[i].bname
-                        +"<img src='"+data.list[i].bcover+"'></a>"
-                        +"<br>";
+                for(i=1;i<=6;i++){
+                    $("#bimg"+i).attr("src",null);
+                    $("#bn"+i).html("");
+                    $("#ban"+i).html("");
                 }
-                $("#books_sort_p").html(string);
-                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                $(".italic").remove();
+                for (i = 1; i <= data.list.length; i++) {
+                    $("#bimg"+i).attr("src",data.list[i-1].bcover);
+                    $("#bn"+i).html(data.list[i-1].bname);
+                    $("#ban"+i).html(data.list[i-1].aname);
+                }
+                $("#page_sort_guide").html("");
+                $("#page_sort_guide").append("  当前页:"+data.pageNum)
                     .append("  总记录:"+data.total)
                     .append("  每页条数:"+data.pageSize)
                     .append("  总页数"+data.pages)
@@ -135,16 +195,19 @@ $(function(){
             data:{"bname":null,"bcover":null,"bchpters":null,"tag":"历史","aname":null},
             dataType:'json',
             success: function(data){
-                $("#books_sort_p").empty();
-                $(".italic").remove();
-                var string ="";
-                for (i = 0; i < data.list.length; i++) {
-                    string += "<a> "+data.list[i].bname
-                        +"<img src='"+data.list[i].bcover+"'></a>"
-                        +"<br>";
+                for(i=1;i<=6;i++){
+                    $("#bimg"+i).attr("src",null);
+                    $("#bn"+i).html("");
+                    $("#ban"+i).html("");
                 }
-                $("#books_sort_p").html(string);
-                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                $(".italic").remove();
+                for (i = 1; i <= data.list.length; i++) {
+                    $("#bimg"+i).attr("src",data.list[i-1].bcover);
+                    $("#bn"+i).html(data.list[i-1].bname);
+                    $("#ban"+i).html(data.list[i-1].aname);
+                }
+                $("#page_sort_guide").html("");
+                $("#page_sort_guide").append("  当前页:"+data.pageNum)
                     .append("  总记录:"+data.total)
                     .append("  每页条数:"+data.pageSize)
                     .append("  总页数"+data.pages)
@@ -171,16 +234,19 @@ $(function(){
             data:{"bname":null,"bcover":null,"bchpters":null,"tag":"仙侠","aname":null},
             dataType:'json',
             success: function(data){
-                $("#books_sort_p").empty();
-                $(".italic").remove();
-                var string ="";
-                for (i = 0; i < data.list.length; i++) {
-                    string += "<a> "+data.list[i].bname
-                        +"<img src='"+data.list[i].bcover+"'></a>"
-                        +"<br>";
+                for(i=1;i<=6;i++){
+                    $("#bimg"+i).attr("src",null);
+                    $("#bn"+i).html("");
+                    $("#ban"+i).html("");
                 }
-                $("#books_sort_p").html(string);
-                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                $(".italic").remove();
+                for (i = 1; i <= data.list.length; i++) {
+                    $("#bimg"+i).attr("src",data.list[i-1].bcover);
+                    $("#bn"+i).html(data.list[i-1].bname);
+                    $("#ban"+i).html(data.list[i-1].aname);
+                }
+                $("#page_sort_guide").html("");
+                $("#page_sort_guide").append("  当前页:"+data.pageNum)
                     .append("  总记录:"+data.total)
                     .append("  每页条数:"+data.pageSize)
                     .append("  总页数"+data.pages)
@@ -207,16 +273,19 @@ $(function(){
             data:{"bname":null,"bcover":null,"bchpters":null,"tag":"轻小说","aname":null},
             dataType:'json',
             success: function(data){
-                $("#books_sort_p").empty();
-                $(".italic").remove();
-                var string ="";
-                for (i = 0; i < data.list.length; i++) {
-                    string += "<a> "+data.list[i].bname
-                        +"<img src='"+data.list[i].bcover+"'></a>"
-                        +"<br>";
+                for(i=1;i<=6;i++){
+                    $("#bimg"+i).attr("src",null);
+                    $("#bn"+i).html("");
+                    $("#ban"+i).html("");
                 }
-                $("#books_sort_p").html(string);
-                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                $(".italic").remove();
+                for (i = 1; i <= data.list.length; i++) {
+                    $("#bimg"+i).attr("src",data.list[i-1].bcover);
+                    $("#bn"+i).html(data.list[i-1].bname);
+                    $("#ban"+i).html(data.list[i-1].aname);
+                }
+                $("#page_sort_guide").html("");
+                $("#page_sort_guide").append("  当前页:"+data.pageNum)
                     .append("  总记录:"+data.total)
                     .append("  每页条数:"+data.pageSize)
                     .append("  总页数"+data.pages)
@@ -243,16 +312,19 @@ $(function(){
             data:{"bname":null,"bcover":null,"bchpters":null,"tag":"玄幻","aname":null},
             dataType:'json',
             success: function(data){
-                $("#books_sort_p").empty();
-                $(".italic").remove();
-                var string ="";
-                for (i = 0; i < data.list.length; i++) {
-                    string += "<a> "+data.list[i].bname
-                        +"<img src='"+data.list[i].bcover+"'></a>"
-                        +"<br>";
+                for(i=1;i<=6;i++){
+                    $("#bimg"+i).attr("src",null);
+                    $("#bn"+i).html("");
+                    $("#ban"+i).html("");
                 }
-                $("#books_sort_p").html(string);
-                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                $(".italic").remove();
+                for (i = 1; i <= data.list.length; i++) {
+                    $("#bimg"+i).attr("src",data.list[i-1].bcover);
+                    $("#bn"+i).html(data.list[i-1].bname);
+                    $("#ban"+i).html(data.list[i-1].aname);
+                }
+                $("#page_sort_guide").html("");
+                $("#page_sort_guide").append("  当前页:"+data.pageNum)
                     .append("  总记录:"+data.total)
                     .append("  每页条数:"+data.pageSize)
                     .append("  总页数"+data.pages)
@@ -279,16 +351,19 @@ $(function(){
             data:{"bname":null,"bcover":null,"bchpters":null,"tag":"科幻","aname":null},
             dataType:'json',
             success: function(data){
-                $("#books_sort_p").empty();
-                $(".italic").remove();
-                var string ="";
-                for (i = 0; i < data.list.length; i++) {
-                    string += "<a> "+data.list[i].bname
-                        +"<img src='"+data.list[i].bcover+"'></a>"
-                        +"<br>";
+                for(i=1;i<=6;i++){
+                    $("#bimg"+i).attr("src",null);
+                    $("#bn"+i).html("");
+                    $("#ban"+i).html("");
                 }
-                $("#books_sort_p").html(string);
-                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                $(".italic").remove();
+                for (i = 1; i <= data.list.length; i++) {
+                    $("#bimg"+i).attr("src",data.list[i-1].bcover);
+                    $("#bn"+i).html(data.list[i-1].bname);
+                    $("#ban"+i).html(data.list[i-1].aname);
+                }
+                $("#page_sort_guide").html("");
+                $("#page_sort_guide").append("  当前页:"+data.pageNum)
                     .append("  总记录:"+data.total)
                     .append("  每页条数:"+data.pageSize)
                     .append("  总页数"+data.pages)
@@ -315,16 +390,19 @@ $(function(){
             data:{"bname":null,"bcover":null,"bchpters":null,"tag":"军事","aname":null},
             dataType:'json',
             success: function(data){
-                $("#books_sort_p").empty();
-                $(".italic").remove();
-                var string ="";
-                for (i = 0; i < data.list.length; i++) {
-                    string += "<a> "+data.list[i].bname
-                        +"<img src='"+data.list[i].bcover+"'></a>"
-                        +"<br>";
+                for(i=1;i<=6;i++){
+                    $("#bimg"+i).attr("src",null);
+                    $("#bn"+i).html("");
+                    $("#ban"+i).html("");
                 }
-                $("#books_sort_p").html(string);
-                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                $(".italic").remove();
+                for (i = 1; i <= data.list.length; i++) {
+                    $("#bimg"+i).attr("src",data.list[i-1].bcover);
+                    $("#bn"+i).html(data.list[i-1].bname);
+                    $("#ban"+i).html(data.list[i-1].aname);
+                }
+                $("#page_sort_guide").html("");
+                $("#page_sort_guide").append("  当前页:"+data.pageNum)
                     .append("  总记录:"+data.total)
                     .append("  每页条数:"+data.pageSize)
                     .append("  总页数"+data.pages)
@@ -351,16 +429,19 @@ $(function(){
             data:{"bname":null,"bcover":null,"bchpters":null,"tag":"体育","aname":null},
             dataType:'json',
             success: function(data){
-                $("#books_sort_p").empty();
-                $(".italic").remove();
-                var string ="";
-                for (i = 0; i < data.list.length; i++) {
-                    string += "<a> "+data.list[i].bname
-                        +"<img src='"+data.list[i].bcover+"'></a>"
-                        +"<br>";
+                for(i=1;i<=6;i++){
+                    $("#bimg"+i).attr("src",null);
+                    $("#bn"+i).html("");
+                    $("#ban"+i).html("");
                 }
-                $("#books_sort_p").html(string);
-                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                $(".italic").remove();
+                for (i = 1; i <= data.list.length; i++) {
+                    $("#bimg"+i).attr("src",data.list[i-1].bcover);
+                    $("#bn"+i).html(data.list[i-1].bname);
+                    $("#ban"+i).html(data.list[i-1].aname);
+                }
+                $("#page_sort_guide").html("");
+                $("#page_sort_guide").append("  当前页:"+data.pageNum)
                     .append("  总记录:"+data.total)
                     .append("  每页条数:"+data.pageSize)
                     .append("  总页数"+data.pages)
@@ -387,16 +468,19 @@ $(function(){
             data:{"bname":null,"bcover":null,"bchpters":null,"tag":"武侠","aname":null},
             dataType:'json',
             success: function(data){
-                $("#books_sort_p").empty();
-                $(".italic").remove();
-                var string ="";
-                for (i = 0; i < data.list.length; i++) {
-                    string += "<a> "+data.list[i].bname
-                        +"<img src='"+data.list[i].bcover+"'></a>"
-                        +"<br>";
+                for(i=1;i<=6;i++){
+                    $("#bimg"+i).attr("src",null);
+                    $("#bn"+i).html("");
+                    $("#ban"+i).html("");
                 }
-                $("#books_sort_p").html(string);
-                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                $(".italic").remove();
+                for (i = 1; i <= data.list.length; i++) {
+                    $("#bimg"+i).attr("src",data.list[i-1].bcover);
+                    $("#bn"+i).html(data.list[i-1].bname);
+                    $("#ban"+i).html(data.list[i-1].aname);
+                }
+                $("#page_sort_guide").html("");
+                $("#page_sort_guide").append("  当前页:"+data.pageNum)
                     .append("  总记录:"+data.total)
                     .append("  每页条数:"+data.pageSize)
                     .append("  总页数"+data.pages)
@@ -423,16 +507,19 @@ $(function(){
             data:{"bname":null,"bcover":null,"bchpters":null,"tag":"奇幻","aname":null},
             dataType:'json',
             success: function(data){
-                $("#books_sort_p").empty();
-                $(".italic").remove();
-                var string ="";
-                for (i = 0; i < data.list.length; i++) {
-                    string += "<a> "+data.list[i].bname
-                        +"<img src='"+data.list[i].bcover+"'></a>"
-                        +"<br>";
+                for(i=1;i<=6;i++){
+                    $("#bimg"+i).attr("src",null);
+                    $("#bn"+i).html("");
+                    $("#ban"+i).html("");
                 }
-                $("#books_sort_p").html(string);
-                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                $(".italic").remove();
+                for (i = 1; i <= data.list.length; i++) {
+                    $("#bimg"+i).attr("src",data.list[i-1].bcover);
+                    $("#bn"+i).html(data.list[i-1].bname);
+                    $("#ban"+i).html(data.list[i-1].aname);
+                }
+                $("#page_sort_guide").html("");
+                $("#page_sort_guide").append("  当前页:"+data.pageNum)
                     .append("  总记录:"+data.total)
                     .append("  每页条数:"+data.pageSize)
                     .append("  总页数"+data.pages)
@@ -459,16 +546,19 @@ $(function(){
             data:{"bname":null,"bcover":null,"bchpters":null,"tag":"悬疑","aname":null},
             dataType:'json',
             success: function(data){
-                $("#books_sort_p").empty();
-                $(".italic").remove();
-                var string ="";
-                for (i = 0; i < data.list.length; i++) {
-                    string += "<a> "+data.list[i].bname
-                        +"<img src='"+data.list[i].bcover+"'></a>"
-                        +"<br>";
+                for(i=1;i<=6;i++){
+                    $("#bimg"+i).attr("src",null);
+                    $("#bn"+i).html("");
+                    $("#ban"+i).html("");
                 }
-                $("#books_sort_p").html(string);
-                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                $(".italic").remove();
+                for (i = 1; i <= data.list.length; i++) {
+                    $("#bimg"+i).attr("src",data.list[i-1].bcover);
+                    $("#bn"+i).html(data.list[i-1].bname);
+                    $("#ban"+i).html(data.list[i-1].aname);
+                }
+                $("#page_sort_guide").html("");
+                $("#page_sort_guide").append("  当前页:"+data.pageNum)
                     .append("  总记录:"+data.total)
                     .append("  每页条数:"+data.pageSize)
                     .append("  总页数"+data.pages)
@@ -495,16 +585,19 @@ $(function(){
             data:{"bname":null,"bcover":null,"bchpters":null,"tag":"游戏","aname":null},
             dataType:'json',
             success: function(data){
-                $("#books_sort_p").empty();
-                $(".italic").remove();
-                var string ="";
-                for (i = 0; i < data.list.length; i++) {
-                    string += "<a> "+data.list[i].bname
-                        +"<img src='"+data.list[i].bcover+"'></a>"
-                        +"<br>";
+                for(i=1;i<=6;i++){
+                    $("#bimg"+i).attr("src",null);
+                    $("#bn"+i).html("");
+                    $("#ban"+i).html("");
                 }
-                $("#books_sort_p").html(string);
-                $("#books_sort_p").append("  当前页:"+data.pageNum)
+                $(".italic").remove();
+                for (i = 1; i <= data.list.length; i++) {
+                    $("#bimg"+i).attr("src",data.list[i-1].bcover);
+                    $("#bn"+i).html(data.list[i-1].bname);
+                    $("#ban"+i).html(data.list[i-1].aname);
+                }
+                $("#page_sort_guide").html("");
+                $("#page_sort_guide").append("  当前页:"+data.pageNum)
                     .append("  总记录:"+data.total)
                     .append("  每页条数:"+data.pageSize)
                     .append("  总页数"+data.pages)
@@ -533,16 +626,19 @@ function select(i) {
         url:'/book/books_ajax',
         data:{"bname":null,"bcover":null,"bchpters":null,"tag":$("#dir").val(),"aname":null,"pageNum":i},
         success:function (data) {
-            $("#books_sort_p").empty();
-            $(".italic").remove();
-            var string ="";
-            for (i = 0; i < data.list.length; i++) {
-                string += "<a> "+data.list[i].bname
-                    +"<img src='"+data.list[i].bcover+"'></a>"
-                    +"<br>";
+            for(i=1;i<=6;i++){
+                $("#bimg"+i).attr("src",null);
+                $("#bn"+i).html("");
+                $("#ban"+i).html("");
             }
-            $("#books_sort_p").html(string);
-            $("#books_sort_p").append("  当前页:"+data.pageNum)
+            $(".italic").remove();
+            for (i = 1; i <= data.list.length; i++) {
+                $("#bimg"+i).attr("src",data.list[i-1].bcover);
+                $("#bn"+i).html(data.list[i-1].bname);
+                $("#ban"+i).html(data.list[i-1].aname);
+            }
+            $("#page_sort_guide").html("");
+            $("#page_sort_guide").append("  当前页:"+data.pageNum)
                 .append("  总记录:"+data.total)
                 .append("  每页条数:"+data.pageSize)
                 .append("  总页数"+data.pages)

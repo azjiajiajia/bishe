@@ -6,6 +6,7 @@ import com.jcc.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -14,7 +15,10 @@ public class ReaderServiceImpl implements ReaderService {
     private ReaderDao readerDao;
 
     @Override
-    public Reader selectReader(Map<String,Object> qmap){
-        return readerDao.selectReader(qmap);
+    public List<Reader> selectReader(Reader reader){
+        return readerDao.selectReader(reader);
     }
+
+    @Override
+    public void insert(Reader reader){readerDao.insert(reader);}
 }

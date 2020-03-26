@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 @RequestMapping("/system")
@@ -25,29 +22,49 @@ public class SystemController {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, String> login(
-            @RequestParam(value = "login_user_id",required = true) String rid,
-            @RequestParam(value = "login_pwd",required = true) String rpwd
-    ){
+    public Map<String, String> login(Reader reader){
         Map<String,String> ret=new HashMap<String, String>();
-        Map<String, Object> queryMap = new HashMap<String, Object>();
-        queryMap.put("rid",rid);
-        queryMap.put("rpwd",rpwd);
-
-        Reader reader;
-        reader=readerService.selectReader(queryMap);
-        if(reader==null){
+        reader.setRname(null);
+        List<Reader> readers=readerService.selectReader(reader);
+        if(readers.isEmpty()){
             ret.put("type","error");
             ret.put("msg","用户名或密码错误！");
             return ret;
         }
         else {
+            Reader r=readers.get(0);
             ret.put("type","success");
             ret.put("msg","登录成功！");
-            ret.put("reader_name",reader.getRname());
-            ret.put("reader_id",reader.getRid());
+            ret.put("reader_name",r.getRname());
+            ret.put("reader_id",r.getRid());
+            System.out.println(r.getRid()+"  "+r.getRpwd());
         }
-        System.out.println(reader.getRid()+"  "+reader.getRpwd());
+
+        return ret;
+    }
+
+
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, String> register(Reader reader){
+        Map<String,String> ret=new HashMap<String, String>();
+        Reader r1=new Reader();
+        r1.setRid(reader.getRid());
+        List<Reader> readers1=readerService.selectReader(r1);
+        if(!readers1.isEmpty()){
+            ret.put("type","rid_error");
+            return ret;
+        }
+        Reader r2=new Reader();
+        r2.setRname(reader.getRname());
+        List<Reader> readers2=readerService.selectReader(r2);
+        if(!readers2.isEmpty()){
+            ret.put("type","rname_error");
+            return ret;
+        }
+        readerService.insert(reader);
+        ret.put("type","success");
+        ret.put("msg","注册成功！");
         return ret;
     }
 

@@ -21,11 +21,7 @@ public class TestDataSource {
 
         ReaderService readerService =(ReaderService)ac.getBean("readerServiceImpl");
         Reader reader;
-        Map<String,Object> qmap=new HashMap<String, Object>();
-        qmap.put("rid","1000");
-        qmap.put("rpwd","1000");
-        reader=readerService.selectReader(qmap);
-        System.out.println(reader.getRname());
+
 
         Book book=new Book();
         book.setTag("历史");
