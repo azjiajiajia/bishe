@@ -107,6 +107,8 @@ $(function(){
             success: function(data){
                 if(data.type == "success"){
                     alert(data["msg"]);
+                    $("#bg").css({display:"none"});
+                    $("#register_window").css({display:"none"});
                 }
                 else if(data.type == "rid_error"){
                     $("#userid_check").css({display:"block"});
