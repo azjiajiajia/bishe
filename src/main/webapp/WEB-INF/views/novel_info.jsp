@@ -10,6 +10,7 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="/css/ui.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/novel_ui.css"/>
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <title>小说</title>
 </head>
@@ -22,7 +23,9 @@
     <label id="page_tab_lable">书友：</label>
     <div id="user_name" class="user_name"></div>
 </div>
-
+<div id="novel_info" class="novel_info">
+${sessionScope.bname}
+</div>
 
 
 

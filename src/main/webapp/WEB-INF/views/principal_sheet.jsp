@@ -153,7 +153,7 @@
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a id="bn1" href="javascript:void(0)">xxxxxx1</a>
+                        <a id="bn1" href="/book/novel_info/bname=都市大进化时代">xxxxxx1</a>
                     </h4>
                     <p id="ban1">zuozhe1</p>
                 </div>

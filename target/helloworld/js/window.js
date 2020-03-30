@@ -165,6 +165,7 @@ $(function(){
                 for (i = 1; i <= data.list.length; i++) {
                     $("#bimg"+i).attr("src",data.list[i-1].bcover);
                     $("#bn"+i).html(data.list[i-1].bname);
+                    $("#bn"+i).attr("href","/book/novel_info/bname="+data.list[i-1].bname);
                     $("#ban"+i).html(data.list[i-1].aname);
                 }
                 $("#page_sort_guide").html("");
@@ -655,6 +656,7 @@ function select(i) {
         }
     });
 }
+
 
 function formFeed(i) {
     select(Number($("#pageNum").val())+i);
