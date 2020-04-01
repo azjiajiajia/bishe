@@ -45,5 +45,9 @@
         select * from book b left join book_tag t on b.bname = t.bname
     </select>
 
+<!--查找小说详细内容-->
+    <select id="selectChapter" parameterType="String" resultType="Map">
+        select * from book_chapter
+    </select>
 
 </mapper>

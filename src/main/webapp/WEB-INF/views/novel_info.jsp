@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="/css/ui.css"/>
     <link rel="stylesheet" type="text/css" href="/css/novel_ui.css"/>
     <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/novel_window.js"></script>
     <title>小说</title>
 </head>
 <body>
@@ -21,10 +22,26 @@
     <input type="button" id="page_tab_reader_login" class="login" value="登录"/>
     <input type="button" id="page_tab_reader_register" class="register" value="注册"/>
     <label id="page_tab_lable">书友：</label>
-    <div id="user_name" class="user_name"></div>
+    <div id="user_name" class="user_name">${sessionScope.reader.rname}</div>
 </div>
 <div id="novel_info" class="novel_info">
-${sessionScope.bname}
+    <input type="text" id="bname" disabled hidden value="${sessionScope.bname}"/>
+    <div class="nr">
+        <div class="ncover">
+            <img id="novel_bcover" src="/images/1.jpg" alt="xx" style="width: 100%;height: 100%"/>
+        </div>
+        <div class="ns">
+            <h2 id="novel_bname" style="font-size: 18px;">xxxxxx</h2><br/>
+            <h4 id="novel_tag" style="border: 1px solid darkgrey;width: 50px;height:20px;background-color:lightcyan;color:chocolate;font-size: 12px;border-radius:2em;margin-left:10px;text-align: center ">xxx</h4>
+            <div class="nk">
+                <h3 id="novel_c_num">总共22话</h3>
+                <input type="button" id="add_to_lib" value="&nbsp;加&nbsp;入&nbsp;书&nbsp;架&nbsp;"/>
+                <input type="button" id="reading" value="&nbsp;开&nbsp;始&nbsp;阅&nbsp;读&nbsp;"/>
+            </div>
+        </div>
+    </div>
+    <div id="novel_chapter" class="chapters">
+    </div>
 </div>
 
 

@@ -126,7 +126,46 @@ $(function(){
     $().moveDivByID("login");
     $().moveDivByID("register");
 
+
+    init_tab();
+    init_chapter();
+
 });
+
+//初始化tab栏
+function init_tab(){
+    if($("#user_name").html()!=""){
+        $("#page_tab_reader_login").css({display:"none"});
+        $("#page_tab_reader_register").css({display:"none"});
+        $("#page_tab_lable").css({display:"block"});
+        $("#user_name").css({display:"block"});
+    }
+}
+//初始化 小说信息中的俩按钮
+function init_btn(){
+    if($("#user_name").html()!=""){
+        //先用ajax请求到数据库 读者小说浏览表 中找浏览记录，找到的话就改继续阅读，并且指定章节数，若没有就默认第一章，跳入小说阅读页面
+        $("#reading").html("继续阅读");
+        $("#reading").attr("href","/xxx");
+    }
+}
+
+//初始化 小说章节和一共多少章
+function init_chapter(){
+    var bname=$("#bname").val();
+    $.ajax({
+        url:'/book/chapters',
+        type:'post',
+        dataType:'JSON',
+        data:{"bname":bname},
+        success:function (data) {
+
+        },
+        error:function (data) {
+            alert("出错！");
+        }
+    });
+}
 
 jQuery.fn.moveDivByID= function (id){
     $("#"+id+"_title").mousedown(function(e){

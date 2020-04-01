@@ -79,4 +79,27 @@ public class BookController {
         request.getSession().setAttribute("bname",bname);
         return "novel_info";
     }
+
+    @RequestMapping(value = "/chapters",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> show_chapters(String bname){
+        Map<String,Object> ret=new HashMap<String, Object>();
+        Book book=new Book();
+        book.setBchapters(null);
+        book.setTag(null);
+        book.setBname(bname);
+        List<Book> books =bookService.selectBooks(book);
+        if(!books.isEmpty()){
+            Book b=books.get(0);
+            ret.put("type","success");
+            ret.put("bcover",b.getBcover());
+            ret.put("bchpaters",b.getBchapters());
+
+            return ret;
+        }
+        else {
+            ret.put("type","error");
+            return ret;
+        }
+    }
 }

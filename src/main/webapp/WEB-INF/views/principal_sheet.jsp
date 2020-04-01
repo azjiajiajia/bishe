@@ -153,7 +153,7 @@
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a id="bn1" href="/book/novel_info/bname=都市大进化时代">xxxxxx1</a>
+                        <a id="bn1" href="/book/novel_info/bname=都市大进化时代" target="_blank">xxxxxx1</a>
                     </h4>
                     <p id="ban1">zuozhe1</p>
                 </div>
@@ -163,7 +163,7 @@
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a id="bn2" href="javascript:void(0)">xxxxxx2</a>
+                        <a id="bn2" href="javascript:void(0)" target="_blank">xxxxxx2</a>
                     </h4>
                     <p id="ban2">zuozhe2</p>
                 </div>
@@ -173,7 +173,7 @@
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a id="bn3" href="javascript:void(0)">xxxxxx3</a>
+                        <a id="bn3" href="javascript:void(0)" target="_blank">xxxxxx3</a>
                     </h4>
                     <p id="ban3">zuozhe3</p>
                 </div>
@@ -185,7 +185,7 @@
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a id="bn4" href="javascript:void(0)">xxxxxx</a>
+                        <a id="bn4" href="javascript:void(0)" target="_blank">xxxxxx</a>
                     </h4>
                     <p id="ban4">zuozhe</p>
                 </div>
@@ -195,7 +195,7 @@
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a id="bn5" href="javascript:void(0)">xxxxxx</a>
+                        <a id="bn5" href="javascript:void(0)" target="_blank">xxxxxx</a>
                     </h4>
                     <p id="ban5">zuozhe</p>
                 </div>
@@ -205,7 +205,7 @@
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a id="bn6" href="javascript:void(0)">xxxxxx</a>
+                        <a id="bn6" href="javascript:void(0)" target="_blank">xxxxxx</a>
                     </h4>
                     <p id="ban6">zuozhe</p>
                 </div>

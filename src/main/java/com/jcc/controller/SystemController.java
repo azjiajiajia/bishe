@@ -22,7 +22,7 @@ public class SystemController {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, String> login(Reader reader){
+    public Map<String, String> login(Reader reader,HttpServletRequest request){
         Map<String,String> ret=new HashMap<String, String>();
         reader.setRname(null);
         List<Reader> readers=readerService.selectReader(reader);
@@ -37,6 +37,7 @@ public class SystemController {
             ret.put("msg","登录成功！");
             ret.put("reader_name",r.getRname());
             ret.put("reader_id",r.getRid());
+            request.getSession().setAttribute("reader",r);
             System.out.println(r.getRid()+"  "+r.getRpwd());
         }
 
@@ -67,5 +68,6 @@ public class SystemController {
         ret.put("msg","注册成功！");
         return ret;
     }
+
 
 }
