@@ -17,5 +17,8 @@ public interface BookService {
 
     Book selectOne(String bname);
 
+    //查找书本章节
+    List<Map<String,Object>> selectChapter(String bname);
+
 
 }

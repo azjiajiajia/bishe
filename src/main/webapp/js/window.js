@@ -206,6 +206,7 @@ $(function(){
                     $("#bimg"+i).attr("src",data.list[i-1].bcover);
                     $("#bn"+i).html(data.list[i-1].bname);
                     $("#ban"+i).html(data.list[i-1].aname);
+                    $("#bn"+i).attr("href","/book/novel_info/bname="+data.list[i-1].bname);
                 }
                 $("#page_sort_guide").html("");
                 $("#page_sort_guide").append("  当前页:"+data.pageNum)
@@ -245,6 +246,7 @@ $(function(){
                     $("#bimg"+i).attr("src",data.list[i-1].bcover);
                     $("#bn"+i).html(data.list[i-1].bname);
                     $("#ban"+i).html(data.list[i-1].aname);
+                    $("#bn"+i).attr("href","/book/novel_info/bname="+data.list[i-1].bname);
                 }
                 $("#page_sort_guide").html("");
                 $("#page_sort_guide").append("  当前页:"+data.pageNum)
@@ -284,6 +286,7 @@ $(function(){
                     $("#bimg"+i).attr("src",data.list[i-1].bcover);
                     $("#bn"+i).html(data.list[i-1].bname);
                     $("#ban"+i).html(data.list[i-1].aname);
+                    $("#bn"+i).attr("href","/book/novel_info/bname="+data.list[i-1].bname);
                 }
                 $("#page_sort_guide").html("");
                 $("#page_sort_guide").append("  当前页:"+data.pageNum)
@@ -323,6 +326,7 @@ $(function(){
                     $("#bimg"+i).attr("src",data.list[i-1].bcover);
                     $("#bn"+i).html(data.list[i-1].bname);
                     $("#ban"+i).html(data.list[i-1].aname);
+                    $("#bn"+i).attr("href","/book/novel_info/bname="+data.list[i-1].bname);
                 }
                 $("#page_sort_guide").html("");
                 $("#page_sort_guide").append("  当前页:"+data.pageNum)
@@ -362,6 +366,7 @@ $(function(){
                     $("#bimg"+i).attr("src",data.list[i-1].bcover);
                     $("#bn"+i).html(data.list[i-1].bname);
                     $("#ban"+i).html(data.list[i-1].aname);
+                    $("#bn"+i).attr("href","/book/novel_info/bname="+data.list[i-1].bname);
                 }
                 $("#page_sort_guide").html("");
                 $("#page_sort_guide").append("  当前页:"+data.pageNum)
@@ -401,6 +406,7 @@ $(function(){
                     $("#bimg"+i).attr("src",data.list[i-1].bcover);
                     $("#bn"+i).html(data.list[i-1].bname);
                     $("#ban"+i).html(data.list[i-1].aname);
+                    $("#bn"+i).attr("href","/book/novel_info/bname="+data.list[i-1].bname);
                 }
                 $("#page_sort_guide").html("");
                 $("#page_sort_guide").append("  当前页:"+data.pageNum)
@@ -440,6 +446,7 @@ $(function(){
                     $("#bimg"+i).attr("src",data.list[i-1].bcover);
                     $("#bn"+i).html(data.list[i-1].bname);
                     $("#ban"+i).html(data.list[i-1].aname);
+                    $("#bn"+i).attr("href","/book/novel_info/bname="+data.list[i-1].bname);
                 }
                 $("#page_sort_guide").html("");
                 $("#page_sort_guide").append("  当前页:"+data.pageNum)
@@ -479,6 +486,7 @@ $(function(){
                     $("#bimg"+i).attr("src",data.list[i-1].bcover);
                     $("#bn"+i).html(data.list[i-1].bname);
                     $("#ban"+i).html(data.list[i-1].aname);
+                    $("#bn"+i).attr("href","/book/novel_info/bname="+data.list[i-1].bname);
                 }
                 $("#page_sort_guide").html("");
                 $("#page_sort_guide").append("  当前页:"+data.pageNum)
@@ -518,6 +526,7 @@ $(function(){
                     $("#bimg"+i).attr("src",data.list[i-1].bcover);
                     $("#bn"+i).html(data.list[i-1].bname);
                     $("#ban"+i).html(data.list[i-1].aname);
+                    $("#bn"+i).attr("href","/book/novel_info/bname="+data.list[i-1].bname);
                 }
                 $("#page_sort_guide").html("");
                 $("#page_sort_guide").append("  当前页:"+data.pageNum)
@@ -557,6 +566,7 @@ $(function(){
                     $("#bimg"+i).attr("src",data.list[i-1].bcover);
                     $("#bn"+i).html(data.list[i-1].bname);
                     $("#ban"+i).html(data.list[i-1].aname);
+                    $("#bn"+i).attr("href","/book/novel_info/bname="+data.list[i-1].bname);
                 }
                 $("#page_sort_guide").html("");
                 $("#page_sort_guide").append("  当前页:"+data.pageNum)
@@ -596,6 +606,7 @@ $(function(){
                     $("#bimg"+i).attr("src",data.list[i-1].bcover);
                     $("#bn"+i).html(data.list[i-1].bname);
                     $("#ban"+i).html(data.list[i-1].aname);
+                    $("#bn"+i).attr("href","/book/novel_info/bname="+data.list[i-1].bname);
                 }
                 $("#page_sort_guide").html("");
                 $("#page_sort_guide").append("  当前页:"+data.pageNum)
@@ -637,6 +648,7 @@ function select(i) {
                 $("#bimg"+i).attr("src",data.list[i-1].bcover);
                 $("#bn"+i).html(data.list[i-1].bname);
                 $("#ban"+i).html(data.list[i-1].aname);
+                $("#bn"+i).attr("href","/book/novel_info/bname="+data.list[i-1].bname);
             }
             $("#page_sort_guide").html("");
             $("#page_sort_guide").append("  当前页:"+data.pageNum)

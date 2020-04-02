@@ -7,4 +7,4 @@
 #reading{position:absolute;top: 290px;margin-left: 25%;color: tomato;font-weight: bold;}
 #novel_c_num{position:absolute;top: 270px;margin-left: 1%;color: tomato;font-weight: bold;}
 .chapters{margin-top: 10px;width:80% }
-.chapter{display:inline;margin-left: 10%;width: 20%;margin-top: 10px}
+.chapter{display:inline-block;margin-left: 10%;width: 15%;margin-top: 10px;height:30px}

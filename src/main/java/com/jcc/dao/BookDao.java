@@ -19,5 +19,8 @@ public interface BookDao {
 
     List<Book> selectAll();
 
+    //查找书本章节
+    List<Map<String,Object>> selectChapter(String bname);
+
 
 }

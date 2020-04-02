@@ -36,5 +36,10 @@ public class BookServiceImpl implements BookService {
         return bookDao.selectOne(bname);
     }
 
+    @Override
+    public List<Map<String,Object>> selectChapter(String bname){
+        return bookDao.selectChapter(bname);
+    }
+
 
 }

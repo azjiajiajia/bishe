@@ -159,7 +159,22 @@ function init_chapter(){
         dataType:'JSON',
         data:{"bname":bname},
         success:function (data) {
-
+            if(data.type=="success"){
+                $("#novel_bname").html(bname);
+                $("#novel_bcover").attr("src",data["bcover"]);
+                $("#novel_c_num").html("总共"+data["bchpaters"].toString()+"话");
+                $("#novel_tag").html(data["tag"]);
+                var rows=data["rows"];
+                for(var i=0;i<rows.length;i++){
+                    var name= rows[i]["chaptername"];
+                    var ad=rows[i]["chapterad"];
+                    $("#novel_chapter").append("<a class='chapter' href='"+ad+"'>"+name+"</a>");
+                }
+            }
+            else
+            {
+                alert("error");
+            }
         },
         error:function (data) {
             alert("出错！");

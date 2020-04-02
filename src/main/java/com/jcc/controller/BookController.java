@@ -93,8 +93,9 @@ public class BookController {
             Book b=books.get(0);
             ret.put("type","success");
             ret.put("bcover",b.getBcover());
-            ret.put("bchpaters",b.getBchapters());
-
+            ret.put("bchpaters",b.getBchapters().toString());
+            ret.put("tag",b.getTag());
+            ret.put("rows",bookService.selectChapter(bname));
             return ret;
         }
         else {

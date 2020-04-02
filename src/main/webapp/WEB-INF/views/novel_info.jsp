@@ -28,13 +28,13 @@
     <input type="text" id="bname" disabled hidden value="${sessionScope.bname}"/>
     <div class="nr">
         <div class="ncover">
-            <img id="novel_bcover" src="/images/1.jpg" alt="xx" style="width: 100%;height: 100%"/>
+            <img id="novel_bcover" src="" alt="xx" style="width: 100%;height: 100%"/>
         </div>
         <div class="ns">
-            <h2 id="novel_bname" style="font-size: 18px;">xxxxxx</h2><br/>
-            <h4 id="novel_tag" style="border: 1px solid darkgrey;width: 50px;height:20px;background-color:lightcyan;color:chocolate;font-size: 12px;border-radius:2em;margin-left:10px;text-align: center ">xxx</h4>
+            <h2 id="novel_bname" style="font-size: 18px;"></h2><br/>
+            <h4 id="novel_tag" style="border: 1px solid darkgrey;width: 50px;height:20px;background-color:lightcyan;color:chocolate;font-size: 12px;border-radius:2em;margin-left:10px;text-align: center "></h4>
             <div class="nk">
-                <h3 id="novel_c_num">总共22话</h3>
+                <h3 id="novel_c_num"></h3>
                 <input type="button" id="add_to_lib" value="&nbsp;加&nbsp;入&nbsp;书&nbsp;架&nbsp;"/>
                 <input type="button" id="reading" value="&nbsp;开&nbsp;始&nbsp;阅&nbsp;读&nbsp;"/>
             </div>

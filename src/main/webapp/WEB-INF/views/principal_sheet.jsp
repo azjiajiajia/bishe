@@ -149,65 +149,65 @@
     <div id="books_sort_p">
         <ul>
             <li>
-                <img id="bimg1" class="book_img" src="/images/1.jpg" onclick="javascript:void(0)">
+                <img id="bimg1" class="book_img" src="" onclick="javascript:void(0)">
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a id="bn1" href="/book/novel_info/bname=都市大进化时代" target="_blank">xxxxxx1</a>
+                        <a id="bn1" href="" target="_blank"></a>
                     </h4>
-                    <p id="ban1">zuozhe1</p>
+                    <p id="ban1"></p>
                 </div>
             </li>
             <li>
-                <img id="bimg2" class="book_img" src="/images/2.jpg">
+                <img id="bimg2" class="book_img" src="">
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a id="bn2" href="javascript:void(0)" target="_blank">xxxxxx2</a>
+                        <a id="bn2" href="javascript:void(0)" target="_blank"></a>
                     </h4>
-                    <p id="ban2">zuozhe2</p>
+                    <p id="ban2"></p>
                 </div>
             </li>
             <li>
-                <img id="bimg3" class="book_img" src="/images/3.jpg">
+                <img id="bimg3" class="book_img" src="">
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a id="bn3" href="javascript:void(0)" target="_blank">xxxxxx3</a>
+                        <a id="bn3" href="javascript:void(0)" target="_blank"></a>
                     </h4>
-                    <p id="ban3">zuozhe3</p>
+                    <p id="ban3"></p>
                 </div>
             </li>
         </ul>
         <ul>
             <li>
-                <img id="bimg4" class="book_img" src="/images/1.jpg">
+                <img id="bimg4" class="book_img" src="">
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a id="bn4" href="javascript:void(0)" target="_blank">xxxxxx</a>
+                        <a id="bn4" href="javascript:void(0)" target="_blank"></a>
                     </h4>
-                    <p id="ban4">zuozhe</p>
+                    <p id="ban4"></p>
                 </div>
             </li>
             <li>
-                <img id="bimg5" class="book_img" src="/images/1.jpg">
+                <img id="bimg5" class="book_img" src="">
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a id="bn5" href="javascript:void(0)" target="_blank">xxxxxx</a>
+                        <a id="bn5" href="javascript:void(0)" target="_blank"></a>
                     </h4>
-                    <p id="ban5">zuozhe</p>
+                    <p id="ban5"></p>
                 </div>
             </li>
             <li>
-                <img id="bimg6" class="book_img" src="/images/1.jpg">
+                <img id="bimg6" class="book_img" src="">
                 </img>
                 <div class="book_info">
                     <h4>
-                        <a id="bn6" href="javascript:void(0)" target="_blank">xxxxxx</a>
+                        <a id="bn6" href="javascript:void(0)" target="_blank"></a>
                     </h4>
-                    <p id="ban6">zuozhe</p>
+                    <p id="ban6"></p>
                 </div>
             </li>
         </ul>
