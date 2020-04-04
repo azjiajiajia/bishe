@@ -8,13 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="/css/ui.css"/>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
     <title>我的书架</title>
 </head>
 <body>
 <div id="page_tab" class="page_tab">
     <div id="page_tab_title" class="tab_title">jcc小说网</div>
     <label>书友：</label>
-    <div id="user_name" class="user_name">${sessionScope.ueser.rname}</div>
+    <div id="user_name" class="user_name">${sessionScope.reader.rname}</div>
 </div>
 <div id="left_sort" class="left_sort">
     <ul class="recent_read">最近阅读</ul>

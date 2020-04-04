@@ -32,7 +32,7 @@
         </div>
         <div class="ns">
             <h2 id="novel_bname" style="font-size: 18px;"></h2><br/>
-            <h3 id="novel_aname" style="font-size: 16px;"></h3><br/>
+            <h3 id="novel_aname" style="font-size: 12px;"></h3><br/>
             <h4 id="novel_tag" style="border: 1px solid darkgrey;width: 50px;height:20px;background-color:lightcyan;color:chocolate;font-size: 12px;border-radius:2em;margin-left:10px;text-align: center "></h4>
             <div class="nk">
                 <h3 id="novel_c_num"></h3>

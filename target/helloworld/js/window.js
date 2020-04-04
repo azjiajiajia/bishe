@@ -56,7 +56,7 @@ $(function(){
                     $("#page_tab_reader_register").css({display:"none"});
                     $("#page_tab_lable").css({display:"block"});
                     $("#user_name").css({display:"block"});
-                    $("#user_name").append(rname);
+                    $("#user_name").html(rname);
                     $("#hid").append(data["reader_id"]);
                 }
                 else if(data.type == "error"){
@@ -133,19 +133,7 @@ $(function(){
             $("#login_window").css({display:"block"});
         }
         else {
-            $.ajax({
-                url:"/reader/novel_lib",
-                type:"post",
-                data:{"reader_id":$("#hid").html()},
-                dataType:'json',
-                async:'false',
-                success: function(data){
-                    window.parent.location.href = "novel_lib.jsp";
-                },
-                error:function (data) {
-                    alert("出错");
-                }
-            })
+            window.parent.location.href = "/reader/novel_lib";
         }
 
     });
@@ -631,6 +619,9 @@ $(function(){
     });
     $().moveDivByID("login");
     $().moveDivByID("register");
+
+    //初始化检查session中是否有reader.rname
+    init_tab();
 });
 
 function select(i) {
@@ -694,6 +685,17 @@ jQuery.fn.moveDivByID= function (id){
         $(this).unbind("mousemove");
     });
 };
+
+
+//初始化tab栏
+function init_tab(){
+    if($("#user_name").html()!=""){
+        $("#page_tab_reader_login").css({display:"none"});
+        $("#page_tab_reader_register").css({display:"none"});
+        $("#page_tab_lable").css({display:"block"});
+        $("#user_name").css({display:"block"});
+    }
+}
 
 
 

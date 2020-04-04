@@ -25,7 +25,7 @@
     <input type="button" id="page_tab_reader_login" class="login" value="登录"/>
     <input type="button" id="page_tab_reader_register" class="register" value="注册"/>
     <label id="page_tab_lable">书友：</label>
-    <div id="user_name" class="user_name"></div>
+    <div id="user_name" class="user_name">${sessionScope.reader.rname}</div>
 </div>
 <div id="guide" class="guide">
     <img src="/images/logo.JPG" alt="logo" class="logo"/>
