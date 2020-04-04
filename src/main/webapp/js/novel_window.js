@@ -163,6 +163,7 @@ function init_chapter(){
                 $("#novel_bname").html(bname);
                 $("#novel_bcover").attr("src",data["bcover"]);
                 $("#novel_c_num").html("总共"+data["bchpaters"].toString()+"话");
+                $("#novel_aname").html(data["aname"]);
                 $("#novel_tag").html(data["tag"]);
                 var rows=data["rows"];
                 for(var i=0;i<rows.length;i++){

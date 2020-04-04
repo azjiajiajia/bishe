@@ -20,5 +20,8 @@ public interface BookService {
     //查找书本章节
     List<Map<String,Object>> selectChapter(String bname);
 
+    //查找书本作者
+    String selectByAuthor(String bname);
+
 
 }

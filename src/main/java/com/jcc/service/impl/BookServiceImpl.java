@@ -41,5 +41,10 @@ public class BookServiceImpl implements BookService {
         return bookDao.selectChapter(bname);
     }
 
+    @Override
+    public String selectByAuthor(String bname){
+        return bookDao.selectByAuthor(bname);
+    }
+
 
 }

@@ -89,11 +89,13 @@ public class BookController {
         book.setTag(null);
         book.setBname(bname);
         List<Book> books =bookService.selectBooks(book);
+        String aname=bookService.selectByAuthor(bname);
         if(!books.isEmpty()){
             Book b=books.get(0);
             ret.put("type","success");
             ret.put("bcover",b.getBcover());
             ret.put("bchpaters",b.getBchapters().toString());
+            ret.put("aname",aname);
             ret.put("tag",b.getTag());
             ret.put("rows",bookService.selectChapter(bname));
             return ret;
