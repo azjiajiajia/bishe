@@ -21,8 +21,8 @@
     <div id="user_name" class="user_name">${sessionScope.reader.rname}</div>
 </div>
 <div id="left_sort" class="left_sort">
-    <div style="border: 2px solid black"><a class="recent_read" id="recent_read" href="javascript:void(0)">最近阅读</a></div>
-    <div style="border: 2px solid black"><a class="novel_lib" id="left_sort_lib" href="javascript:void(0)">书&nbsp;&nbsp;架</a></div>
+    <div id="r_chosen"><input type="button" class="recent_read" id="recent_read" value="最近阅读"/></div>
+    <div id="l_chosen"><input type="button" class="novel_lib" id="left_sort_lib" value="书&nbsp;&nbsp;架"></div>
 </div>
 <div id="books_sort" class="books_sort"></div>
 

@@ -50,9 +50,14 @@
         select * from book_chapter where bname=#{bname} order by chapter
     </select>
 
-<!--查找小说详细内容-->
+<!--查找小说作者-->
     <select id="selectByAuthor" parameterType="String" resultType="String">
         select aname from author_book where bname=#{bname}
+    </select>
+
+<!--查找用户书架的书-->
+    <select id="selectFromLib" parameterType="String" resultType="Book">
+        select 
     </select>
 
 </mapper>

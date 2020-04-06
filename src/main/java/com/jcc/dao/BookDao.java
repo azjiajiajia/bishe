@@ -25,5 +25,8 @@ public interface BookDao {
     //查找书本的作者
     String selectByAuthor(String bname);
 
+    //查找用户书架的书
+    List<Book> selectFromLib(String rname);
+
 
 }

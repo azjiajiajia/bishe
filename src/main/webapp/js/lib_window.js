@@ -1,13 +1,18 @@
 $(function(){
     init_tab();
-    init_sort();
+    sort_lib();
 
 
     $("#recent_read").click(function () {
-        alert("1");
+
+        sort_recent();
+        $("#r_chosen").css({border:"2px solid black"});
+        $("#l_chosen").css({border:"2px solid white"});
     });
     $("#left_sort_lib").click(function () {
-        alert("2");
+        sort_lib();
+        $("#r_chosen").css({border:"2px solid white"});
+        $("#l_chosen").css({border:"2px solid black"});
     })
 });
 
@@ -20,7 +25,13 @@ function init_tab(){
 }
 
 //初始化书架内容，选项框停在书架
-function init_sort() {
+function sort_lib() {
+    $.ajax({
+        url:''
+    });
+}
+
+function sort_recent() {
 
 }
 
