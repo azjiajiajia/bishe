@@ -55,9 +55,9 @@
         select aname from author_book where bname=#{bname}
     </select>
 
-<!--查找用户书架的书-->
-    <select id="selectFromLib" parameterType="String" resultType="Book">
-        select 
+<!--查找用户书架的书的书名-->
+    <select id="selectFromLib" parameterType="String" resultType="String">
+        select bname from reader_book rb,book b where rb.rname=#{rname} and rb.bname=b.bname
     </select>
 
 </mapper>

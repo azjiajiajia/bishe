@@ -29,7 +29,17 @@ public class ReaderController {
     public PageInfo<Book> book_lib(Integer pageNum, String rname, Model model){
         if (pageNum == null) pageNum = 1;
         PageHelper.startPage(pageNum, 6);
-        List<Book> books = bookService.selectFromLib(rname);
+        List<String> bnames = bookService.selectFromLib(rname);
+        List<Book> books=new ArrayList<Book>();
+        for (String bname:bnames) {
+            Book b=new Book();
+            b.setBname(bname);
+            b.setTag(null);
+            b.setBchapters(null);
+            b.setBcover(null);
+            List<Book> bs=bookService.selectBooks(b);
+            books.add(bs.get(0));
+        }
         PageInfo<Book> page = new PageInfo<Book>(books, 10);
         return page;
     }

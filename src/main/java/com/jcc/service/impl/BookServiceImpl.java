@@ -47,7 +47,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> selectFromLib(String rname){
+    public List<String> selectFromLib(String rname){
         return bookDao.selectFromLib(rname);
     }
 
