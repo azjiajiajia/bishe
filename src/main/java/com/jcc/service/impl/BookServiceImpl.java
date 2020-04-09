@@ -15,8 +15,8 @@ public class BookServiceImpl implements BookService {
     private BookDao bookDao;
 
     @Override
-    public List<Book> selectBookFrom_reader_book_record(Map<String,Object> qmap){
-        return bookDao.selectBookFrom_reader_book_record(qmap);
+    public List<Map<String,Object>> selectBookFrom_reader_book_record(String rname){
+        return bookDao.selectBookFrom_reader_book_record(rname);
     }
 
 
@@ -47,7 +47,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<String> selectFromLib(String rname){
+    public List<Book> selectFromLib(String rname){
         return bookDao.selectFromLib(rname);
     }
 

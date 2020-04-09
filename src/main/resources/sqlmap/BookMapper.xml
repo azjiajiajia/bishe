@@ -12,11 +12,11 @@
     bname,bcover,bchapters
   </sql>
 -->
-
-    <select id="selectBookFrom_reader_book_record" parameterType="Map" resultType="Book">
-        select book.bname,book.bcover,book.bchapters
+<!--    查找读者小说浏览表-->
+    <select id="selectBookFrom_reader_book_record" parameterType="String" resultType="Map">
+        select book.bname,book.bcover,reader_book_record.chapter
         from book,reader_book_record
-        where reader_book_record.rid = #{rid,jdbcType=VARCHAR}
+        where reader_book_record.rname = #{rname}
         and book.bname = reader_book_record.bname
     </select>
 
@@ -55,9 +55,9 @@
         select aname from author_book where bname=#{bname}
     </select>
 
-<!--查找用户书架的书的书名-->
-    <select id="selectFromLib" parameterType="String" resultType="String">
-        select bname from reader_book rb,book b where rb.rname=#{rname} and rb.bname=b.bname
+<!--查找用户书架的书-->
+    <select id="selectFromLib" parameterType="String" resultType="Book">
+        select b.bname,b.bcover,ab.aname from author_book ab,reader_book rb,book b where rb.rname=#{rname} and rb.bname=b.bname and ab.bname=b.bname
     </select>
 
 </mapper>

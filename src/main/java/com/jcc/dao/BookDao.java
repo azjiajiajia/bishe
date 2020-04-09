@@ -9,7 +9,7 @@ import java.util.Map;
 @Repository
 public interface BookDao {
 
-    List<Book> selectBookFrom_reader_book_record(Map<String,Object> qmap);
+    List<Map<String,Object>> selectBookFrom_reader_book_record(String rname);
 
     //书,条件查询
     List<Book> selectBooks(Book book);
@@ -25,8 +25,8 @@ public interface BookDao {
     //查找书本的作者
     String selectByAuthor(String bname);
 
-    //查找用户书架的书的书名
-    List<String> selectFromLib(String rname);
+    //查找用户书架的书
+    List<Book> selectFromLib(String rname);
 
 
 }
