@@ -126,7 +126,7 @@ $(function(){
 
 
     $("#lib").click(function () {
-        if($("#hid").html()==""){
+        if($("#user_name").html()==""){
             //还未登录，弹出提示登录，同时弹出登录界面
             alert("还没登录！请先登录");
             $("#bg").css({display:"block"});

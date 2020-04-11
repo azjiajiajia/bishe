@@ -51,5 +51,15 @@ public class BookServiceImpl implements BookService {
         return bookDao.selectFromLib(rname);
     }
 
+    @Override
+    public Map<String,Object> isRead(Map<String,Object> requestMap){
+        return bookDao.isRead(requestMap);
+    }
+
+    @Override
+    public String selectfst(String bname){
+        return bookDao.selectfst(bname);
+    }
+
 
 }

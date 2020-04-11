@@ -129,6 +129,7 @@ $(function(){
 
     init_tab();
     init_chapter();
+    init_btn();
 
 });
 
@@ -145,8 +146,38 @@ function init_tab(){
 function init_btn(){
     if($("#user_name").html()!=""){
         //先用ajax请求到数据库 读者小说浏览表 中找浏览记录，找到的话就改继续阅读，并且指定章节数，若没有就默认第一章，跳入小说阅读页面
-        $("#reading").html("继续阅读");
-        $("#reading").attr("href","/xxx");
+        $.ajax({
+            url:'/reader/have_read',
+            type:'post',
+            data:{"rname":$("#user_name").html(),"bname":$("#bname").val()},
+            dataType:'JSON',
+            success:function (data) {
+                if(data["result"]=="empty"){
+                    $("#reading").click(function () {
+                        alert("没有章节");
+                    });
+                }
+                else if(data["result"]=="no_record"){
+                    $("#reading").click(function () {
+                        window.parent.location.href =data["chapterad"];
+                    });
+                }
+                else {
+                    $("#reading").val("继续阅读第"+data["chapter"]+"话");
+                    $("#reading").click(function () {
+                        window.parent.location.href =data["chapterad"];
+                    });
+                }
+            },
+            error:function (data) {
+                alert("出错");
+            }
+        });
+        $("#add_to_lib").attr("href","javaScript:add_to_lib("+$("#user_name").html()+","+$("#bname").val()+")");
+    }
+    //未登录
+    else {
+        $("#add_to_lib").attr("href","javaScript:alert(\"请先登录\")");
     }
 }
 
@@ -182,6 +213,14 @@ function init_chapter(){
         }
     });
 }
+
+function add_to_lib(bname,rname){
+}
+
+function add_to_record(){
+
+}
+
 
 jQuery.fn.moveDivByID= function (id){
     $("#"+id+"_title").mousedown(function(e){

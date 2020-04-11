@@ -60,4 +60,15 @@
         select b.bname,b.bcover,ab.aname from author_book ab,reader_book rb,book b where rb.rname=#{rname} and rb.bname=b.bname and ab.bname=b.bname
     </select>
 
+<!--查找用户是否度过某书并读到第几话-->
+    <select id="isRead" parameterType="Map" resultType="Map">
+        select bc.chapter,bc.chapterad from book_chapter bc,reader_book_record rbr where rbr.rname=#{rname} and rbr.bname=#{bname} and rbr.bname=bc.bname
+        and rbr.chapter=bc.chapter
+    </select>
+
+<!--查找某书第一话地址-->
+    <select id="selectfst" parameterType="String" resultType="String">
+        select chapterad from book_chapter where bname=#{bname} and chapter=1
+    </select>
+
 </mapper>

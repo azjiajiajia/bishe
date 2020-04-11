@@ -51,5 +51,33 @@ public class ReaderController {
         return "novel_lib";
     }
 
+    @RequestMapping(value = "/have_read",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> is_read(String rname,String bname){
+        Map<String,Object> ret=new HashMap<String, Object>();
+        Map<String,Object> requestMap=new HashMap<String, Object>();
+        requestMap.put("rname",rname);
+        requestMap.put("bname",bname);
+        Map<String,Object> rst=bookService.isRead(requestMap);
+        if(rst==null){
+            String fst=bookService.selectfst(bname);
+            if(fst==null){
+                ret.put("result","empty");
+                return ret;
+            }
+            else {
+                ret.put("result","no_record");
+                ret.put("chapterad",fst);
+                return ret;
+            }
+        }
+        else {
+            ret.put("result","success");
+            ret.put("chapter",rst.get("chapter"));
+            ret.put("chapterad",rst.get("chapterad"));
+            return ret;
+        }
+    }
+
 
 }

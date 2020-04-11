@@ -26,5 +26,11 @@ public interface BookService {
     //查找用户书架的书
     List<Book> selectFromLib(String rname);
 
+    //查找用户是否度过某书并读到第几话
+    Map<String,Object> isRead(Map<String,Object> requestMap);
+
+    //查找某书第一话地址
+    String selectfst(String bname);
+
 
 }
