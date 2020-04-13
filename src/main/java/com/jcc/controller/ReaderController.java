@@ -79,5 +79,81 @@ public class ReaderController {
         }
     }
 
+    @RequestMapping(value = "/fst_ad",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> fst_ad(String bname){
+        Map<String,Object> ret=new HashMap<String, Object>();
+        String fst=bookService.selectfst(bname);
+        if(fst==null){
+            ret.put("result","empty");
+            return ret;
+        }
+        else {
+            ret.put("result","success");
+            ret.put("chapterad",fst);
+            return ret;
+        }
+    }
+
+    @RequestMapping(value = "/add_to_record",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> add_to_record(String rname,String bname,int chapter,boolean isEmpty){
+        Map<String,Object> ret=new HashMap<String, Object>();
+        //isEmpty若为true表示没记录，false表示不知道
+        //先判断是否已有记录
+        Reader reader=new Reader();
+        reader.setRname(rname);
+        List<Reader> readers=readerService.selectReader(reader);
+        String rid =readers.get(0).getRid();
+        if(isEmpty){  //没记录
+            //添加记录
+            Map<String,Object> requestMap=new HashMap<String, Object>();
+            requestMap.put("rid",rid);
+            requestMap.put("rname",rname);
+            requestMap.put("bname",bname);
+            requestMap.put("chapter",chapter);
+            readerService.addToRecord(requestMap);
+            ret.put("type","success");
+            return ret;
+        }
+        else{  //不知道，再查有没有记录
+            Map<String,Object> rMap=new HashMap<String, Object>();
+            rMap.put("rname",rname);
+            rMap.put("bname",bname);
+            Map<String,Object> rst=bookService.isRead(rMap);
+            if(rst==null){
+                //没有记录
+                Map<String,Object> requestMap=new HashMap<String, Object>();
+                requestMap.put("rid",rid);
+                requestMap.put("rname",rname);
+                requestMap.put("bname",bname);
+                requestMap.put("chapter",chapter);
+                readerService.addToRecord(requestMap);
+                ret.put("type","success_1");
+                return ret;
+            }
+            else {
+                //有记录
+                //比较两个记录
+                int lst=Integer.parseInt(rst.get("chapter").toString());
+                //若记录里的章节小于当前的，则删掉记录，插入当前
+                if(lst<chapter){
+                    Map<String,Object> dMap=new HashMap<String, Object>();
+                    dMap.put("rname",rname);
+                    dMap.put("bname",bname);
+                    dMap.put("chapter",rst.get("chapter"));
+                    readerService.deleteRecord(dMap);
+                    Map<String,Object> requestMap=new HashMap<String, Object>();
+                    requestMap.put("rid",rid);
+                    requestMap.put("rname",rname);
+                    requestMap.put("bname",bname);
+                    requestMap.put("chapter",chapter);
+                    readerService.addToRecord(requestMap);
+                }
+                ret.put("type","success_2");
+                return ret;
+            }
+        }
+    }
 
 }

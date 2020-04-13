@@ -21,4 +21,14 @@
     <insert id="insert" parameterType="Reader">
         insert into reader (rid, rpwd, rname) value (#{rid}, #{rpwd}, #{rname})
     </insert>
+
+    <!--添加到浏览记录-->
+    <insert id="addToRecord" parameterType="Map">
+        insert into reader_book_record value (#{rid},#{rname},#{bname},#{chapter})
+    </insert>
+
+    <!--删除浏览记录-->
+    <delete id="deleteRecord" parameterType="Map">
+        delete from reader_book_record where rname=#{rname} and bname=#{bname} and chapter=#{chapter}
+    </delete>
 </mapper>

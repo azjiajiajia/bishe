@@ -14,4 +14,10 @@ public interface ReaderDao {
 
     void insert(Reader reader);
 
+    //添加阅读记录
+    void addToRecord(Map<String,Object> requestMap);
+
+    //删除阅读记录
+    void deleteRecord(Map<String,Object> requestMap);
+
 }

@@ -160,6 +160,7 @@ function init_btn(){
                 else if(data["result"]=="no_record"){
                     $("#reading").click(function () {
                         window.parent.location.href =data["chapterad"];
+                        add_to_record(1,true);
                     });
                 }
                 else {
@@ -173,11 +174,34 @@ function init_btn(){
                 alert("出错");
             }
         });
-        $("#add_to_lib").attr("href","javaScript:add_to_lib("+$("#user_name").html()+","+$("#bname").val()+")");
+        $("#add_to_lib").click(function () {
+            add_to_lib($("#bname").val(),$("#user_name").html());
+        });
     }
     //未登录
     else {
-        $("#add_to_lib").attr("href","javaScript:alert(\"请先登录\")");
+        $("#add_to_lib").click(function () {
+            alert("请先登录");
+        });
+        $.ajax({
+            url:'/reader/fst_ad',
+            type:'post',
+            data:{"bname":$("#bname").val()},
+            dataType:'JSON',
+            success:function (data) {
+                if(data["result"]=="success"){
+                    $("#reading").click(function () {
+                        window.parent.location.href =data["chapterad"];
+                    });
+                }
+                else{
+                    $("#reading").click(function () {
+                        alert("没有章节");
+                    });
+                }
+            }
+        });
+
     }
 }
 
@@ -200,7 +224,14 @@ function init_chapter(){
                 for(var i=0;i<rows.length;i++){
                     var name= rows[i]["chaptername"];
                     var ad=rows[i]["chapterad"];
-                    $("#novel_chapter").append("<a class='chapter' href='"+ad+"'>"+name+"</a>");
+                    var cpt=rows[i]["chapter"];
+                    if($("#user_name").html()==""){
+                        $("#novel_chapter").append("<a class='chapter' href='"+ad+"'>"+name+"</a>");
+                    }
+                    else {
+                        $("#novel_chapter").append("<a class='chapter' href='javaScript:st_reading(\""+ad+"\","+
+                            cpt+")'>"+name+"</a>");
+                    }
                 }
             }
             else
@@ -217,7 +248,23 @@ function init_chapter(){
 function add_to_lib(bname,rname){
 }
 
-function add_to_record(){
+
+function st_reading(ad,chapter) {
+    add_to_record(chapter,false);
+    window.parent.location.href =ad;
+}
+
+
+function add_to_record(chapter,isEmpty){
+    //isEmpty若为true表示没记录，false表示不知道
+    $.ajax({
+        url:'/reader/add_to_record',
+        type:'post',
+        data:{"rname":$("#user_name").html(),"bname":$("#bname").val(),"chapter":chapter,"isEmpty":isEmpty},
+        dataType:'JSON',
+        success:function (data) {
+        }
+    });
 
 }
 

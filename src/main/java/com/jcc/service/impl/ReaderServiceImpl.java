@@ -21,4 +21,14 @@ public class ReaderServiceImpl implements ReaderService {
 
     @Override
     public void insert(Reader reader){readerDao.insert(reader);}
+
+    @Override
+    public void addToRecord(Map<String,Object> requestMap){
+        readerDao.addToRecord(requestMap);
+    }
+
+    @Override
+    public void deleteRecord(Map<String,Object> requestMap){
+        readerDao.deleteRecord(requestMap);
+    }
 }
