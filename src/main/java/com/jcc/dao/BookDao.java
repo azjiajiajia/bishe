@@ -34,6 +34,7 @@ public interface BookDao {
     //查找某书第一话地址
     String selectfst(String bname);
 
-
+    //查找用户书架的指定书名的书
+    String selectFromLibByBname(Map<String,Object> requestMap);
 
 }

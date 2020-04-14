@@ -156,4 +156,30 @@ public class ReaderController {
         }
     }
 
+
+    @RequestMapping(value = "/add_to_lib",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> add_to_lib(String bname,String rname){
+        Map<String,Object> ret=new HashMap<String, Object>();
+        //判断是否已经在书架
+        Map<String,Object> requestMap=new HashMap<String, Object>();
+        requestMap.put("rname",rname);
+        requestMap.put("bname",bname);
+        String b=bookService.selectFromLibByBname(requestMap);
+        if(b==null){
+            Reader reader=new Reader();
+            reader.setRname(rname);
+            List<Reader> readers=readerService.selectReader(reader);
+            String rid =readers.get(0).getRid();
+            Map<String,Object> qMap=new HashMap<String, Object>();
+            qMap.put("rname",rname);
+            qMap.put("bname",bname);
+            qMap.put("rid",rid);
+            readerService.addToLib(qMap);
+            ret.put("type","success");
+        }
+        else {ret.put("type","has");}
+        return ret;
+    }
+
 }

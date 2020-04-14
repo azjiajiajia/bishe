@@ -31,4 +31,9 @@ public class ReaderServiceImpl implements ReaderService {
     public void deleteRecord(Map<String,Object> requestMap){
         readerDao.deleteRecord(requestMap);
     }
+
+    @Override
+    public void addToLib(Map<String,Object> requestMap){
+        readerDao.addToLib(requestMap);
+    }
 }

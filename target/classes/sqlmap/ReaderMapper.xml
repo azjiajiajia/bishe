@@ -31,4 +31,9 @@
     <delete id="deleteRecord" parameterType="Map">
         delete from reader_book_record where rname=#{rname} and bname=#{bname} and chapter=#{chapter}
     </delete>
+
+    <!--添加到书架-->
+    <insert id="addToLib" parameterType="Map">
+        insert into reader_book value (#{rid},#{rname},#{bname})
+    </insert>
 </mapper>

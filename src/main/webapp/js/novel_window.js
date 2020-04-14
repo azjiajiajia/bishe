@@ -175,7 +175,7 @@ function init_btn(){
             }
         });
         $("#add_to_lib").click(function () {
-            add_to_lib($("#bname").val(),$("#user_name").html());
+            add_to_lib();
         });
     }
     //未登录
@@ -245,7 +245,20 @@ function init_chapter(){
     });
 }
 
-function add_to_lib(bname,rname){
+function add_to_lib(){
+    $.ajax({
+        url:'/reader/add_to_lib',
+        type:'post',
+        data:{"bname":$("#bname").val(),"rname":$("#user_name").html()},
+        dataType:'JSON',
+        success:function (data) {
+            if(data["type"]=="success"){alert("添加成功");}
+            else {alert("已经在书架");}
+        },
+        error:function (data) {
+            alert("出错");
+        }
+    });
 }
 
 

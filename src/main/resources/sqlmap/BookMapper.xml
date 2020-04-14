@@ -71,4 +71,9 @@
         select chapterad from book_chapter where bname=#{bname} and chapter=1
     </select>
 
+<!--查找用户书架的书-->
+    <select id="selectFromLibByBname" parameterType="Map" resultType="String">
+        select bname from reader_book  where rname=#{rname} and bname=#{bname}
+    </select>
+
 </mapper>

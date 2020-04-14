@@ -61,6 +61,8 @@ public class BookServiceImpl implements BookService {
         return bookDao.selectfst(bname);
     }
 
+    @Override
+    public String selectFromLibByBname(Map<String,Object> requestMap){return bookDao.selectFromLibByBname(requestMap);}
 
 
 }

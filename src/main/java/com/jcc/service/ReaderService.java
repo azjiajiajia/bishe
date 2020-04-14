@@ -16,4 +16,7 @@ public interface ReaderService {
 
     //删除阅读记录
     void deleteRecord(Map<String,Object> requestMap);
+
+    //添加到书架
+    void addToLib(Map<String,Object> requestMap);
 }
