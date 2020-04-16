@@ -37,4 +37,7 @@ public interface BookDao {
     //查找用户书架的指定书名的书
     String selectFromLibByBname(Map<String,Object> requestMap);
 
+    //按书名模糊查询
+    List<Book> selectBooks_vague(String name);
+
 }

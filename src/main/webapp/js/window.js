@@ -28,6 +28,11 @@ $(function(){
         return false;
     });
 
+    //作者窗口
+    $("#page_tab_author").click(function () {
+        window.open("/author/author_page");
+    });
+
     //登录按钮
     $("#login_submit").click(function () {
 
@@ -625,39 +630,45 @@ $(function(){
 });
 
 function select(i) {
-    $.ajax({
-        url:'/book/books_ajax',
-        data:{"bname":null,"bcover":null,"bchpters":null,"tag":$("#dir").val(),"aname":null,"pageNum":i},
-        success:function (data) {
-            for(i=1;i<=6;i++){
-                $("#bimg"+i).attr("src",null);
-                $("#bn"+i).html("");
-                $("#ban"+i).html("");
-            }
-            $(".italic").remove();
-            for (i = 1; i <= data.list.length; i++) {
-                $("#bimg"+i).attr("src",data.list[i-1].bcover);
-                $("#bn"+i).html(data.list[i-1].bname);
-                $("#ban"+i).html(data.list[i-1].aname);
-                $("#bn"+i).attr("href","/book/novel_info/bname="+data.list[i-1].bname);
-            }
-            $("#page_sort_guide").html("");
-            $("#page_sort_guide").append("  当前页:"+data.pageNum)
-                .append("  总记录:"+data.total)
-                .append("  每页条数:"+data.pageSize)
-                .append("  总页数"+data.pages)
-                .append("  可显示页数:"+data.navigatePages)
-                .append("  起始页码:"+data.navigateFirstPage)
-                .append("  结束页码:"+data.navigateLastPage);
+    if($("#dir").val()=="vague"){
+        search_novel(i);
+    }
+    else {
+        $.ajax({
+            url:'/book/books_ajax',
+            data:{"bname":null,"bcover":null,"bchpters":null,"tag":$("#dir").val(),"aname":null,"pageNum":i},
+            success:function (data) {
+                for(i=1;i<=6;i++){
+                    $("#bimg"+i).attr("src",null);
+                    $("#bn"+i).html("");
+                    $("#ban"+i).html("");
+                }
+                $(".italic").remove();
+                for (i = 1; i <= data.list.length; i++) {
+                    $("#bimg"+i).attr("src",data.list[i-1].bcover);
+                    $("#bn"+i).html(data.list[i-1].bname);
+                    $("#ban"+i).html(data.list[i-1].aname);
+                    $("#bn"+i).attr("href","/book/novel_info/bname="+data.list[i-1].bname);
+                }
+                $("#page_sort_guide").html("");
+                $("#page_sort_guide").append("  当前页:"+data.pageNum)
+                    .append("  总记录:"+data.total)
+                    .append("  每页条数:"+data.pageSize)
+                    .append("  总页数"+data.pages)
+                    .append("  可显示页数:"+data.navigatePages)
+                    .append("  起始页码:"+data.navigateFirstPage)
+                    .append("  结束页码:"+data.navigateLastPage);
 
-            for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
-                var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
-                $page.addClass("italic");
-                $("#last").before($page);
+                for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
+                    var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
+                    $page.addClass("italic");
+                    $("#last").before($page);
+                }
+                $("#pageNum").val(data.pageNum);
             }
-            $("#pageNum").val(data.pageNum);
-        }
-    });
+        });
+    }
+
 }
 
 
@@ -697,5 +708,49 @@ function init_tab(){
     }
 }
 
+
+//按书名模糊查询书
+function search_novel(i) {
+    if($("#book_name").val()!=""){
+        $.ajax({
+            url:'/book/books_vague',
+            type:'post',
+            data:{"pageNum":i,"name":$("#book_name").val()},
+            dataType:'JSON',
+            success:function (data) {
+                for(i=1;i<=6;i++){
+                    $("#bimg"+i).attr("src",null);
+                    $("#bn"+i).html("");
+                    $("#ban"+i).html("");
+                }
+                $(".italic").remove();
+                for (i = 1; i <= data.list.length; i++) {
+                    $("#bimg"+i).attr("src",data.list[i-1].bcover);
+                    $("#bn"+i).html(data.list[i-1].bname);
+                    $("#ban"+i).html(data.list[i-1].aname);
+                    $("#bn"+i).attr("href","/book/novel_info/bname="+data.list[i-1].bname);
+                }
+                $("#page_sort_guide").html("");
+                $("#page_sort_guide").append("  当前页:"+data.pageNum)
+                    .append("  总记录:"+data.total)
+                    .append("  每页条数:"+data.pageSize)
+                    .append("  总页数"+data.pages)
+                    .append("  可显示页数:"+data.navigatePages)
+                    .append("  起始页码:"+data.navigateFirstPage)
+                    .append("  结束页码:"+data.navigateLastPage);
+                for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
+                    var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
+                    $page.addClass("italic");
+                    $("#last").before($page);
+                }
+                $("#pageNum").val(data.pageNum);
+                $("#dir").val("vague");
+            },
+            error:function (data) {
+                alert("出错");
+            }
+        });
+    }
+}
 
 

@@ -17,8 +17,8 @@
 </head>
 <body>
 <div id="page_tab" class="page_tab">
-    <input type="button" id="page_tab_author" class="author" value="作者专区"/>
     <div id="page_tab_title" class="tab_title">jcc小说网</div>
+    <input type="button" id="page_tab_author" class="author" value="作者专区"/>
     <input type="button" id="page_tab_reader_login" class="login" value="登录"/>
     <input type="button" id="page_tab_reader_register" class="register" value="注册"/>
     <label id="page_tab_lable">书友：</label>

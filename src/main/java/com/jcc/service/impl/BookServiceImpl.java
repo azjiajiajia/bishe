@@ -64,5 +64,8 @@ public class BookServiceImpl implements BookService {
     @Override
     public String selectFromLibByBname(Map<String,Object> requestMap){return bookDao.selectFromLibByBname(requestMap);}
 
+    @Override
+    public List<Book> selectBooks_vague(String name){return bookDao.selectBooks_vague(name);}
+
 
 }

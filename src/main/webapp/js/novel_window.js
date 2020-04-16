@@ -123,6 +123,11 @@ $(function(){
 
     });
 
+    //作者窗口
+    $("#page_tab_author").click(function () {
+        window.open("/author/author_page");
+    });
+
     $().moveDivByID("login");
     $().moveDivByID("register");
 
