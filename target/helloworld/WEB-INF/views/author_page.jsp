@@ -21,7 +21,7 @@
     <div id="page_tab_title" class="tab_title">jcc小说网</div>
     <input type="button" id="page_tab_author_login" class="login" value="登录"/>
     <input type="button" id="page_tab_author_register" class="register" value="注册"/>
-    <label>作者：</label>
+    <label id="page_tab_lable">作者：</label>
     <div id="author_name" class="author_name">${sessionScope.author.aname}</div>
 </div>
 <div id="books_sort" class="books_sort">

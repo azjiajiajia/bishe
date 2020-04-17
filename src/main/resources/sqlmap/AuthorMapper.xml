@@ -3,7 +3,7 @@
 <mapper namespace="com.jcc.dao.AuthorDao">
 
     <insert id="insert" parameterType="Author">
-        insert into author (aid, apwd, aname) value (#{aid}, #{apwd}, #{anmae})
+        insert into author (aid, apwd, aname) value (#{aid}, #{apwd}, #{aname})
     </insert>
 
     <delete id="delete" parameterType="String">
@@ -19,7 +19,12 @@
     </update>
 
    <select id="selectOne" parameterType="Author" resultType="Author">
-       select * from author where aid = #{aid} and apwd = #{apwd}
+       select * from author
+       <trim prefix="WHERE" prefixOverrides="AND">
+           <if test="aid != null">AND aid = #{aid}</if>
+           <if test="aname != null">AND aname like #{aname}</if>
+           <if test="apwd != null">AND apwd = #{apwd}</if>
+       </trim>
    </select>
 
 
