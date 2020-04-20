@@ -26,9 +26,96 @@
 </div>
 <div id="books_sort" class="books_sort">
     <div style="text-align: center;color: tomato;background-color: #adcced;font-size: 18px;width: 100%;height: 30px">已有作品</div>
+    <input type="text" name="pageNum" id="pageNum" value="1" disabled hidden/>
+    <input type="text" name="dir" id="dir" value="" disabled hidden/>
+    <div id="books_sort_p">
+        <ul>
+            <li>
+                <img id="bimg1" class="book_img" src="" onclick="javascript:void(0)">
+                </img>
+                <div class="book_info">
+                    <h4>
+                        <a id="bn1" href=""></a>
+                    </h4>
+                    <p id="ban1"></p>
+                </div>
+            </li>
+            <li>
+                <img id="bimg2" class="book_img" src="">
+                </img>
+                <div class="book_info">
+                    <h4>
+                        <a id="bn2" href="javascript:void(0)"></a>
+                    </h4>
+                    <p id="ban2"></p>
+                </div>
+            </li>
+            <li>
+                <img id="bimg3" class="book_img" src="">
+                </img>
+                <div class="book_info">
+                    <h4>
+                        <a id="bn3" href="javascript:void(0)"></a>
+                    </h4>
+                    <p id="ban3"></p>
+                </div>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <img id="bimg4" class="book_img" src="">
+                </img>
+                <div class="book_info">
+                    <h4>
+                        <a id="bn4" href="javascript:void(0)"></a>
+                    </h4>
+                    <p id="ban4"></p>
+                </div>
+            </li>
+            <li>
+                <img id="bimg5" class="book_img" src="">
+                </img>
+                <div class="book_info">
+                    <h4>
+                        <a id="bn5" href="javascript:void(0)"></a>
+                    </h4>
+                    <p id="ban5"></p>
+                </div>
+            </li>
+            <li>
+                <img id="bimg6" class="book_img" src="">
+                </img>
+                <div class="book_info">
+                    <h4>
+                        <a id="bn6" href="javascript:void(0)"></a>
+                    </h4>
+                    <p id="ban6"></p>
+                </div>
+            </li>
+        </ul>
+        <div id="page_sort_guide"></div>
+    </div>
+    <nav aria-label="Page navigation" id="navigatePages">
+        <ul class="pagination" >
+            <li >
+                <a href="javaScript:formFeed(-1)" aria-label="Previous" >
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+
+            <li id="last">
+                <a href="javaScript:formFeed(1)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>
 <div id="novel_scan" class="novel_scan">
     <div style="text-align: center;color: tomato;background-color: #adcced;font-size: 18px;width: 100%;height: 30px">作品章节</div>
+    <div id="novel_chapter" class="chapters">
+    </div>
 </div>
 
 <div id="new_book" class="new_book">

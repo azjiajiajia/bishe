@@ -27,17 +27,22 @@ $(function () {
         $("#register_window_register").css({"margin-bottom":"0px","margin-left":"200px","height":"25px","width":"100px" });
         return false;
     });
-//发布新书按钮
+//关闭发布新书
     $("#new_book_close_btn").click(function () {
         $("#bg").css({display:"none"});
         $("#new_book").css({display:"none"});
         return false;
     });
-//关闭发布新书
+//发布新书按钮
     $("#post_btn").click(function () {
-        $("#bg").css({display:"block"});
-        $("#new_book").css({display:"block"});
-        return false;
+        if($("#author_name").html()==""){
+            alert("请先登录！");
+        }
+        else {
+            $("#bg").css({display:"block"});
+            $("#new_book").css({display:"block"});
+            return false;
+        }
     });
 
     //登录作者
@@ -69,6 +74,7 @@ $(function () {
                     $("#author_name").css({display:"block"});
                     $("#author_name").append(aname);
                     $("#hid").append(data["aid"]);
+                    loadwork();
                 }
                 else if(data.type == "error"){
                     alert(data["msg"]);
@@ -148,9 +154,117 @@ function init_tab(){
         $("#page_tab_author_register").css({display:"none"});
         $("#page_tab_lable").css({display:"block"});
         $("#author_name").css({display:"block"});
+        loadwork();
     }
 }
 
+
+function loadwork(){
+    $.ajax({
+        url:'/author/find_work',
+        type:'post',
+        data:{"aname":$("#author_name").html()},
+        dataType:'json',
+        success:function (data) {
+            for(i=1;i<=6;i++){
+                $("#bimg"+i).attr("src",null);
+                $("#bn"+i).html("");
+                $("#ban"+i).html("");
+            }
+            $(".italic").remove();
+            for (i = 1; i <= data.list.length; i++) {
+                $("#bimg"+i).attr("src",data.list[i-1]["bcover"]);
+                $("#bn"+i).html(data.list[i-1]["bname"]);
+                $("#bn"+i).attr("href","javaScript:loadchapter(\""+data.list[i-1]["bname"]+"\")");
+                $("#ban"+i).html(data.list[i-1]["aname"]);
+            }
+            $("#page_sort_guide").html("");
+            $("#page_sort_guide").append("  当前页:"+data.pageNum)
+                .append("  总记录:"+data.total)
+                .append("  每页条数:"+data.pageSize)
+                .append("  总页数"+data.pages)
+                .append("  可显示页数:"+data.navigatePages)
+                .append("  起始页码:"+data.navigateFirstPage)
+                .append("  结束页码:"+data.navigateLastPage);
+            for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
+                var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
+                $page.addClass("italic");
+                $("#last").before($page);
+            }
+            $("#pageNum").val(data.pageNum);
+        },
+        error:function () {
+            alert("出错");
+        }
+    });
+}
+
+function select(i){
+    $.ajax({
+        url:'/author/find_work',
+        type:'post',
+        data:{"aname":$("#author_name").html(),"pageNum":i},
+        dataType:'json',
+        success:function (data) {
+            for(i=1;i<=6;i++){
+                $("#bimg"+i).attr("src",null);
+                $("#bn"+i).html("");
+                $("#ban"+i).html("");
+            }
+            $(".italic").remove();
+            for (i = 1; i <= data.list.length; i++) {
+                $("#bimg"+i).attr("src",data.list[i-1]["bcover"]);
+                $("#bn"+i).html(data.list[i-1]["bname"]);
+                $("#bn"+i).attr("href","javaScript:loadchapter(\""+data.list[i-1]["bname"]+"\")");
+                $("#ban"+i).html(data.list[i-1]["aname"]);
+            }
+            $("#page_sort_guide").html("");
+            $("#page_sort_guide").append("  当前页:"+data.pageNum)
+                .append("  总记录:"+data.total)
+                .append("  每页条数:"+data.pageSize)
+                .append("  总页数"+data.pages)
+                .append("  可显示页数:"+data.navigatePages)
+                .append("  起始页码:"+data.navigateFirstPage)
+                .append("  结束页码:"+data.navigateLastPage);
+            for (i=data.navigateFirstPage; i <= data.navigateLastPage; i++){
+                var $page = $("<li><a href = 'javaScript:select("+i+")'>"+i+"</a></li>");
+                $page.addClass("italic");
+                $("#last").before($page);
+            }
+            $("#pageNum").val(data.pageNum);
+        },
+        error:function () {
+            alert("出错");
+        }
+    });
+}
+
+function formFeed(i) {
+    select(Number($("#pageNum").val())+i);
+}
+
+function loadchapter(bname){
+    $.ajax({
+        url:'/author/findchapter',
+        type:'post',
+        data:{"bname":bname},
+        dataType:'json',
+        success:function (data) {
+            if(data.type=="success"){
+                var rows=data["rows"];
+                for(var i=0;i<rows.length;i++){
+                    var name= rows[i]["chaptername"];
+                    var ad=rows[i]["chapterad"];
+                    var cpt=rows[i]["chapter"];
+                    $("#novel_chapter").append("<a class='chapter' href='"+ad+"' target='_blank'>第"+cpt+"话</a>");
+                }
+            }
+        },
+        error:function () {
+            alert("出错");
+        }
+    });
+}
 
 jQuery.fn.moveDivByID= function (id){
     $("#"+id+"_title").mousedown(function(e){

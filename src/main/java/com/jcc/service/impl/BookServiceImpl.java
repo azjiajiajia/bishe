@@ -67,5 +67,8 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> selectBooks_vague(String name){return bookDao.selectBooks_vague(name);}
 
+    @Override
+    public List<Book> selectBooksByAuthor(String aname){return bookDao.selectBooksByAuthor(aname);}
+
 
 }

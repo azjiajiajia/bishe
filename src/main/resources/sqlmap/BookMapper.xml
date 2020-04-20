@@ -85,4 +85,13 @@
         order by length(b.bname) ASC
     </select>
 
+    <!--按作者名查询-->
+    <select id="selectBooksByAuthor" parameterType="String" resultType="Book">
+        select b.bname, b.bcover, b.bchapters, t.tag
+        from author_book ab, book b left join book_tag t  on b.bname = t.bname
+            where ab.aname=#{aname}
+            AND b.bname=ab.bname
+        order by length(b.bname) ASC
+    </select>
+
 </mapper>

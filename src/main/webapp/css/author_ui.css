@@ -61,3 +61,7 @@
 
 
 #post_new_book{position: absolute;top: 580px;width: 100%;height: 60px}
+
+
+.chapters{margin-top: 10px;width:80% }
+.chapter{display:inline-block;margin-left: 10%;width: 15%;margin-top: 10px;height:30px;font-size:10px}

@@ -40,4 +40,7 @@ public interface BookDao {
     //按书名模糊查询
     List<Book> selectBooks_vague(String name);
 
+    //按作者名查询书名
+    List<Book> selectBooksByAuthor(String aname);
+
 }
