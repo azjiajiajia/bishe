@@ -252,18 +252,27 @@ function loadchapter(bname){
         success:function (data) {
             if(data.type=="success"){
                 var rows=data["rows"];
+                var lastcpt;
                 for(var i=0;i<rows.length;i++){
                     var name= rows[i]["chaptername"];
                     var ad=rows[i]["chapterad"];
                     var cpt=rows[i]["chapter"];
                     $("#novel_chapter").append("<a class='chapter' href='"+ad+"' target='_blank'>第"+cpt+"话</a>");
+                    if(i==(rows.length-1)){
+                        lastcpt=i+2;
+                    }
                 }
+                $("#novel_chapter").append("<input type='button' class='chapter' onclick='javaScript:post_new_cpt("+lastcpt+")' style='color: #ed9266;font-size: 8px;width: 20%' value='发表最新章节'/>");
             }
         },
         error:function () {
             alert("出错");
         }
     });
+}
+
+function post_new_cpt(cpt){
+    alert(cpt);
 }
 
 jQuery.fn.moveDivByID= function (id){
