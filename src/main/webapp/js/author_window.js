@@ -27,6 +27,35 @@ $(function () {
         $("#register_window_register").css({"margin-bottom":"0px","margin-left":"200px","height":"25px","width":"100px" });
         return false;
     });
+
+    //关闭发布新章节
+    $("#new_cpt_close_btn").click(function () {
+        $("#save_dialog").css({display:"block"});
+        return false;
+    });
+
+    //save提示框关闭按钮
+    $("#save_dialog_close").click(function () {
+        $("#save_dialog").css({display:"none"});
+        return false;
+    });
+    //save提示框确定按钮
+    $("#save_dialog_yes").click(function () {
+        $("#save_dialog").css({display:"none"});
+        $("#post_new_cpt").css({display:"none"});
+        $("#bg").css({display:"none"});
+        return false;
+    });
+    //save提示框取消按钮
+    $("#save_dialog_no").click(function () {
+        $("#cpt_article").html("");
+        $("#cpt_name").html("");
+        $("#save_dialog").css({display:"none"});
+        $("#post_new_cpt").css({display:"none"});
+        $("#bg").css({display:"none"});
+        return false;
+    });
+
 //关闭发布新书
     $("#new_book_close_btn").click(function () {
         $("#bg").css({display:"none"});
@@ -259,7 +288,7 @@ function loadchapter(bname){
                     var cpt=rows[i]["chapter"];
                     $("#novel_chapter").append("<a class='chapter' href='"+ad+"' target='_blank'>第"+cpt+"话</a>");
                     if(i==(rows.length-1)){
-                        lastcpt=i+2;
+                        lastcpt=cpt+1;
                     }
                 }
                 $("#novel_chapter").append("<input type='button' class='chapter' onclick='javaScript:post_new_cpt("+lastcpt+")' style='color: #ed9266;font-size: 8px;width: 20%' value='发表最新章节'/>");
@@ -272,7 +301,10 @@ function loadchapter(bname){
 }
 
 function post_new_cpt(cpt){
-    alert(cpt);
+    $("#new_cpt_num").html("第"+cpt+"话");
+    $("#post_new_cpt").css({display:"block"});
+    $("#bg").css({display:"block"});
+
 }
 
 jQuery.fn.moveDivByID= function (id){

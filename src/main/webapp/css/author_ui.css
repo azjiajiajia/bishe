@@ -65,3 +65,26 @@
 
 .chapters{margin-top: 10px;width:80% }
 .chapter{display:inline-block;margin-left: 10%;width: 15%;margin-top: 10px;height:30px;font-size:10px}
+
+.article_input{height: 300px;width: 500px;}
+
+#save_dialog{position: absolute;
+    width: 300px;
+    height: 130px;
+    z-index: 9999;
+    display: none;
+    background-color: #a9abb0;
+    left: 30%;
+    top: 30%;
+    border: 1px solid black;}
+#save_dialog_close{text-decoration: none;
+    border: 1px solid gray;
+    font-size: 12px;
+    color: red;
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: slategray;
+    position: absolute;
+    top: 0px;
+    right: 0px;}

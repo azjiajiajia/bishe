@@ -199,6 +199,32 @@
     </div>
     <input type="submit" id="register_window_register" value="注册" class="commit_register"/>
 </div>
+
+<div id="post_new_cpt" class="login_window" style="width:80%;left: 10%;height: 100%;top:10%">
+    <div id="cpt_title" class="login_title">
+        <div id="new_cpt_num">第几话</div>
+        <span><a id="new_cpt_close_btn" href="javascript:void(0)">关闭</a></span>
+    </div>
+    <div class="login_input">
+        <label>章节名字：</label>
+        <input type="text" id="cpt_name" name="login_user_id"  class="list_input"/>
+    </div>
+    <div class="login_input" style="height: 70%">
+        <label>章节内容:</label><br>
+        <textarea id="cpt_article" placeholder="请在此输入" style="height: 90%;width: 80%"></textarea>
+    </div>
+    <input type="submit" id="new_cpt_submit" value="发布" class="login_submit" style="margin-left: 40%"/>
+</div>
+<div id="save_dialog">
+    <input type="button" id="save_dialog_close" value="X" >
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;是否保存文本
+    <br>
+    <br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="save_dialog_yes" value="确定">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" id="save_dialog_no" value="取消">
+</div>
 <div id="bg" class="bg"></div>
 </body>
 </html>
