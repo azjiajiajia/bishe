@@ -94,4 +94,9 @@
         order by length(b.bname) ASC
     </select>
 
+
+    <!--插入新章节-->
+    <insert id="insertChapter" parameterType="Map">
+        insert into book_chapter (bname, chapter, chaptername, chapterad) value (#{bname}, #{chapter}, #{chaptername},#{chapterad})
+    </insert>
 </mapper>

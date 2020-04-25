@@ -41,5 +41,8 @@ public interface BookService {
     //按作者名查询书名
     List<Book> selectBooksByAuthor(String aname);
 
+    //插入新章节
+    void insertChapter(Map<String,Object> requestMap);
+
 
 }

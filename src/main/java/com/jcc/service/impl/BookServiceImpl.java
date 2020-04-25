@@ -70,5 +70,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> selectBooksByAuthor(String aname){return bookDao.selectBooksByAuthor(aname);}
 
+    @Override
+    public void insertChapter(Map<String,Object> requestMap){
+        bookDao.insertChapter(requestMap);
+    }
+
 
 }

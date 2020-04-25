@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -110,6 +111,40 @@ public class AuthorController {
         }
         else {
             ret.put("type","error");
+            return ret;
+        }
+    }
+
+    @RequestMapping(value = "/add_cpt",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> add_cpt(int chapter,String bname,String article,String title)  {
+        Map<String, Object> ret = new HashMap<String, Object>();
+        String fname = title + ".txt";
+        File file = new File("E:\\毕业设计\\src\\main\\webapp\\novel_src\\" + bname+"\\"+fname);
+        if (file.exists()) {
+            ret.put("type", "error");
+            ret.put("msg", "章节名重复");
+            return ret;
+        } else {
+            try{
+                file.createNewFile();
+                BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),"utf-8"));
+                output.write(article);
+                output.close();
+                Map<String, Object> rMap = new HashMap<String, Object>();
+                rMap.put("bname", bname);
+                rMap.put("chapter", chapter);
+                rMap.put("chaptername", title);
+                rMap.put("chapterad", "/novel_src/" + bname + "/" + fname);
+                bookService.insertChapter(rMap);
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
+                ret.put("type","error");
+                ret.put("msg","文件操作出错");
+                return ret;
+            }
+            ret.put("type", "success");
             return ret;
         }
     }

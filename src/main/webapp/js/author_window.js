@@ -34,6 +34,14 @@ $(function () {
         return false;
     });
 
+    //发布新章节发布
+    $("#new_cpt_submit").click(function () {
+        if($("#cpt_name").val()==""){alert("请输入章节名");return false;}
+        if($("#cpt_article").html()==""){alert("请输入文章");return false;}
+        add_new_cpt($("#hid_cpt").val());
+        return false;
+    });
+
     //save提示框关闭按钮
     $("#save_dialog_close").click(function () {
         $("#save_dialog").css({display:"none"});
@@ -49,7 +57,7 @@ $(function () {
     //save提示框取消按钮
     $("#save_dialog_no").click(function () {
         $("#cpt_article").html("");
-        $("#cpt_name").html("");
+        $("#cpt_name").val("");
         $("#save_dialog").css({display:"none"});
         $("#post_new_cpt").css({display:"none"});
         $("#bg").css({display:"none"});
@@ -273,6 +281,7 @@ function formFeed(i) {
 }
 
 function loadchapter(bname){
+    $("#novel_chapter").html("");
     $.ajax({
         url:'/author/findchapter',
         type:'post',
@@ -291,6 +300,8 @@ function loadchapter(bname){
                         lastcpt=cpt+1;
                     }
                 }
+                $("#hid_cpt").val(lastcpt);
+                $("#hid_bname").val(bname);
                 $("#novel_chapter").append("<input type='button' class='chapter' onclick='javaScript:post_new_cpt("+lastcpt+")' style='color: #ed9266;font-size: 8px;width: 20%' value='发表最新章节'/>");
             }
         },
@@ -305,6 +316,31 @@ function post_new_cpt(cpt){
     $("#post_new_cpt").css({display:"block"});
     $("#bg").css({display:"block"});
 
+}
+
+function add_new_cpt(cpt){
+    $.ajax({
+        url:'/author/add_cpt',
+        type:'post',
+        data:{"chapter":cpt,"bname":$("#hid_bname").val(),"article":$("#cpt_article").val(),"title":$("#cpt_name").val()},
+        dataType:'json',
+        success:function (data) {
+            if(data.type=="success"){
+                alert("发布成功");
+                $("#post_new_cpt").css({display:"none"});
+                $("#bg").css({display:"none"});
+                loadchapter($("#hid_bname").val());
+                $("#cpt_article").val("");
+                $("#cpt_name").val("");
+            }
+            else {
+                alert(data["msg"]);
+            }
+        },
+        error:function () {
+            alert("出错");
+        }
+    });
 }
 
 jQuery.fn.moveDivByID= function (id){

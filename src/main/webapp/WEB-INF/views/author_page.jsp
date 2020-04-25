@@ -226,5 +226,7 @@
     <input type="button" id="save_dialog_no" value="取消">
 </div>
 <div id="bg" class="bg"></div>
+<input type="text" name="cpt" id="hid_cpt" value="" disabled hidden/>
+<input type="text" name="cpt" id="hid_bname" value="" disabled hidden/>
 </body>
 </html>
