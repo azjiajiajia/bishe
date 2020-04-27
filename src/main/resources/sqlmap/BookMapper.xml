@@ -99,4 +99,15 @@
     <insert id="insertChapter" parameterType="Map">
         insert into book_chapter (bname, chapter, chaptername, chapterad) value (#{bname}, #{chapter}, #{chaptername},#{chapterad})
     </insert>
+
+    <!--插入新书-->
+    <insert id="insertNewBook" parameterType="Book">
+        insert into book (bname,bcover,bchapters) value (#{bname},#{bcover},#{bchapters})
+    </insert>
+    <insert id="insertBookTag" parameterType="Book">
+        insert into book_tag (bname,tag) value (#{bname},#{tag})
+    </insert>
+    <insert id="insertBookAuthor" parameterType="Map">
+        insert into author_book (aid,bname,aname) value (#{aid},#{bname},#{aname})
+    </insert>
 </mapper>

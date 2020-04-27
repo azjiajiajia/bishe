@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
@@ -148,4 +149,55 @@ public class AuthorController {
             return ret;
         }
     }
+
+
+    @RequestMapping(value = "/post_new_book",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> post_new_book(File file,String bname,String tag,String aid,String aname) throws IOException {
+        Map<String, Object> ret = new HashMap<String, Object>();
+        String fileName = file.getName();
+        if (!fileName.endsWith(".jpg")){
+            ret.put("type","error");
+            ret.put("mgs","请上传jpg格式");
+            return ret;
+        }
+        Book book=bookService.selectOne(bname);
+        if(book!=null){
+            ret.put("type","error");
+            ret.put("mgs","已经有人发布过同名小说");
+            return ret;
+        }
+        File dir=new File("E:\\毕业设计\\src\\main\\webapp\\novel_src\\"+bname);
+        if (!dir.exists()){
+            dir.mkdir();
+        }
+        File endfile=new File("E:\\毕业设计\\src\\main\\webapp\\novel_src\\" + bname+"\\"+bname+".jpg");
+        FileInputStream input = new FileInputStream(file);
+        FileOutputStream output = new FileOutputStream(endfile);
+        byte[] b = new byte[1024 * 5];
+        int len;
+        while ((len = input.read(b)) != -1) {
+            output.write(b, 0, len);
+        }
+        output.flush();
+        output.close();
+        input.close();
+        Book book1 =new Book();
+        book1.setBcover("/novel_src/"+bname+"/"+bname+".jpg");
+        book1.setBname(bname);
+        book1.setBchapters(0);
+        book1.setTag(tag);
+        bookService.insertNewBook(book1);
+        Map<String, Object> rMap = new HashMap<String, Object>();
+        rMap.put("aid",aid);
+        rMap.put("bname",bname);
+        rMap.put("aname",aname);
+        bookService.insertBookAuthor(rMap);
+        ret.put("type","success");
+        ret.put("msg","成功");
+        return ret;
+    }
+
+
+
 }

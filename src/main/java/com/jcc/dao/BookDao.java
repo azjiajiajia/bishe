@@ -46,4 +46,13 @@ public interface BookDao {
     //插入新章节
     void insertChapter(Map<String,Object> requestMap);
 
+    //插入新书
+    void insertNewBook(Book book);
+
+    //插入书本标签
+    void insertBookTag(Book book);
+
+    //插入书本作者
+    void insertBookAuthor(Map<String,Object> requestMap);
+
 }

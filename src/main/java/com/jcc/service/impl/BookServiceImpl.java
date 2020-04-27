@@ -75,5 +75,10 @@ public class BookServiceImpl implements BookService {
         bookDao.insertChapter(requestMap);
     }
 
+    @Override
+    public void insertNewBook(Book book){bookDao.insertNewBook(book);bookDao.insertBookTag(book);}
+
+    @Override
+    public void insertBookAuthor(Map<String,Object> requestMap){bookDao.insertBookAuthor(requestMap);}
 
 }

@@ -125,12 +125,12 @@
     </div>
     <div class="book_input">
         <label>封面:</label>
-        <input type="file" name="novel_cover"/>
+        <input type="file" name="novel_cover" id="input_img"/>
         <label id="none_cover">请设置封面</label>
     </div>
     <div class="book_input">
         <label>书名:</label>
-        <input type="text" placeholder="请输入书名"/>
+        <input type="text" placeholder="请输入书名" id="input_bname"/>
         <label id="bname_already_has">书名已存在</label>
     </div>
     <div class="book_input">
@@ -228,5 +228,6 @@
 <div id="bg" class="bg"></div>
 <input type="text" name="cpt" id="hid_cpt" value="" disabled hidden/>
 <input type="text" name="cpt" id="hid_bname" value="" disabled hidden/>
+<input type="text" id="hid" value="" disabled hidden/>
 </body>
 </html>

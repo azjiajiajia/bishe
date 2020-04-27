@@ -82,6 +82,42 @@ $(function () {
         }
     });
 
+    //发布界面确定发布按钮
+    $("#post_submit").click(function () {
+        if($("#input_bname").val()==""){
+            alert("请输入书名");
+            return false;
+        }
+        else if($("#input_img").val()==""){
+            alert("请上传封面");
+            return false;
+        }
+        $.ajax({
+            url:'/author/post_new_book',
+            type:'post',
+            data:{"file":$("#input_img").val(),"bname":$("#input_bname").val(),"tag":$("#novel_kind").val(),"aid":$("#hid").val(),"aname":$("#author_name").html()},
+            dataType:'json',
+            success:function (data) {
+                if(data.type="success"){
+                    alert("新书发布成功");
+                    $("#bg").css({display:"none"});
+                    $("#new_book").css({display:"none"});
+                    loadwork();
+                    loadchapter($("#input_bname").val());
+                    $("#input_img").val("");
+                    $("#input_bname").val("");
+
+                }
+                else {
+                    alert(data["msg"]);
+                }
+            },
+            error:function () {
+              alert("出错");
+            }
+        });
+    });
+
     //登录作者
     $("#login_submit").click(function () {
         var id = $("#login_user_id").val();
@@ -110,7 +146,7 @@ $(function () {
                     $("#page_tab_lable").css({display:"block"});
                     $("#author_name").css({display:"block"});
                     $("#author_name").append(aname);
-                    $("#hid").append(data["aid"]);
+                    $("#hid").val(data["aid"]);
                     loadwork();
                 }
                 else if(data.type == "error"){
@@ -290,7 +326,7 @@ function loadchapter(bname){
         success:function (data) {
             if(data.type=="success"){
                 var rows=data["rows"];
-                var lastcpt;
+                var lastcpt=1;
                 for(var i=0;i<rows.length;i++){
                     var name= rows[i]["chaptername"];
                     var ad=rows[i]["chapterad"];

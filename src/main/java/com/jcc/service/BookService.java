@@ -44,5 +44,10 @@ public interface BookService {
     //插入新章节
     void insertChapter(Map<String,Object> requestMap);
 
+    //插入新书
+    void insertNewBook(Book book);
+
+    //插入新书作者
+    void insertBookAuthor(Map<String,Object> requestMap);
 
 }
