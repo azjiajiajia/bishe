@@ -38,7 +38,7 @@ $(function(){
         if (pwd.length = 0 ){
             alert("请输入密码");
         }
-
+        var rname;
         $.ajax({
             url:'/system/login',
             type: 'post',
@@ -47,8 +47,7 @@ $(function(){
             async:'false',
             success: function(data){
                 if(data.type == "success"){
-                    var rname=data["reader_name"];
-                    alert("登录成功！ 书友："+rname);
+                    rname=data["reader_name"];
                     $("#bg").css({display:"none"});
                     $("#login_window").css({display:"none"});
                     $("#page_tab_reader_login").css({display:"none"});
@@ -60,6 +59,37 @@ $(function(){
                 }
                 else if(data.type == "error"){
                     alert(data["msg"]);
+                }
+            },
+            error:function (data) {
+                alert("出错");
+            }
+        });
+        rname=$("#user_name").html();
+        alert("登录成功!");
+        $.ajax({
+            url:'/reader/have_read',
+            type:'post',
+            data:{"rname":rname,"bname":$("#bname").val()},
+            dataType:'JSON',
+            async:'false',
+            success:function (data) {
+                if(data["result"]=="empty"){
+                    $("#reading").click(function () {
+                        alert("没有章节");
+                    });
+                }
+                else if(data["result"]=="no_record"){
+                    $("#reading").click(function () {
+                        window.open(data["chapterad"]);
+                        add_to_record(1,true);
+                    });
+                }
+                else {
+                    $("#reading").val("继续阅读第"+data["chapter"]+"话");
+                    $("#reading").click(function () {
+                        window.open(data["chapterad"]) ;
+                    });
                 }
             },
             error:function (data) {
@@ -164,14 +194,14 @@ function init_btn(){
                 }
                 else if(data["result"]=="no_record"){
                     $("#reading").click(function () {
-                        window.parent.location.href =data["chapterad"];
+                        window.open(data["chapterad"]);
                         add_to_record(1,true);
                     });
                 }
                 else {
                     $("#reading").val("继续阅读第"+data["chapter"]+"话");
                     $("#reading").click(function () {
-                        window.parent.location.href =data["chapterad"];
+                        window.open(data["chapterad"]) ;
                     });
                 }
             },
@@ -196,7 +226,7 @@ function init_btn(){
             success:function (data) {
                 if(data["result"]=="success"){
                     $("#reading").click(function () {
-                        window.parent.location.href =data["chapterad"];
+                        window.open(data["chapterad"]);
                     });
                 }
                 else{
@@ -231,7 +261,7 @@ function init_chapter(){
                     var ad=rows[i]["chapterad"];
                     var cpt=rows[i]["chapter"];
                     if($("#user_name").html()==""){
-                        $("#novel_chapter").append("<a class='chapter' href='"+ad+"'>"+name+"</a>");
+                        $("#novel_chapter").append("<a class='chapter' href='"+ad+"' target='_blank'>"+name+"</a>");
                     }
                     else {
                         $("#novel_chapter").append("<a class='chapter' href='javaScript:st_reading(\""+ad+"\","+
@@ -269,7 +299,7 @@ function add_to_lib(){
 
 function st_reading(ad,chapter) {
     add_to_record(chapter,false);
-    window.parent.location.href =ad;
+    window.open(ad);
 }
 
 

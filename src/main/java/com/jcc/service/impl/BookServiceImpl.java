@@ -81,4 +81,13 @@ public class BookServiceImpl implements BookService {
     @Override
     public void insertBookAuthor(Map<String,Object> requestMap){bookDao.insertBookAuthor(requestMap);}
 
+    @Override
+    public void updateBookAddC(String bname){bookDao.updateBookAddC(bname);}
+
+    @Override
+    public void insertBookPostC(String bname){bookDao.insertBookPostC(bname);}
+
+    @Override
+    public List<Map<String,Object>> selectRecent(){return bookDao.selectRecent();}
+
 }

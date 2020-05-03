@@ -627,6 +627,7 @@ $(function(){
 
     //初始化检查session中是否有reader.rname
     init_tab();
+    init_recent_post();
 });
 
 function select(i) {
@@ -706,6 +707,23 @@ function init_tab(){
         $("#page_tab_lable").css({display:"block"});
         $("#user_name").css({display:"block"});
     }
+}
+
+//初始化最近更新
+function init_recent_post() {
+    $.ajax({
+        url:'/book/recent_post',
+        type:'post',
+        data:{},
+        dataType:'json',
+        success:function (books) {
+            for(var i=1;i<=books.length;i++){
+                $("#recent_bname_"+i).html(books[i-1].bname);
+                $("#recent_img_"+i).attr("src",books[i-1].bcover);
+                $("#recent_"+i).attr("href","/book/novel_info/bname="+books[i-1].bname);
+            }
+        }
+    });
 }
 
 

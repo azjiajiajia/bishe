@@ -110,4 +110,19 @@
     <insert id="insertBookAuthor" parameterType="Map">
         insert into author_book (aid,bname,aname) value (#{aid},#{bname},#{aname})
     </insert>
+
+    <!--小说章节数加1-->
+    <update id="updateBookAddC" parameterType="String">
+        update  book set bchapters=1+(select  c from (select bchapters as c from book where bname=#{bname})temp) where bname=#{bname};
+    </update>
+
+    <!--插入小说更新表-->
+    <insert id="insertBookPostC" parameterType="String">
+        insert into book_postc values(null,#{bname});
+    </insert>
+
+    <!--查找最近更新的六本书-->
+    <select id="selectRecent" resultType="Map">
+        select * from book_postc  order by pid desc limit 0,6
+    </select>
 </mapper>

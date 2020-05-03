@@ -254,8 +254,8 @@
                 <a href="" id="recent_1" target="_blank">
                     <cite>
                         <span>
-                            <img src="/images/1.jpg" id="recent_img_1" alt="1" style="width: 150px;height: 180px"/>
-                            <i id="recent_bname_1" class="recent_bname">书名</i>
+                            <img src="" id="recent_img_1" alt="1" style="width: 150px;height: 180px"/>
+                            <i id="recent_bname_1" class="recent_bname"></i>
                         </span>
                     </cite>
                 </a>
@@ -264,8 +264,8 @@
                 <a href="" id="recent_4" target="_blank">
                     <cite>
                         <span>
-                            <img src="/images/2.jpg" id="recent_img_4" alt="3" style="width: 150px;height: 180px"/>
-                            <i id="recent_bname_4" class="recent_bname">书名</i>
+                            <img src="" id="recent_img_4" alt="3" style="width: 150px;height: 180px"/>
+                            <i id="recent_bname_4" class="recent_bname"></i>
                         </span>
                     </cite>
                 </a>
@@ -278,8 +278,8 @@
                 <a href="" id="recent_2" target="_blank">
                     <cite>
                         <span>
-                            <img src="/images/3.jpg" id="recent_img_2" alt="2" style="width: 150px;height: 180px"/>
-                            <i id="recent_bname_2" class="recent_bname">书名</i>
+                            <img src="" id="recent_img_2" alt="2" style="width: 150px;height: 180px"/>
+                            <i id="recent_bname_2" class="recent_bname"></i>
                         </span>
                     </cite>
                 </a>
@@ -288,8 +288,8 @@
                 <a href="" id="recent_5" target="_blank">
                     <cite>
                         <span>
-                            <img src="/images/4.jpg" id="recent_img_5" alt="5" style="width: 150px;height: 180px"/>
-                            <i id="recent_bname_5" class="recent_bname">书名</i>
+                            <img src="" id="recent_img_5" alt="5" style="width: 150px;height: 180px"/>
+                            <i id="recent_bname_5" class="recent_bname"></i>
                         </span>
                     </cite>
                 </a>
@@ -302,8 +302,8 @@
                 <a href="" id="recent_3" target="_blank">
                     <cite>
                         <span>
-                            <img src="/images/5.jpg" id="recent_img_3" alt="3" style="width: 150px;height: 180px"/>
-                            <i id="recent_bname_3" class="recent_bname">书名</i>
+                            <img src="" id="recent_img_3" alt="3" style="width: 150px;height: 180px"/>
+                            <i id="recent_bname_3" class="recent_bname"></i>
                         </span>
                     </cite>
                 </a>
@@ -312,8 +312,8 @@
                 <a href="" id="recent_6" target="_blank">
                     <cite>
                         <span>
-                            <img src="/images/6.jpg" id="recent_img_6" alt="6" style="width: 150px;height: 180px"/>
-                            <i id="recent_bname_6" class="recent_bname">书名</i>
+                            <img src="" id="recent_img_6" alt="6" style="width: 150px;height: 180px"/>
+                            <i id="recent_bname_6" class="recent_bname"></i>
                         </span>
                     </cite>
                 </a>

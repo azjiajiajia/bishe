@@ -11,7 +11,7 @@
     </delete>
 
     <update id="update" parameterType="Author">
-        update from author
+        update author
         <trim prefix="SET" suffixOverrides=",">
             <if test="apwd != null"> apwd = #{apwd}, </if>
             <if test="aname != null"> aname = #{aname}, </if>

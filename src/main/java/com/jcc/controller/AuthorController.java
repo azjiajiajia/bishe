@@ -138,6 +138,8 @@ public class AuthorController {
                 rMap.put("chaptername", title);
                 rMap.put("chapterad", "/novel_src/" + bname + "/" + fname);
                 bookService.insertChapter(rMap);
+                bookService.updateBookAddC(bname);
+                bookService.insertBookPostC(bname);
             }
             catch (Exception ex) {
                 ex.printStackTrace();

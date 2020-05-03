@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -119,5 +120,19 @@ public class BookController {
         // 将用户信息放入PageInfo对象里,并设置导航页码数量(拿来设置导航的页码数量)
         PageInfo<Book> page = new PageInfo<Book>(books, 10);
         return page;
+    }
+
+    @RequestMapping("/recent_post")
+    @ResponseBody
+    public List<Book> recent(){
+        List<Map<String,Object>> bs =bookService.selectRecent();
+        String bname;
+        List<Book> books=new ArrayList<Book>();
+        for(int i=0;i<6;i++){
+            bname=bs.get(i).get("bname").toString();
+            Book book=bookService.selectOne(bname);
+            books.add(book);
+        }
+        return books;
     }
 }

@@ -55,4 +55,13 @@ public interface BookDao {
     //插入书本作者
     void insertBookAuthor(Map<String,Object> requestMap);
 
+    //书本章节数加一
+    void updateBookAddC(String bname);
+
+    //小说更新表中加入数据
+    void insertBookPostC(String bname);
+
+    //选出6本最新更新的小说
+    List<Map<String,Object>> selectRecent();
+
 }
