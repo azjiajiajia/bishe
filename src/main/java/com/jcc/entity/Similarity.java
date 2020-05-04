@@ -123,23 +123,95 @@ public class Similarity {
     }
 
     public void insert_sort(float ux, String x){
-        if(getA()!=null&&getB()!=null&&getC()!=null&&getD()!=null&&getE()!=null&&getF()!=null){
-            if(getUf()>ux)return;
-            if(getUe()>ux){setF(x);setUf(ux);return;}
-            if(getUd()>ux){setF(getE());setUf(getUe());setE(x);setUe(ux);return;}
-            if(getUc()>ux){setF(getE());setUf(getUe());setE(getD());setUe(getUd());setD(x);setUd(ux);return;}
-            if(getUb()>ux){setF(getE());setUf(getUe());setE(getD());setUe(getUd());setD(getC());setUd(getUc());setC(x);setUc(ux);return;}
-            if(getUa()>ux){setF(getE());setUf(getUe());setE(getD());setUe(getUd());setD(getC());setUd(getUc());setC(getB());setUc(getUb());setB(x);setUb(ux);return;}
-            setF(getE());setUf(getUe());setE(getD());setUe(getUd());setD(getC());setUd(getUc());setC(getB());setUc(getUb());setB(getA());setUb(getUa());setA(x);setUa(ux);return;
+        if(!x.equals(a)&&!x.equals(b)&&!x.equals(c)&&!x.equals(d)&&!x.equals(e)&&!x.equals(f)){
+            if(a!=null&&b!=null&&c!=null&&d!=null&&e!=null&&f!=null){
+                if(uf>ux)return;
+                if(ue>ux){setF(x);setUf(ux);return;}
+                if(ud>ux){setF(getE());setUf(getUe());setE(x);setUe(ux);return;}
+                if(uc>ux){setF(getE());setUf(getUe());setE(getD());setUe(getUd());setD(x);setUd(ux);return;}
+                if(ub>ux){setF(getE());setUf(getUe());setE(getD());setUe(getUd());setD(getC());setUd(getUc());setC(x);setUc(ux);return;}
+                if(ua>ux){setF(getE());setUf(getUe());setE(getD());setUe(getUd());setD(getC());setUd(getUc());setC(getB());setUc(getUb());setB(x);setUb(ux);return;}
+                setF(getE());setUf(getUe());setE(getD());setUe(getUd());setD(getC());setUd(getUc());setC(getB());setUc(getUb());setB(getA());setUb(getUa());setA(x);setUa(ux);return;
+            }
+            else{
+                if(a==null){ua=ux;a=x;return;}
+                if(b==null){ub=ux;b=x;return;}
+                if(c==null){uc=ux;c=x;return;}
+                if(d==null){ud=ux;d=x;return;}
+                if(e==null){ue=ux;e=x;return;}
+                if(f==null){uf=ux;f=x;return;}
+            }
         }
-        else{
-            if(getA()==null){setUa(ux);setA(x);return;}
-            if(getB()==null){setUb(ux);setB(x);return;}
-            if(getC()==null){setUc(ux);setC(x);return;}
-            if(getD()==null){setUd(ux);setD(x);return;}
-            if(getE()==null){setUe(ux);setE(x);return;}
-            if(getF()==null){setUf(ux);setF(x);return;}
+        else {
+            if(a.equals(x))ua=ux;
+            else if(b.equals(x))ub=ux;
+            else if(c.equals(x))uc=ux;
+            else if(d.equals(x))ud=ux;
+            else if(e.equals(x))ue=ux;
+            else if(f.equals(x))ue=ux;
+            sort();
         }
+    }
+
+    //沉底排序法
+    public void sort(){
+        if(a==null)return;
+        if(b==null)return;
+        if(ua<ub){
+            float ux;
+            String x;
+            x=a;
+            ux=ua;
+            a=b;
+            ua=ub;
+            b=x;
+            ub=ux;
+        }
+        if(c==null)return;
+        if(ub<uc){
+            float ux;
+            String x;
+            x=b;
+            ux=ub;
+            b=c;
+            ub=uc;
+            c=x;
+            uc=ux;
+        }
+        if(d==null)return;
+        if(uc<ud){
+            float ux;
+            String x;
+            x=c;
+            ux=uc;
+            c=d;
+            uc=ud;
+            d=x;
+            ud=ux;
+        }
+        if(e==null)return;
+        if(ud<ue){
+            float ux;
+            String x;
+            x=d;
+            ux=ud;
+            d=e;
+            ud=ue;
+            e=x;
+            ue=ux;
+        }
+        if(f==null)return;
+        if(ue<uf){
+            float ux;
+            String x;
+            x=e;
+            ux=ue;
+            e=f;
+            ue=uf;
+            f=x;
+            uf=ux;
+        }
+
 
     }
 }

@@ -57,4 +57,9 @@
     <select id="selectSim" parameterType="String" resultType="Similarity">
         select * from book_similar where bname=#{bname}
     </select>
+
+    <!--更新书本的相似度表-->
+    <update id="UpdateSim" parameterType="Similarity">
+        update  book_similar set a=#{a},b=#{b},c=#{c},d=#{d},e=#{e},f=#{f},ua=#{ua},ub=#{ub},uc=#{uc},ud=#{ud},ue=#{ue},uf=#{uf} where bname=#{bname}
+    </update>
 </mapper>
