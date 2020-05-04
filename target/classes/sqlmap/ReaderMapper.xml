@@ -36,4 +36,25 @@
     <insert id="addToLib" parameterType="Map">
         insert into reader_book value (#{rid},#{rname},#{bname})
     </insert>
+
+    <!--将所有书库中有该书的读者度过的书选出（不含本书）-->
+    <select id="recommendBooks" parameterType="String" resultType="String">
+        select a.bname from reader_book a, reader_book b where b.bname=#{bname} and a.rname=b.rname and a.bname!=#{bname}
+    </select>
+
+
+    <!--计算N(i)N(j)交集-->
+    <select id="countij" parameterType="Map" resultType="int">
+        select count(*) from reader_book a, reader_book b where a.bname=#{i} and b.bname=#{j} and a.rname=b.rname
+    </select>
+
+    <!--计算N(i)-->
+    <select id="counti" parameterType="String" resultType="int">
+        select count(*) from reader_book where bname=#{bname}
+    </select>
+
+    <!--查询书本的相似度表-->
+    <select id="selectSim" parameterType="String" resultType="Similarity">
+        select * from book_similar where bname=#{bname}
+    </select>
 </mapper>

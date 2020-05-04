@@ -125,4 +125,9 @@
     <select id="selectRecent" resultType="Map">
         select * from book_postc  order by pid desc limit 0,6
     </select>
+
+    <!--插入小说相似度表-->
+    <insert id="insertNewBookToSim" parameterType="String">
+        insert into book_similar values(#{bname},null,null,null,null,null,null,null,null,null,null,null,null);
+    </insert>
 </mapper>

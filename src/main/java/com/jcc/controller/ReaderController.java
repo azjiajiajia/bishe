@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jcc.entity.Book;
 import com.jcc.entity.Reader;
+import com.jcc.entity.Similarity;
 import com.jcc.service.BookService;
 import com.jcc.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -176,10 +177,37 @@ public class ReaderController {
             qMap.put("bname",bname);
             qMap.put("rid",rid);
             readerService.addToLib(qMap);
+            //添加书库成功，再将所有书库中有该书的读者度过的书选出（不含本书）
+            String[] bnames=readerService.recommendBooks(bname);
+            //计算每本书和该书的相似度Wij
+            Similarity simI=readerService.selectSim(bname);
+            for(String bn:bnames){
+                Map<String,String> qmapx=new HashMap<String, String>();
+                qmapx.put("i",bname);
+                qmapx.put("j",bn);
+                int x=readerService.countij(qmapx);
+                if(x==0)continue;
+                int y=readerService.counti(bname);
+                float w=(float)x/y;
+                //拿到J的相似度表进行插入修改
+                Similarity simJ=readerService.selectSim(bn);
+                simI.insert_sort(w,bn);
+                simJ.insert_sort(w,bname);
+                readerService.UpdateSim(simJ);
+            }
+            //I的相似度表实体类排序完后再进行更新
+            readerService.UpdateSim(simI);
             ret.put("type","success");
         }
         else {ret.put("type","has");}
         return ret;
     }
+
+    @RequestMapping(value = "/person_intst",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> person_intst(String rname){
+        return null;
+    }
+
 
 }

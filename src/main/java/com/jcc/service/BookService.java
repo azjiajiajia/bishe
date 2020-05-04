@@ -1,6 +1,7 @@
 package com.jcc.service;
 
 import com.jcc.entity.Book;
+import com.jcc.entity.Similarity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -59,4 +60,6 @@ public interface BookService {
     //选出6本最新更新的小说
     List<Map<String,Object>> selectRecent();
 
+    //将新书插入相似度表
+    void insertNewBookToSim(String bname);
 }

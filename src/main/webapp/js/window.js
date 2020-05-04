@@ -628,6 +628,7 @@ $(function(){
     //初始化检查session中是否有reader.rname
     init_tab();
     init_recent_post();
+    init_person_intst();
 });
 
 function select(i) {
@@ -726,6 +727,29 @@ function init_recent_post() {
     });
 }
 
+
+//加载个人推荐栏
+function init_person_intst() {
+    if($("#user_name").html()!=""){
+        $("#person_intst").css({display:"block"});
+        $.ajax({
+            url:'/reader/person_intst',
+            type:'post',
+            data:{"rname":$("#user_name").html()},
+            dataType:'json',
+            async:'false',
+            success:function (data) {
+
+            },
+            error:function () {
+                alert("出错");
+            }
+        });
+    }
+    else {
+        $("#person_intst").css({display:"none"});
+    }
+}
 
 //按书名模糊查询书
 function search_novel(i) {

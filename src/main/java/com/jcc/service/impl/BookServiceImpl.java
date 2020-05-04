@@ -2,6 +2,7 @@ package com.jcc.service.impl;
 
 import com.jcc.dao.BookDao;
 import com.jcc.entity.Book;
+import com.jcc.entity.Similarity;
 import com.jcc.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -89,5 +90,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Map<String,Object>> selectRecent(){return bookDao.selectRecent();}
+
+    @Override public void insertNewBookToSim(String bname){bookDao.insertNewBookToSim(bname);}
 
 }

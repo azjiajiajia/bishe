@@ -1,6 +1,7 @@
 package com.jcc.dao;
 
 import com.jcc.entity.Book;
+import com.jcc.entity.Similarity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -63,5 +64,8 @@ public interface BookDao {
 
     //选出6本最新更新的小说
     List<Map<String,Object>> selectRecent();
+
+    //将新书插入相似度表
+    void insertNewBookToSim(String bname);
 
 }

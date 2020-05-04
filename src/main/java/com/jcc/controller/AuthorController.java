@@ -195,6 +195,8 @@ public class AuthorController {
         rMap.put("bname",bname);
         rMap.put("aname",aname);
         bookService.insertBookAuthor(rMap);
+        //将新书插入相似度表
+        bookService.insertNewBookToSim(bname);
         ret.put("type","success");
         ret.put("msg","成功");
         return ret;
