@@ -1,0 +1,188 @@
+小说网站数据库
+
+create database noveldb;
+
+小说表
+
+book
+
+create table book(
+ bname varchar(20) primary key,
+ bcover varchar(50),
+ bchapters int(11) not null
+)
+
+作者表
+
+author
+
+create table author(
+ aid varchar(20),
+ apwd varchar(20) not null,
+ aname varchar(20),
+ constraint authorid primary key(aid,aname)
+)
+
+读者表
+
+reader
+
+create table reader(
+ rid varchar(20),
+ rpwd varchar(20) not null,
+ rname varchar(20),
+ constraint readerid primary key(rid,rname)
+)
+
+作者小说表
+
+author_book
+
+create table author_book(
+ aid varchar(20) not null,
+ aname varchar(20) not null,
+ bname varchar(20) not null,
+ constraint br foreign key(bname) references book(bname),
+ constraint ar foreign key(aid,aname) references author(aid,aname)
+)
+
+小说标签表
+
+book_tag
+
+create table book_tag(
+ bname varchar(20) not null,
+ tag varchar(10) not null,
+ constraint br2 foreign key(bname) references book(bname)
+)
+
+小说章节内容表
+
+book_chapter
+
+create table book_chapter(
+ bname varchar(20) not null,
+ chapter int(11) not null,
+ chaptername varchar(30) not null,
+ chapterad varchar(70) not null,
+ constraint br3 foreign key(bname) references book(bname)
+)
+
+create index book_chapter_bname on book_chapter(bname);
+alter table book_chapter modify column chaptername varchar(30) not null;
+alter table book_chapter modify column chapterad varchar(70) not null;
+
+
+读者小说书架表
+
+reader_book
+
+create table reader_book(
+ rid varchar(20) not null,
+ rname varchar(20) not null,
+ bname varchar(20) not null,
+ constraint br4 foreign key(bname) references book(bname),
+ constraint rr foreign key(rid,rname) references reader(rid,rname)
+)
+
+读者小说浏览表
+
+reader_book_record
+
+create table reader_book_record(
+ rid varchar(20) not null,
+ rname varchar(20) not null,
+ bname varchar(20) not null,
+ chapter int(11) not null，
+ constraint br5 foreign key(bname) references book(bname),
+ constraint rr2 foreign key(rid,rname) references reader(rid,rname)
+)
+
+
+alter table reader_book_record add chapter int(11) not null;
+//alter table reader_book_record drop constraint br5;
+//alter table reader_book_record add constraint  brbc foreign key(bname,chapter) references book_chapter(bname,chapter);
+
+
+
+insert into reader_book_record values('1000','虚拟用户0','我有好多复活币',1);
+insert into reader_book_record values('1000','虚拟用户0','我本初唐',1);
+insert into reader_book_record values('1000','虚拟用户0','我真的重生了',1);
+insert into reader_book_record values('1000','虚拟用户0','我要做阁老',1);
+insert into reader_book_record values('1000','虚拟用户0','盖世双谐',2);
+insert into reader_book_record values('1000','虚拟用户0','科技树保姆',3);
+insert into reader_book_record values('1000','虚拟用户0','赛博英雄传',15);
+
+
+
+insert into reader_book values('1000','虚拟用户0','我有好多复活币');
+insert into reader_book values('1000','虚拟用户0','我本初唐');
+insert into reader_book values('1000','虚拟用户0','我真的重生了');
+insert into reader_book values('1000','虚拟用户0','我要做阁老');
+insert into reader_book values('1000','虚拟用户0','盖世双谐');
+insert into reader_book values('1000','虚拟用户0','科技树保姆');
+insert into reader_book values('1000','虚拟用户0','赛博英雄传');
+insert into reader_book values('1000','虚拟用户0','回档在2008');
+
+select book.bname,book.bcover,book.bchapters,reader_book_record.chapter
+        from book,reader_book_record
+        where reader_book_record.rname ='虚拟用户0'
+        and book.bname = reader_book_record.bname;
+
+select b.bname, b.bcover, b.bchapters, t.tag, ab.aname
+        from author_book ab, book b left join book_tag t  on b.bname = t.bname
+            where b.bname like concat('%','天','%')
+            AND b.bname=ab.bname
+        order by length(b.bname) ASC
+
+update  book set bchapters=1+(select  c from (select bchapters as c from book where bname='uzi永远滴神')temp) where bname='uzi永远滴神';
+
+
+
+
+//小说更新表
+
+book_postc
+
+create table book_postc(
+ pid int(9) primary key auto_increment,
+ bname varchar(20) not null,
+ constraint bpb foreign key(bname) references book(bname)
+)
+insert into book_postc values(null,'uzi永远滴神');
+
+//小说相似度排名表（与某小说的相似度最高的前6本小说,abcdef表示书名，ua表示与a的相似度）
+
+table book_similar
+
+create table book_similar(
+ bname varchar(20) not null,
+ a varchar(20),
+ ua float,
+ b varchar(20),
+ ub float,
+ c varchar(20),
+ uc float,
+ d varchar(20),
+ ud float,
+ e varchar(20),
+ ue float,
+ f varchar(20),
+ uf float,
+ constraint bsb foreign key(bname) references book(bname)
+)
+
+
+//小说相似度计算
+
+bnames=  select a.bname from reader_book a, reader_book b where b.bname='uzi永远滴神' and a.rname=b.rname and a.bname!='uzi永远滴神';
+for(bname x: bnames)
+Wij=
+select count(*) from reader_book a, reader_book b where a.bname='uzi永远滴神' and b.bname='x' and a.rname=b.rname;
+/
+select count(*) from reader_book where bname='uzi永远滴神';
+
+
+insert into book_similar values('uzi永远滴神','aa',0.5,'bb',0.3,null,null,null,null,null,null,null,null);
+update book_similar set a=null,ua=null,b=null,ub=null,c=null,uc=null,d=null,ud=null,e=null,ue=null,f=null,uf=null where 1=1;
+select a.a,a.ua,a.b,a.ub,a.c,a.uc,a.d,a.ud,a.e,a.ue,a.f,a.uf from book_similar a,reader_book b 

@@ -125,6 +125,7 @@ public class Similarity {
     public void insert_sort(float ux, String x){
         if(!x.equals(a)&&!x.equals(b)&&!x.equals(c)&&!x.equals(d)&&!x.equals(e)&&!x.equals(f)){
             if(a!=null&&b!=null&&c!=null&&d!=null&&e!=null&&f!=null){
+                //abcdef都不为空且和插入的书名不重名的情况，此处插入时自动排号序
                 if(uf>ux)return;
                 if(ue>ux){setF(x);setUf(ux);return;}
                 if(ud>ux){setF(getE());setUf(getUe());setE(x);setUe(ux);return;}
@@ -153,65 +154,60 @@ public class Similarity {
         }
     }
 
-    //沉底排序法
+    //冒泡排序法
     public void sort(){
-        if(a==null)return;
-        if(b==null)return;
-        if(ua<ub){
-            float ux;
-            String x;
-            x=a;
-            ux=ua;
-            a=b;
-            ua=ub;
-            b=x;
-            ub=ux;
+        for(int i=0;i<5;i++){
+            if(f!=null&&ue<uf){
+                float ux;
+                String x;
+                x=e;
+                ux=ue;
+                e=f;
+                ue=uf;
+                f=x;
+                uf=ux;
+            }
+            if(e!=null&&ud<ue){
+                float ux;
+                String x;
+                x=d;
+                ux=ud;
+                d=e;
+                ud=ue;
+                e=x;
+                ue=ux;
+            }
+            if(d!=null&&uc<ud){
+                float ux;
+                String x;
+                x=c;
+                ux=uc;
+                c=d;
+                uc=ud;
+                d=x;
+                ud=ux;
+            }
+            if(c!=null&&ub<uc){
+                float ux;
+                String x;
+                x=b;
+                ux=ub;
+                b=c;
+                ub=uc;
+                c=x;
+                uc=ux;
+            }
+            if(b!=null&&ua<ub){
+                float ux;
+                String x;
+                x=a;
+                ux=ua;
+                a=b;
+                ua=ub;
+                b=x;
+                ub=ux;
+            }
         }
-        if(c==null)return;
-        if(ub<uc){
-            float ux;
-            String x;
-            x=b;
-            ux=ub;
-            b=c;
-            ub=uc;
-            c=x;
-            uc=ux;
-        }
-        if(d==null)return;
-        if(uc<ud){
-            float ux;
-            String x;
-            x=c;
-            ux=uc;
-            c=d;
-            uc=ud;
-            d=x;
-            ud=ux;
-        }
-        if(e==null)return;
-        if(ud<ue){
-            float ux;
-            String x;
-            x=d;
-            ux=ud;
-            d=e;
-            ud=ue;
-            e=x;
-            ue=ux;
-        }
-        if(f==null)return;
-        if(ue<uf){
-            float ux;
-            String x;
-            x=e;
-            ux=ue;
-            e=f;
-            ue=uf;
-            f=x;
-            uf=ux;
-        }
-
 
     }
 }

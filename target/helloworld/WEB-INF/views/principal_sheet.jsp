@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="/css/slide.css"/>
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/window.js"></script>
-    <script src="/js/slide.js"></script>
 
     <title>jcc小说网</title>
 </head>
@@ -235,11 +234,11 @@
     <div id="show" rel="autoPlay">
         <div class="img">
           <span>
-              <a href="http://www.bootstrapmb.com" id="inst_1" target="_blank"><img src="/images/1.jpg" alt="1"/></a>
-              <a href="http://www.bootstrapmb.com" id="inst_2" target="_blank"><img src="/images/2.jpg" alt="2"/></a>
-              <a href="http://www.bootstrapmb.com" id="inst_3" target="_blank"><img src="/images/3.jpg" alt="3"/></a>
-              <a href="http://www.bootstrapmb.com" id="inst_4" target="_blank"><img src="/images/4.jpg" alt="4"/></a>
-              <a href="http://www.bootstrapmb.com" id="inst_5" target="_blank"><img src="/images/5.jpg" alt="5"/></a>
+              <a href="" id="inst_1" target="_blank"><img id="intst_img_1" src="" alt="1"/></a>
+              <a href="" id="inst_2" target="_blank"><img id="intst_img_2" src="" alt="2"/></a>
+              <a href="" id="inst_3" target="_blank"><img id="intst_img_3" src="" alt="3"/></a>
+              <a href="" id="inst_4" target="_blank"><img id="intst_img_4" src="" alt="4"/></a>
+              <a href="" id="inst_5" target="_blank"><img id="intst_img_5" src="" alt="5"/></a>
           </span>
             <div class="masks mk1"></div>
             <div class="masks mk2"></div>

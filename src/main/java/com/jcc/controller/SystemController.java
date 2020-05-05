@@ -5,10 +5,7 @@ import com.jcc.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -67,6 +64,17 @@ public class SystemController {
         ret.put("type","success");
         ret.put("msg","注册成功！");
         return ret;
+    }
+
+    @RequestMapping("/principal/rname={rname}")
+    public String goto_novel_info(@PathVariable("rname") String rname, HttpServletRequest request){
+        Reader reader=new Reader();
+        reader.setRname(rname);
+        reader.setRid(null);
+        reader.setRpwd(null);
+        List<Reader> rs=readerService.selectReader(reader);
+        request.getSession().setAttribute("reader",rs.get(0));
+        return "principal_sheet";
     }
 
 
