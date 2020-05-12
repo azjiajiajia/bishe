@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="/css/ui.css"/>
     <link rel="stylesheet" type="text/css" href="/css/lib_ui.css"/>
     <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script type="text/javascript" src="/js/lib_window.js"></script>
     <title>我的书架</title>
 </head>

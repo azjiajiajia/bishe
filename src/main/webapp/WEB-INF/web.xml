@@ -66,4 +66,11 @@
   <session-config>
     <session-timeout>600</session-timeout>
   </session-config>
+
+  <!--自定义session监听器-->
+  <listener>
+    <listener-class>
+      com.jcc.session.SessionListener
+    </listener-class>
+  </listener>
 </web-app>

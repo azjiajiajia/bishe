@@ -3,12 +3,15 @@ package com.jcc.controller;
 import com.jcc.entity.Reader;
 import com.jcc.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import com.jcc.socket.MyWebSocket;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.*;
 
 @Controller
@@ -19,7 +22,7 @@ public class SystemController {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, String> login(Reader reader,HttpServletRequest request){
+    public Map<String, String> login(Reader reader, HttpSession session, HttpServletResponse response) throws IOException {
         Map<String,String> ret=new HashMap<String, String>();
         reader.setRname(null);
         List<Reader> readers=readerService.selectReader(reader);
@@ -34,7 +37,13 @@ public class SystemController {
             ret.put("msg","登录成功！");
             ret.put("reader_name",r.getRname());
             ret.put("reader_id",r.getRid());
-            request.getSession().setAttribute("reader",r);
+            session.setAttribute("reader",r);
+            session.setAttribute("rid",r.getRid());
+            //验证是否有用户已登录，若有则发消息给已登录的客户端
+            Boolean b=MyWebSocket.checkRid(r.getRid());
+            Cookie cookie =new Cookie("sessionId",session.getId());
+            cookie.setPath("/");
+            response.addCookie(cookie);
             System.out.println(r.getRid()+"  "+r.getRpwd());
         }
 
@@ -74,6 +83,13 @@ public class SystemController {
         reader.setRpwd(null);
         List<Reader> rs=readerService.selectReader(reader);
         request.getSession().setAttribute("reader",rs.get(0));
+        return "principal_sheet";
+    }
+
+    @RequestMapping("/delete_session")
+    public String delS(HttpSession session){
+        session.removeAttribute("reader");
+        session.removeAttribute("rid");
         return "principal_sheet";
     }
 
