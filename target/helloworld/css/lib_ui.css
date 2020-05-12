@@ -1,0 +1,5 @@
+.left_sort{background-color:white;left: 0;top:110px;position: absolute;width: 19%;height: 500px}
+.recent_read{display: inline-block;width: 100%;height: 100%;}
+.novel_lib{display: inline-block;width: 100%;height: 100%;}
+#l_chosen{border: 2px solid black}
+#r_chosen{border: 2px solid white}

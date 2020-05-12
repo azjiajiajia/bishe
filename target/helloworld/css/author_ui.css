@@ -1,0 +1,90 @@
+.books_sort{background-color:white;left: 0;top:70px;position: absolute;width: 69%;height: 500px;border: 2px solid black}
+.novel_scan{background-color:white;right: 0;top:70px;position: absolute;width: 30%;height: 500px;border: 2px solid black}
+
+
+/*新书窗口*/
+.new_book{position: absolute;
+    width: 512px;
+    height: 312px;
+    z-index: 9999;
+    display: none;
+    background-color: white;
+    left: 20%;
+    top: 30%;
+    border: 1px solid black;}
+.new_book_title{width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-bottom: 20px;}
+.new_book_title span a{
+    text-decoration: none;
+    border: 1px solid gray;
+    font-size: 12px;
+    color: #3f4447;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: blueviolet;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+}
+.book_input{margin: 20px 0px 30px 0px;}
+.book_input label{
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    width: 90px;
+    padding-left: 10px;
+    text-align: right;
+    font-size: 14px;
+}
+.book_input input{height: 35px;
+    line-height: 35px;
+    width: 150px;
+    text-indent: 5px;}
+.book_input select{height: 35px;
+    line-height: 35px;
+    width: 100px;
+    text-indent: 5px;}
+.post_submit{width: 100px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid gray;
+    background-color: white;
+    margin-left: 40%;
+    margin-bottom: 30px;}
+#bname_already_has{font-size: 10px;color: red;margin-right: 120px;float: right;width: 150px;text-align: left;display: block;margin-top: 0px;display: none}
+#none_cover{font-size: 10px;color: red;margin-right: 120px;float: right;width: 150px;text-align: left;display: block;margin-top: -40px;display: none}
+
+
+
+#post_new_book{position: absolute;top: 580px;width: 100%;height: 60px}
+
+
+.chapters{margin-top: 10px;width:80% }
+.chapter{display:inline-block;margin-left: 10%;width: 15%;margin-top: 10px;height:30px;font-size:10px}
+
+.article_input{height: 300px;width: 500px;}
+
+#save_dialog{position: absolute;
+    width: 300px;
+    height: 130px;
+    z-index: 9999;
+    display: none;
+    background-color: #a9abb0;
+    left: 30%;
+    top: 30%;
+    border: 1px solid black;}
+#save_dialog_close{text-decoration: none;
+    border: 1px solid gray;
+    font-size: 12px;
+    color: red;
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: slategray;
+    position: absolute;
+    top: 0px;
+    right: 0px;}

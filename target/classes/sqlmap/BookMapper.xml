@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jcc.dao.BookDao">
+
+<!--
+    <resultMap id="BaseResultMap" type="com.jcc.entity.Book">
+        <id column="bname" jdbcType="VARCHAR" property="bname" />
+        <id column="bcover" jdbcType="VARCHAR" property="bcover" />
+        <result column="bchapters" jdbcType="INTEGER" property="bchapters" />
+    </resultMap>
+    <sql id="book_Column_List">
+    bname,bcover,bchapters
+  </sql>
+-->
+<!--    查找读者小说浏览表-->
+    <select id="selectBookFrom_reader_book_record" parameterType="String" resultType="Map">
+        select book.bname,book.bcover,reader_book_record.chapter
+        from book,reader_book_record
+        where reader_book_record.rname = #{rname}
+        and book.bname = reader_book_record.bname
+    </select>
+
+
+<!--    条件查找-->
+    <select id="selectBooks" parameterType="Book" resultType="Book">
+        select b.bname, b.bcover, b.bchapters, t.tag, ab.aname
+        from author_book ab, book b left join book_tag t  on b.bname = t.bname
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="tag != null">AND t.tag = #{tag}</if>
+            <if test="bchapters != null">AND b.bcover between #{bchapters} and 2*#{bchapters}</if>
+            <if test="bname != null">AND b.bname like #{bname}</if>
+            AND b.bname=ab.bname
+        </trim>
+        order by length(b.bname) ASC
+
+    </select>
+
+<!--    查找一本-->
+    <select id="selectOne" parameterType="String" resultType="Book">
+        select * from book where bname = #{bname}
+    </select>
+
+<!--    查询所有-->
+    <select id="selectAll" resultType="Book">
+        select * from book b left join book_tag t on b.bname = t.bname
+    </select>
+
+<!--查找小说详细内容-->
+    <select id="selectChapter" parameterType="String" resultType="Map">
+        select * from book_chapter where bname=#{bname} order by chapter
+    </select>
+
+<!--查找小说作者-->
+    <select id="selectByAuthor" parameterType="String" resultType="String">
+        select aname from author_book where bname=#{bname}
+    </select>
+
+<!--查找用户书架的书-->
+    <select id="selectFromLib" parameterType="String" resultType="Book">
+        select b.bname,b.bcover,ab.aname from author_book ab,reader_book rb,book b where rb.rname=#{rname} and rb.bname=b.bname and ab.bname=b.bname
+    </select>
+
+<!--查找用户是否度过某书并读到第几话-->
+    <select id="isRead" parameterType="Map" resultType="Map">
+        select bc.chapter,bc.chapterad from book_chapter bc,reader_book_record rbr where rbr.rname=#{rname} and rbr.bname=#{bname} and rbr.bname=bc.bname
+        and rbr.chapter=bc.chapter
+    </select>
+
+<!--查找某书第一话地址-->
+    <select id="selectfst" parameterType="String" resultType="String">
+        select chapterad from book_chapter where bname=#{bname} and chapter=1
+    </select>
+
+<!--查找用户书架的书-->
+    <select id="selectFromLibByBname" parameterType="Map" resultType="String">
+        select bname from reader_book  where rname=#{rname} and bname=#{bname}
+    </select>
+
+<!--按书名模糊查询-->
+    <select id="selectBooks_vague" parameterType="String" resultType="Book">
+        select b.bname, b.bcover, b.bchapters, t.tag, ab.aname
+        from author_book ab, book b left join book_tag t  on b.bname = t.bname
+            where b.bname like concat('%',#{name},'%')
+            AND b.bname=ab.bname
+        order by length(b.bname) ASC
+    </select>
+
+    <!--按作者名查询-->
+    <select id="selectBooksByAuthor" parameterType="String" resultType="Book">
+        select b.bname, b.bcover, b.bchapters, t.tag
+        from author_book ab, book b left join book_tag t  on b.bname = t.bname
+            where ab.aname=#{aname}
+            AND b.bname=ab.bname
+        order by length(b.bname) ASC
+    </select>
+
+
+    <!--插入新章节-->
+    <insert id="insertChapter" parameterType="Map">
+        insert into book_chapter (bname, chapter, chaptername, chapterad) value (#{bname}, #{chapter}, #{chaptername},#{chapterad})
+    </insert>
+
+    <!--插入新书-->
+    <insert id="insertNewBook" parameterType="Book">
+        insert into book (bname,bcover,bchapters) value (#{bname},#{bcover},#{bchapters})
+    </insert>
+    <insert id="insertBookTag" parameterType="Book">
+        insert into book_tag (bname,tag) value (#{bname},#{tag})
+    </insert>
+    <insert id="insertBookAuthor" parameterType="Map">
+        insert into author_book (aid,bname,aname) value (#{aid},#{bname},#{aname})
+    </insert>
+
+    <!--小说章节数加1-->
+    <update id="updateBookAddC" parameterType="String">
+        update  book set bchapters=1+(select  c from (select bchapters as c from book where bname=#{bname})temp) where bname=#{bname};
+    </update>
+
+    <!--插入小说更新表-->
+    <insert id="insertBookPostC" parameterType="String">
+        insert into book_postc values(null,#{bname});
+    </insert>
+
+    <!--查找最近更新的六本书-->
+    <select id="selectRecent" resultType="Map">
+        select * from book_postc  order by pid desc limit 0,6
+    </select>
+
+    <!--插入小说相似度表-->
+    <insert id="insertNewBookToSim" parameterType="String">
+        insert into book_similar values(#{bname},null,null,null,null,null,null,null,null,null,null,null,null);
+    </insert>
+</mapper>
