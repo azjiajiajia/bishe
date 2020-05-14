@@ -946,7 +946,7 @@ function getsocket() {
     //接收到消息的回调方法
     websocket.onmessage = function (event) {
         alert("您的账号在别处登录，该网页将退出登录");
-        $.cookie('sessionId',null);
+        $.cookie('sessionId','',{ expires: -1 });
         websocket.close();
         window.parent.location.href="/system/delete_session";
 

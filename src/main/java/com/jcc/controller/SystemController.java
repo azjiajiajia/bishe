@@ -93,5 +93,10 @@ public class SystemController {
         return "principal_sheet";
     }
 
+    @RequestMapping("/principal_sheet")
+    public String toMain(){
+        return "principal_sheet";
+    }
+
 
 }

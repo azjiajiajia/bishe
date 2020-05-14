@@ -297,9 +297,9 @@ public class ReaderController {
             float x=Float.parseFloat(wij.get(i).get("w").toString());
             sum.put("j",wij.get(i).get("j"));
             for(int j=i+1;j<wij.size();j++){
-                if(wij.get(j).get("j")==wij.get(i).get("j")){
+                if(wij.get(j).get("j").equals(wij.get(i).get("j"))){
                     x+=Float.parseFloat(wij.get(j).get("w").toString());
-                    wij.remove(wij.get(j));
+                    wij.remove(j);
                     j--;
                 }
             }

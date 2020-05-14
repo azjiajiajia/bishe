@@ -8,6 +8,7 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.ReentrantLock;
 
 @ServerEndpoint("/websocket")
 public class MyWebSocket {
@@ -18,6 +19,8 @@ public class MyWebSocket {
 
     //与某个客户端的连接会话，需要通过它来给客户端发送数据
     private Session session;
+    private String rid;
+    private static ReentrantLock lock = new ReentrantLock();
 
     /**
      * 连接建立成功调用的方法
@@ -27,8 +30,14 @@ public class MyWebSocket {
     public void onOpen(Session session){
         this.session = session;
         String queryString=session.getQueryString();
-        String rid= (String) MySessionContext.getInstance().getSession(queryString).getAttribute("rid");
-        webSocketSet.put(rid,this);
+        rid= (String) MySessionContext.getInstance().getSession(queryString).getAttribute("rid");
+        lock.lock();
+        try {
+            webSocketSet.put(rid,this);
+        }
+        finally {
+            lock.unlock();
+        }
         addOnlineCount();           //在线数加1
         System.out.println("有新连接加入！当前在线人数为" + getOnlineCount());
     }
@@ -39,7 +48,15 @@ public class MyWebSocket {
      */
     @OnClose
     public void onClose(){
-        webSocketSet.remove(this);  //从set中删除
+        lock.lock();
+        try{
+            if(session==webSocketSet.get(rid)){
+                webSocketSet.remove(rid);  //从set中删除
+            }
+        }
+        finally {
+            lock.unlock();
+        }
         subOnlineCount();           //在线数减1
         System.out.println("有一连接关闭！当前在线人数为" + getOnlineCount());
     }
