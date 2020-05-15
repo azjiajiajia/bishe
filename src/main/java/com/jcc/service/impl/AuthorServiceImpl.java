@@ -4,6 +4,7 @@ import com.jcc.dao.AuthorDao;
 import com.jcc.entity.Author;
 import com.jcc.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,6 +27,7 @@ public class AuthorServiceImpl implements AuthorService {
         authorDao.update(author);
     }
 
+    @Cacheable(value="common")
     @Override
     public Author selectOne(Author author) {
         return authorDao.selectOne(author);

@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.jcc.entity.Book;
 import com.jcc.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @Controller
@@ -54,6 +52,7 @@ public class BookController {
     //异步查询
     @RequestMapping("/books_ajax")
     @ResponseBody
+    @Cacheable(value = "common", key = "#root.methodName + ':' + #pageNum + ':' + #book")
     public PageInfo<Book> showBooks_ajax(Integer pageNum, Book book, Model model){
         //预处理参数
         if (pageNum == null) pageNum = 1;
@@ -76,6 +75,7 @@ public class BookController {
     }
 
     @RequestMapping("/novel_info/bname={bname}")
+
     public String goto_novel_info(@PathVariable("bname") String bname, HttpServletRequest request){
         request.getSession().setAttribute("bname",bname);
         return "novel_info";
@@ -83,6 +83,7 @@ public class BookController {
 
     @RequestMapping(value = "/chapters",method = RequestMethod.POST)
     @ResponseBody
+    @Cacheable(value = "common")
     public Map<String,Object> show_chapters(String bname){
         Map<String,Object> ret=new HashMap<String, Object>();
         Book book=new Book();
@@ -110,6 +111,7 @@ public class BookController {
 
     @RequestMapping("/books_vague")
     @ResponseBody
+    @Cacheable(value = "common", key = "#root.methodName + ':' + #pageNum + ':' + #book")
     public PageInfo<Book> showBooks_vague(Integer pageNum, String name, Model model){
         //预处理参数
         if (pageNum == null) pageNum = 1;
@@ -124,6 +126,7 @@ public class BookController {
 
     @RequestMapping("/recent_post")
     @ResponseBody
+
     public List<Book> recent(){
         List<Map<String,Object>> bs =bookService.selectRecent();
         String bname;

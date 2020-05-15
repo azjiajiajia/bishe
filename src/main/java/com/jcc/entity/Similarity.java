@@ -2,8 +2,10 @@ package com.jcc.entity;
 
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 @Component
-public class Similarity {
+public class Similarity implements Serializable {
     private String bname;
     private String a;
     private String b;

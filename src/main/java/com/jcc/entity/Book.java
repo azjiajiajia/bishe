@@ -2,8 +2,10 @@ package com.jcc.entity;
 
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 @Component
-public class Book {
+public class Book implements Serializable {
     private String bname;
     private String bcover;
     private Integer bchapters;
