@@ -1,6 +1,8 @@
 package com.jcc.entity;
 
-public class Author {
+import java.io.Serializable;
+
+public class Author implements Serializable {
     private String aid;
     private String apwd;
     private String aname;

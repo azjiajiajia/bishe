@@ -5,6 +5,7 @@ import com.jcc.entity.Book;
 import com.jcc.entity.Similarity;
 import com.jcc.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class BookServiceImpl implements BookService {
     private BookDao bookDao;
 
     @Override
+
     public List<Map<String,Object>> selectBookFrom_reader_book_record(String rname){
         return bookDao.selectBookFrom_reader_book_record(rname);
     }

@@ -8,6 +8,7 @@ import com.jcc.entity.Similarity;
 import com.jcc.service.BookService;
 import com.jcc.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,6 +83,7 @@ public class ReaderController {
 
     @RequestMapping(value = "/fst_ad",method = RequestMethod.POST)
     @ResponseBody
+    @Cacheable(value = "common")
     public Map<String,Object> fst_ad(String bname){
         Map<String,Object> ret=new HashMap<String, Object>();
         String fst=bookService.selectfst(bname);
@@ -98,6 +100,7 @@ public class ReaderController {
 
     @RequestMapping(value = "/add_to_record",method = RequestMethod.POST)
     @ResponseBody
+
     public Map<String,Object> add_to_record(String rname,String bname,int chapter,boolean isEmpty){
         Map<String,Object> ret=new HashMap<String, Object>();
         //isEmpty若为true表示没记录，false表示不知道

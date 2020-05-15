@@ -2,8 +2,10 @@ package com.jcc.entity;
 
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 @Component
-public class Reader {
+public class Reader implements Serializable {
     private String rname;
     private String rid;
     private String rpwd;
@@ -30,5 +32,14 @@ public class Reader {
 
     public void setRpwd(String rpwd) {
         this.rpwd = rpwd;
+    }
+
+    @Override
+    public String toString() {
+        return "Reader{" +
+                "rname='" + rname + '\'' +
+                ", rid='" + rid + '\'' +
+                ", rpwd='" + rpwd + '\'' +
+                '}';
     }
 }
