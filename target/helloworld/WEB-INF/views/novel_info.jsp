@@ -46,6 +46,12 @@
     <div id="novel_chapter" class="chapters">
     </div>
 </div>
+<div id="chat_window" class="chater">
+    <input type="button" id="chat_close" value="关闭聊天窗口">
+    <input type="text" id="chat_text" placeholder="输入弹幕内容发送弹幕"/>
+    <input type="button" id="chat_submit" value="发送">
+    <div id="chat_msg"></div>
+</div>
 
 
 

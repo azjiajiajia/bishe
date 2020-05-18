@@ -165,8 +165,98 @@ $(function(){
     init_tab();
     init_chapter();
     init_btn();
+    init_chat();
 
 });
+
+//初始化聊天栏
+function init_chat(){
+    var websocket = null;
+    var user;
+    var color=randomColor1();
+    //判断当前浏览器是否支持WebSocket
+    if ('WebSocket' in window) {
+        websocket = new WebSocket("ws://localhost:8080/websocket_chat?"+$("#bname").val());
+        user=Math.random()*1000000;
+    }
+    else {
+        alert('当前浏览器 Not support websocket')
+    }
+
+    //连接发生错误的回调方法
+    websocket.onerror = function () {
+        setMessageInnerHTML("WebSocket连接发生错误");
+    };
+
+    //连接成功建立的回调方法
+    websocket.onopen = function () {
+        setMessageInnerHTML("WebSocket连接成功");
+    }
+
+    //接收到消息的回调方法
+    websocket.onmessage = function (event) {
+        setMessageInnerHTML(event.data);
+    }
+
+    //连接关闭的回调方法
+    websocket.onclose = function () {
+        setMessageInnerHTML("WebSocket连接关闭");
+    }
+
+    //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+    window.onbeforeunload = function () {
+        closeWebSocket();
+    }
+
+    //将消息显示在网页上
+    function setMessageInnerHTML(text) {
+        $("#chat_msg").html($("#chat_msg").html()+text+'<br/>');
+    }
+
+    //关闭WebSocket连接
+    function closeWebSocket() {
+        websocket.close();
+    }
+
+    //发送消息
+    function send() {
+        var msg=$("#chat_text").val();
+        var username;
+        if($("#user_name").html()=="")
+            username="游客"+user;
+        else
+            username=$("#user_name").html();
+        websocket.send("<label style='color: "+color+"'>"+username+"</label>"+":"+msg);
+        $("#chat_text").val("");
+    }
+
+
+    $("#chat_submit").click(function () {
+        if($("#chat_text").val()==""){alert("请输入内容");}
+        else {
+            send();
+        }
+    });
+    $("#chat_close").click(function () {
+        if($("#chat_close").val()=="关闭聊天窗口"){
+            closeWebSocket();
+            $("#chat_close").val("开启聊天窗口");
+            $("#chat_text").css({display:"none"});
+            $("#chat_msg").css({display:"none"});
+            $("#chat_submit").css({display:"none"});
+        }
+        else if($("#chat_close").val()=="开启聊天窗口"){
+            websocket = new WebSocket("ws://localhost:8080/websocket_chat?"+$("#bname").val());
+            $("#chat_close").val("关闭聊天窗口");
+            $("#chat_text").css({display:"block"});
+            $("#chat_msg").css({display:"block"});
+            $("#chat_submit").css({display:"block"});
+        }
+    });
+
+}
+
+
 
 //初始化tab栏
 function init_tab(){
@@ -342,3 +432,27 @@ jQuery.fn.moveDivByID= function (id){
         $(this).unbind("mousemove");
     });
 };
+
+
+//获取十六进制颜色
+function randomColor1(){
+    var r = Math.floor(Math.random()*256);
+    var g = Math.floor(Math.random()*256);
+    var b = Math.floor(Math.random()*256);
+    if(r < 16){
+        r = "0"+r.toString(16);
+    }else{
+        r = r.toString(16);
+    }
+    if(g < 16){
+        g = "0"+g.toString(16);
+    }else{
+        g = g.toString(16);
+    }
+    if(b < 16){
+        b = "0"+b.toString(16);
+    }else{
+        b = b.toString(16);
+    }
+    return "#"+r+g+b;
+}
